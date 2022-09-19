@@ -1,4 +1,4 @@
-import { registerHtml, TramOneComponent } from "tram-one";
+import { registerHtml, TramOneComponent, useStore } from "tram-one";
 import selectionCard from "./selection-card";
 import "./app.css";
 import pageScroller from "./page-scroller";
@@ -15,142 +15,176 @@ const app: TramOneComponent = () => {
     <main class="app">
       <page-scroller>
         <page title="Character Guide">
-          <selection-card id="race" title="Choose a Race">
-            Details can be found in the Unearthed Arcana - Origins (page 3-10)
-            <ol>
-              <li>
-                Write your race (and sub-race) in the "RACE" in the header
-              </li>
-              <li>Write your movement speed in the "SPEED" box</li>
-              <li>Write special traits in the "FEATURES & TRAITS" box</li>
-            </ol>
-          </selection-card>
-
-          <selection-card id="class" title="Choose a Class">
-            <h3>Read the Classes in the PHB (page XXX)</h3>
-            <h3>
+          <selection-card id="race" title="Choose a Race" />
+          <selection-card id="class" title="Choose a Class" />
+          <selection-card id="background" title="Choose a Background" />
+          <selection-card id="language" title="Additional Language" />
+          <selection-card id="unarmed-strike" title="Add Unarmed Strike" />
+          <selection-card id="stat-block" title="Set Stat Blocks" />
+          <selection-card id="spellcasting" title="Set Spellcasting Details" />
+          <selection-card id="atk-bonus" title="Fill in Attack Bonus" />
+        </page>
+        <page title="Choose a Race" selection="race">
+          Details can be found in the Unearthed Arcana - Origins (page 3-10)
+          <ol>
+            <li>Write your race (and sub-race) in the "RACE" in the header</li>
+            <li>Write your movement speed in the "SPEED" box</li>
+            <li>Write special traits in the "FEATURES & TRAITS" box</li>
+          </ol>
+        </page>
+        <page title="Choose a Class" selection="class">
+          Read the Classes in the PHB (page XXX)
+          <ol>
+            <li>
               Set your "HIT DICE" to whatever value dice roll for your class
-              (e.g. 1d8) and the "Total" to 1
-            </h3>
-            <h3>
+              (e.g. 1d8) and write "1 of 1" for your "Total"
+            </li>
+            <li>
               Write your armor, weapon, and tool proficiencies in the bottom
               right box under "OTHER PROFICIENCIES & LANGUAGES"
-            </h3>
-            <h3>
+            </li>
+            <li>
               Mark your 2 chosen skill proficiencies by filling in the circle in
               the "SKILLS" box
-            </h3>
-            <h3>
+            </li>
+            <li>
               Select your starting equipment and add any damage options in
               "ATTACKS & SPELLCASTING" (Ignore ATK BONUS for now)
-            </h3>
-            <h3>Add any 1st level features to the "FEATURES & TRAITS" box</h3>
-            <h3>
+            </li>
+            <li>Add any 1st level features to the "FEATURES & TRAITS" box</li>
+            <li>
               If you get spellcasting as part of your 1st level features, add
               damage spells to the "ATTACKS & SPELLCASTING" section (Ignore ATK
               BONUS for now), and list spells in the dedicated Spellcasting
               sheet.
-            </h3>
-          </selection-card>
-
-          <selection-card id="unarmed-strike" title="Add Unarmed Strike">
-            (UA Origins, pg 20) to the "ATTACKS & SPELLCASTING" section
-          </selection-card>
-
-          <selection-card id="background" title="Choose a Background">
-            <h3>Read the UA Origins (page 11-15)</h3>
-            <h3>Ignore Ability Scores for now</h3>
-            <h3>Mark the 2 skill proficiencies in the "SKILLS" section</h3>
-            <h3>
+            </li>
+          </ol>
+        </page>
+        <page title="Choose a Background" selection="background">
+          Read the UA Origins (page 11-15) Ignore Ability Scores for now
+          <ol>
+            <li>Mark the 2 skill proficiencies in the "SKILLS" section</li>
+            <li>
               Add the tool and language proficiencies in the "OTHER
               PROFICIENCIES & LANGUAGES" section
-            </h3>
-            <h3>Add the Feat in the "FEATURES & TRAITS" box</h3>
-            <h3>Write the equipment in the "EQUIPMENT" section</h3>
-            <h3>Add any additional GP to the "EQUIPMENT" section</h3>
-            <selection-card id="language"
-              >Add an additional starting language (UA Origins, pg
-              16)</selection-card
-            >
-          </selection-card>
+            </li>
+            <li>Add the Feat in the "FEATURES & TRAITS" box</li>
+            <li>Write the equipment in the "EQUIPMENT" section</li>
+            <li>Add any additional GP to the "EQUIPMENT" section</li>
+          </ol>
+        </page>
+        <page title="Additional Language" selection="language">
+          Add an additional starting language (UA Origins, pg 16)
+        </page>
+        <page title="Add Unarmed Strike" selection="unarmed-strike">
+          (UA Origins, pg 20) to the "ATTACKS & SPELLCASTING" section
+        </page>
+        <page title="Set Stat Blocks" selection="stat-block">
+          Set your stats using the standard array - 15, 14, 13, 12, 10, 8
 
-          <selection-card id="stat-block" title="Set Stat Blocks">
-            <h3>
-              Set your stats starting with the standard array - 15, 14, 13, 12,
-              10, 8
-            </h3>
-            <h4>For Barbarian, prioritize STR, CON, & DEX</h4>
-            <h4>For Bard, prioritize CHA, DEX</h4>
-            <h4>For Cleric, prioritize WIS, STR or CON</h4>
-            <h4>For Druid, prioritize WIS, CON</h4>
-            <h4>
-              For Fighter, prioritize STR (or DEX for ranged weapons), and CON
-            </h4>
-            <h4>For Monk, prioritize DEX, WIS</h4>
-            <h4>For Paladin, prioritize STR, CHA</h4>
-            <h4>For Ranger, prioritize DEX, WIS</h4>
-            <h4>For Rogue, prioritize DEX, INT or CHA</h4>
-            <h4>For Sorcerer, prioritize CHA, CON</h4>
-            <h4>For Warlock, prioritize CHA, CON</h4>
-            <h4>For Wizard, prioritize INT, CON or DEX</h4>
-
-            <h3>
+          <ol>
+            <li>
               Add an additional +2 and +1 to any two stats based on your
               background
-            </h3>
-            <h4>prioritize boosts that would bump attributes to 16</h4>
-            <h3>Set Proficiency Modifier (+2)</h3>
-
-            <h3>
+              <ul>
+                <li>You may choose any stats, as long as they are thematic.</li>
+                <li>
+                  Note: you benefit from even number values, so use these to get
+                  to 16, 14, etc
+                </li>
+              </ul>
+            </li>
+            <li>Set Proficiency Modifier (+2)</li>
+            <li>
               Based on your class, set your "HIT POINTS" based on a starting
               value + CON modifier
-            </h3>
-            <h3>
+            </li>
+            <li>
               Based on the armor you recieved from your class, and relevant
               stats from that armor, set your "ARMOR CLASS"
-            </h3>
-            <h3>Set your "INITIATIVE" to your DEX modifier</h3>
-            <h3>
+            </li>
+            <li>Set your "INITIATIVE" to your DEX modifier</li>
+            <li>
               Set your "PASSIVE WISDOM (PERCEPTION)" to 10 + Perception skill
               modifier
-            </h3>
-          </selection-card>
+            </li>
+          </ol>
+          <fieldset>
+            <legend>Class Priorities</legend>
+            <li>Barbarian: STR, CON, DEX</li>
+            <li>Bard: CHA, DEX</li>
+            <li>Cleric: WIS, STR or CON</li>
+            <li>Druid: WIS, CON</li>
+            <li>Fighter: STR (or DEX for ranged weapons), CON</li>
+            <li>Monk: DEX, WIS</li>
+            <li>Paladin: STR, CHA</li>
+            <li>Ranger: DEX, WIS</li>
+            <li>Rogue: DEX, INT or CHA</li>
+            <li>Sorcerer: CHA, CON</li>
+            <li>Warlock: CHA, CON</li>
+            <li>Wizard: INT, CON or DEX</li>
+          </fieldset>
+        </page>
+        <page title="Set Spellcasting Details" selection="spellcasting">
+          If you have spells as part of your class or background, do the
+          following on the Spellcasting Sheet
 
-          <selection-card id="spellcasting" title="Set Spellcasting Details">
-            <h3>
-              If you have spells as part of your class or background, do the
-              following on the Spellcasting Sheet
-            </h3>
-
-            <h3>
+          <ol>
+            <li>
               Set your "SPELLCASTING ABILITY" based on your class or background
-            </h3>
-            <h4>Bard: CHA</h4>
-            <h4>Cleric: WIS</h4>
-            <h4>Druid: WIS</h4>
-            <h4>Sorcerer: CHA</h4>
-            <h4>Warlock: CHA</h4>
-            <h4>Wizard: INT</h4>
-            <h4>
-              If you got spellcasting from "MAGIC INITIATE" feat, choose one
-              from INT, WIS, CHA
-            </h4>
-            <h3>
-              Set your "SPELL SAVE DC" to 8 + Proficiency Bonus (+2) +
-              Spellcasting Ability Modifier
-            </h3>
-            <h3>
-              Set your "SPELL ATTACK BONUS" to Proficiency Bonus (+2) +
-              Spellcasting Ability Modifier
-            </h3>
-          </selection-card>
+            </li>
 
-          <selection-card id="atk-bonus" title="Fill in ATK BONUS">
-            <h3>
-              melee using STR, finess using STR or DEX, ranged using DEX, and
-              spells using the SPELL ATTACK BONUS
-            </h3>
-          </selection-card>
+            <li>
+              Set your "SPELL SAVE DC" to 8 + Proficiency Bonus + Spellcasting
+              Ability Modifier
+            </li>
+            <li>
+              Set your "SPELL ATTACK BONUS" to Proficiency Bonus + Spellcasting
+              Ability Modifier
+            </li>
+          </ol>
+
+          <fieldset>
+            <legend>Class Spellcasting Ability</legend>
+            <ul>
+              <li>Bard: CHA</li>
+              <li>Cleric: WIS</li>
+              <li>Druid: WIS</li>
+              <li>Sorcerer: CHA</li>
+              <li>Warlock: CHA</li>
+              <li>Wizard: INT</li>
+              <br />
+              <li>
+                If you got spellcasting from "MAGIC INITIATE" feat, choose one
+                from INT, WIS, CHA
+              </li>
+            </ul>
+          </fieldset>
+        </page>
+        <page title="Fill in Attack Bonus" selection="atk-bonus">
+          Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section.
+          <ul>
+            <ol>
+              For melee weapon attacks, add your STR modifier + Proficiency
+              bonus
+            </ol>
+            <ol>
+              For finess weapons, add either your STR or DEX modifier +
+              Proficiency bonus
+            </ol>
+            <ol>
+              For ranged weapons, add either your DEX modifier + Proficiency
+              bonus
+            </ol>
+            <ol>
+              For spells (that ask for an attack roll, not a DC check) use your
+              "SPELL ATTACK BONUS"
+            </ol>
+            <ol>
+              For spells that have a Spell Save DC check use your "SPELL SAVE
+              DC"
+            </ol>
+          </ul>
         </page>
       </page-scroller>
     </main>

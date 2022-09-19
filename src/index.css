@@ -12,3 +12,7 @@ body,
   margin: 0px;
   height: 100vh;
 }
+
+fieldset {
+  border-color: inherit;
+}
