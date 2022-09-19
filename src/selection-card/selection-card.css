@@ -1,0 +1,15 @@
+input.selection-card {
+  /* make input control disappear by default */
+  appearance: none;
+  background-color: black;
+  width: 0;
+  padding: 0em;
+  margin-right: 0.4em;
+  height: 0.76em;
+  transition: all 0.05s linear;
+}
+
+input.selection-card:checked {
+  width: 0.2em;
+  margin-right: 0.2em;
+}
