@@ -1,0 +1,9 @@
+table {
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: var(--surface-2);
+}
+td {
+  padding: 2px 5px;
+}

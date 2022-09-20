@@ -1,6 +1,7 @@
 import { registerHtml, TramOneComponent, useStore } from "tram-one";
 import selectionCard from "./selection-card";
 import "./app.css";
+import "./table.css";
 import pageScroller from "./page-scroller";
 import page from "./page";
 
@@ -27,10 +28,84 @@ const app: TramOneComponent = () => {
         <page title="Choose a Race" selection="race">
           Details can be found in the Unearthed Arcana - Origins (page 3-10)
           <ol>
-            <li>Write your race (and sub-race) in the "RACE" in the header</li>
-            <li>Write your movement speed in the "SPEED" box</li>
-            <li>Write special traits in the "FEATURES & TRAITS" box</li>
+            <li>
+              Write your race
+              <i>
+                (or sub-race, if picking from the "... of Many Worlds" section
+                of a race)
+              </i>
+              in the "RACE" field in the header
+            </li>
+            <li>
+              Write your movement speed in the "SPEED" box
+              <i>(this should be 30ft, unless otherwise stated)</i>
+            </li>
+            <li>
+              Write special traits in the "FEATURES & TRAITS" box
+              <i
+                >(while these are listed below, be sure to check what they do
+                and how they might affect other sections of the character
+                sheet)</i
+              >
+            </li>
           </ol>
+          <fieldset>
+            <legend>Races</legend>
+            <table>
+              <tr>
+                <th>Race</th>
+                <th>Special Traits</th>
+              </tr>
+              <tr>
+                <td><b>Human</b></td>
+                <td>Resourceful, Skillful, Versatile</td>
+              </tr>
+              <tr>
+                <td><b>Ardling</b></td>
+                <td>
+                  Angelic Flight, Celestial Legacy, Damage Resistance (Radiant)
+                </td>
+              </tr>
+              <tr>
+                <td><b>Dragonborn</b></td>
+                <td>
+                  Draconic Ancestry, Breath Weapon, Damage Resistance,
+                  Darkvision, Draconic Language
+                </td>
+              </tr>
+              <tr>
+                <td><b>Dwarf</b></td>
+                <td>
+                  Darkvision, Dwarven Resilience, Forge Wise, Stonecunning
+                </td>
+              </tr>
+              <tr>
+                <td><b>Elf</b></td>
+                <td>
+                  Darkvision, Elven Lineage, Fey Ancestry, Keen Senses, Trance
+                </td>
+              </tr>
+              <tr>
+                <td><b>Gnome</b></td>
+                <td>Darkvision, Gnomish Cunning, Gnomish Lineage</td>
+              </tr>
+              <tr>
+                <td><b>Halfling</b></td>
+                <td>Brave, Halfling Nimbleness, Luck, Naturally Stealthy</td>
+              </tr>
+              <tr>
+                <td><b>Orc</b></td>
+                <td>
+                  Adrenaline Rush, Darkvision, Powerful BUild, Relentless
+                  Endurance
+                </td>
+              </tr>
+              <tr>
+                <td><b>Tiefling</b></td>
+                <td>Darkvision, Fiendish Legacy, Otherwordly Presence</td>
+              </tr>
+            </table>
+          </fieldset>
         </page>
         <page title="Choose a Class" selection="class">
           Read the Classes in the PHB (page XXX)
