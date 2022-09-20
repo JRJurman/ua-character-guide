@@ -38,14 +38,20 @@ const app: TramOneComponent = () => {
             <li>
               Set your "HIT DICE" to whatever value dice roll for your class
               (e.g. 1d8) and write "1 of 1" for your "Total"
+              <i>(Table Below)</i>
             </li>
             <li>
               Write your armor, weapon, and tool proficiencies in the bottom
               right box under "OTHER PROFICIENCIES & LANGUAGES"
+              <i>(Table Below)</i>
             </li>
             <li>
               Mark your 2 chosen skill proficiencies by filling in the circle in
               the "SKILLS" box
+            </li>
+            <li>
+              Mark your 2 Saving Throw Proficiencies by filling in the circles
+              in the "SAVING THROWS" box <i>(Table Below)</i>
             </li>
             <li>
               Select your starting equipment and add any damage options in
@@ -56,9 +62,108 @@ const app: TramOneComponent = () => {
               If you get spellcasting as part of your 1st level features, add
               damage spells to the "ATTACKS & SPELLCASTING" section (Ignore ATK
               BONUS for now), and list spells in the dedicated Spellcasting
-              sheet.
+              sheet
             </li>
           </ol>
+
+          <fieldset>
+            <legend>Classes</legend>
+            <table>
+              <tr>
+                <th>Class</th>
+                <th>Hit Die</th>
+                <th>Saving Throw Proficiencies</th>
+                <th>Armor & Weapon Proficiences</th>
+              </tr>
+              <tr>
+                <td><b>Barbarian</b></td>
+                <td>d12</td>
+                <td>STR & CON</td>
+                <td>
+                  Light and medium armor, shields, simple and martial weapons
+                </td>
+              </tr>
+
+              <tr>
+                <td><b>Bard</b></td>
+                <td>d8</td>
+                <td>DEX & CHA</td>
+                <td>
+                  Light armor, simple weapons, hand crossbows, longswords,
+                  rapiers, shortswords
+                </td>
+              </tr>
+              <tr>
+                <td><b>Cleric</b></td>
+                <td>d8</td>
+                <td>WIS & CHA</td>
+                <td>Light and medium armor, shields, simple weapons</td>
+              </tr>
+              <tr>
+                <td><b>Druid</b></td>
+                <td>d8</td>
+                <td>INT & WIS</td>
+                <td>
+                  Light and medium armor (nonmetal), shields (nonmetal), clubs,
+                  daggers, darts, javelins, maces, quarterstaffs, scimitars,
+                  sickles, slings, spears
+                </td>
+              </tr>
+              <tr>
+                <td><b>Fighter</b></td>
+                <td>d10</td>
+                <td>STR & CON</td>
+                <td>All armor, shields, simple and martial weapons</td>
+              </tr>
+              <tr>
+                <td><b>Monk</b></td>
+                <td>d8</td>
+                <td>STR & DEX</td>
+                <td>Simple weapons, shortswords</td>
+              </tr>
+              <tr>
+                <td><b>Palidin</b></td>
+                <td>d10</td>
+                <td>WIS & CHA</td>
+                <td>All armor, shields, simmple and martial weapons</td>
+              </tr>
+              <tr>
+                <td><b>Ranger</b></td>
+                <td>d10</td>
+                <td>STR & DEX</td>
+                <td>
+                  Light and medium armor, shields, simple and martial weapons
+                </td>
+              </tr>
+              <tr>
+                <td><b>Rogue</b></td>
+                <td>d8</td>
+                <td>DEX & INT</td>
+                <td>
+                  Light armor, simple weapons, hand crossbows, longswords,
+                  rapiers, shortswords
+                </td>
+              </tr>
+              <tr>
+                <td><b>Sorcerer</b></td>
+                <td>d6</td>
+                <td>CON & CHA</td>
+                <td>Daggers, darts, sligngs, quarterstaffs, light crossbows</td>
+              </tr>
+              <tr>
+                <td><b>Warlock</b></td>
+                <td>d8</td>
+                <td>WIS & CHA</td>
+                <td>Light armor, simple weapons</td>
+              </tr>
+              <tr>
+                <td><b>Wizard</b></td>
+                <td>d6</td>
+                <td>INT & WIS</td>
+                <td>Daggers, darts, slings, quarterstaffs, light crossbows</td>
+              </tr>
+            </table>
+          </fieldset>
         </page>
         <page title="Choose a Background" selection="background">
           Read the UA Origins (page 11-15) Ignore Ability Scores for now
@@ -73,28 +178,70 @@ const app: TramOneComponent = () => {
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
         </page>
-        <page title="Additional Language" selection="language">
-          Add an additional starting language (UA Origins, pg 16)
+        <page title="Choose Three Languages" selection="language">
+          Your character should start with Common, a language provided by the
+          character background, and an additional starting language listed below
+          (UA Origins, pg 16)
+          <fieldset>
+            <legend>Standard Languages</legend>
+            <li>Common</li>
+            <li>Common Sign Language</li>
+            <li>Dwarvish</li>
+            <li>Giant</li>
+            <li>Gnomish</li>
+            <li>Goblin</li>
+            <li>Halfling</li>
+            <li>Orc</li>
+          </fieldset>
+
+          <fieldset>
+            <legend>Rare Languages</legend>
+            <li>Abyssal</li>
+            <li>Celestial</li>
+            <li>Deep Speech</li>
+            <li>Draconic</li>
+            <li>Druidic</li>
+            <li>Infernal</li>
+            <li>
+              Primordial (includes the Aquan, Auran, Ignan, and Terran dialects)
+            </li>
+            <li>Sylvan</li>
+            <li>Thieves' Cant</li>
+            <li>Undercommon</li>
+          </fieldset>
         </page>
         <page title="Add Unarmed Strike" selection="unarmed-strike">
           (UA Origins, pg 20) to the "ATTACKS & SPELLCASTING" section
         </page>
         <page title="Set Stat Blocks" selection="stat-block">
           Set your stats using the standard array - 15, 14, 13, 12, 10, 8
-
+          <p style="font-size: small">
+            <i>
+              Look at the Class Priorities section below for recommendation as
+              far as distrubuting stats in the standard array
+            </i>
+          </p>
           <ol>
             <li>
               Add an additional +2 and +1 to any two stats based on your
               background
               <ul>
-                <li>You may choose any stats, as long as they are thematic.</li>
+                <li>You may choose any stats, as long as they are thematic</li>
                 <li>
-                  Note: you benefit from even number values, so use these to get
-                  to 16, 14, etc
+                  <i>
+                    Note: you benefit from even number values, so use these to
+                    get to 16, 14, etc
+                  </i>
                 </li>
               </ul>
             </li>
-            <li>Set Proficiency Modifier (+2)</li>
+            <li>
+              Set Proficiency Modifier
+              <i>
+                (All level 1 characters, regardless of class or race, get a +2
+                proficiency bonus)
+              </i>
+            </li>
             <li>
               Based on your class, set your "HIT POINTS" based on a starting
               value + CON modifier
@@ -154,15 +301,17 @@ const app: TramOneComponent = () => {
               <li>Warlock: CHA</li>
               <li>Wizard: INT</li>
               <br />
-              <li>
-                If you got spellcasting from "MAGIC INITIATE" feat, choose one
-                from INT, WIS, CHA
-              </li>
+              <p style="font-size:small">
+                <i>
+                  If you got spellcasting from "MAGIC INITIATE" feat, choose one
+                  from either INT, WIS, or CHA
+                </i>
+              </p>
             </ul>
           </fieldset>
         </page>
         <page title="Fill in Attack Bonus" selection="atk-bonus">
-          Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section.
+          Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section
           <ul>
             <ol>
               For melee weapon attacks, add your STR modifier + Proficiency
