@@ -1,11 +1,11 @@
 .app {
 }
 
-.page {
+/* .page {
   display: none !important;
 }
 
 .page[page-selection="character-guide"],
 .page[page-selection="race"] {
   display: inherit !important;
-}
+} */

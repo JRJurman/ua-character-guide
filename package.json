@@ -1,5 +1,5 @@
 {
-  "name": "one-dnd-origin-ua",
+  "name": "ua-character-guide",
   "version": "1.0.0",
   "private": true,
   "source": "src/index.html",
@@ -7,7 +7,7 @@
     "start": "parcel",
     "build": "parcel build",
     "test": "jest --watch",
-    "predeploy": "npm run build -- --public-url /one-dnd-origin-ua",
+    "predeploy": "npm run build -- --public-url /ua-character-guide",
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
