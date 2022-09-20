@@ -81,7 +81,12 @@ const app: TramOneComponent = () => {
         </page>
         <page title="Set Stat Blocks" selection="stat-block">
           Set your stats using the standard array - 15, 14, 13, 12, 10, 8
-
+          <p style="font-size: small">
+            <i>
+              Look at the Class Priorities section below for recommendation as
+              far as distrubuting stats in the standard array
+            </i>
+          </p>
           <ol>
             <li>
               Add an additional +2 and +1 to any two stats based on your
@@ -89,12 +94,20 @@ const app: TramOneComponent = () => {
               <ul>
                 <li>You may choose any stats, as long as they are thematic.</li>
                 <li>
-                  Note: you benefit from even number values, so use these to get
-                  to 16, 14, etc
+                  <i>
+                    Note: you benefit from even number values, so use these to
+                    get to 16, 14, etc
+                  </i>
                 </li>
               </ul>
             </li>
-            <li>Set Proficiency Modifier (+2)</li>
+            <li>
+              Set Proficiency Modifier
+              <i>
+                (All level 1 characters, regardless of class or race, get a +2
+                proficiency bonus)
+              </i>
+            </li>
             <li>
               Based on your class, set your "HIT POINTS" based on a starting
               value + CON modifier
@@ -156,7 +169,7 @@ const app: TramOneComponent = () => {
               <br />
               <li>
                 If you got spellcasting from "MAGIC INITIATE" feat, choose one
-                from INT, WIS, CHA
+                from either INT, WIS, or CHA
               </li>
             </ul>
           </fieldset>

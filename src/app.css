@@ -2,7 +2,7 @@
 }
 
 .page {
-  display: none !important;
+  /* display: none !important; */
 }
 
 .page[page-selection="character-guide"],
