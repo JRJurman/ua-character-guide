@@ -76,7 +76,7 @@ const app: TramOneComponent = () => {
                 <th>Armor & Weapon Proficiences</th>
               </tr>
               <tr>
-                <td>Barbarian</td>
+                <td><b>Barbarian</b></td>
                 <td>d12</td>
                 <td>STR & CON</td>
                 <td>
@@ -85,7 +85,7 @@ const app: TramOneComponent = () => {
               </tr>
 
               <tr>
-                <td>Bard</td>
+                <td><b>Bard</b></td>
                 <td>d8</td>
                 <td>DEX & CHA</td>
                 <td>
@@ -94,13 +94,13 @@ const app: TramOneComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td>Cleric</td>
+                <td><b>Cleric</b></td>
                 <td>d8</td>
                 <td>WIS & CHA</td>
                 <td>Light and medium armor, shields, simple weapons</td>
               </tr>
               <tr>
-                <td>Druid</td>
+                <td><b>Druid</b></td>
                 <td>d8</td>
                 <td>INT & WIS</td>
                 <td>
@@ -110,25 +110,25 @@ const app: TramOneComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td>Fighter</td>
+                <td><b>Fighter</b></td>
                 <td>d10</td>
                 <td>STR & CON</td>
                 <td>All armor, shields, simple and martial weapons</td>
               </tr>
               <tr>
-                <td>Monk</td>
+                <td><b>Monk</b></td>
                 <td>d8</td>
                 <td>STR & DEX</td>
                 <td>Simple weapons, shortswords</td>
               </tr>
               <tr>
-                <td>Palidin</td>
+                <td><b>Palidin</b></td>
                 <td>d10</td>
                 <td>WIS & CHA</td>
                 <td>All armor, shields, simmple and martial weapons</td>
               </tr>
               <tr>
-                <td>Ranger</td>
+                <td><b>Ranger</b></td>
                 <td>d10</td>
                 <td>STR & DEX</td>
                 <td>
@@ -136,7 +136,7 @@ const app: TramOneComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td>Rogue</td>
+                <td><b>Rogue</b></td>
                 <td>d8</td>
                 <td>DEX & INT</td>
                 <td>
@@ -145,19 +145,19 @@ const app: TramOneComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td>Sorcerer</td>
+                <td><b>Sorcerer</b></td>
                 <td>d6</td>
                 <td>CON & CHA</td>
                 <td>Daggers, darts, sligngs, quarterstaffs, light crossbows</td>
               </tr>
               <tr>
-                <td>Warlock</td>
+                <td><b>Warlock</b></td>
                 <td>d8</td>
                 <td>WIS & CHA</td>
                 <td>Light armor, simple weapons</td>
               </tr>
               <tr>
-                <td>Wizard</td>
+                <td><b>Wizard</b></td>
                 <td>d6</td>
                 <td>INT & WIS</td>
                 <td>Daggers, darts, slings, quarterstaffs, light crossbows</td>
