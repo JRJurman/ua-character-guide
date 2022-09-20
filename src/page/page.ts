@@ -4,9 +4,12 @@ import "./page-colors.css";
 
 const html = registerHtml();
 
-const page: TramOneComponent<{ title: string }> = ({ title }, children) => {
+const page: TramOneComponent<{ title: string; selection: string }> = (
+  { title, selection },
+  children
+) => {
   return html`
-    <section class="page expanded" page-color="grey">
+    <section class="page" page-color="grey" page-selection=${selection}>
       <h2>${title}</h2>
       ${children}
     </section>

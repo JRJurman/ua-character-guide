@@ -14,7 +14,7 @@ const app: TramOneComponent = () => {
   return html`
     <main class="app">
       <page-scroller>
-        <page title="Character Guide">
+        <page title="Character Guide" selection="character-guide">
           <selection-card id="race" title="Choose a Race" />
           <selection-card id="class" title="Choose a Class" />
           <selection-card id="background" title="Choose a Background" />

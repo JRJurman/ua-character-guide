@@ -1,4 +1,4 @@
-.page.expanded {
+.page {
   width: 535px;
   height: 100vh;
   padding: 1em;
@@ -11,28 +11,7 @@
 
 /* if we are in light mode, made the shadow more pronounced */
 @media (prefers-color-scheme: light) {
-  .page.expanded {
+  .page {
     box-shadow: var(--shadow-6);
   }
-}
-
-.page.expanded h1 {
-  max-inline-size: none; /* unset open-props limit on h1 size */
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.page.expanded ul {
-  flex: 1;
-  overflow: overlay;
-  padding: 0;
-}
-
-.page.expanded textarea {
-  font-size: 1.4em;
-}
-
-.page.expanded button {
-  background: inherit;
 }
