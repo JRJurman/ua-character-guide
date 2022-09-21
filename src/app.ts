@@ -16,26 +16,13 @@ const app: TramOneComponent = () => {
     <main class="app">
       <page-scroller>
         <page title="Character Guide" selection="character-guide">
-          <selection-card id="race" title="Choose a Race" />
-          <selection-card id="class" title="Choose a Class" />
-          <selection-card id="background" title="Choose a Background" />
-          <selection-card id="language" title="Additional Language" />
-          <selection-card id="unarmed-strike" title="Add Unarmed Strike" />
-          <selection-card id="stat-block" title="Set Stat Blocks" />
-          <selection-card id="spellcasting" title="Set Spellcasting Details" />
-          <selection-card id="atk-bonus" title="Fill in Attack Bonus" />
+          Use this web-app to guide you through creating a D&D Character. This
+          includes the latest playtest rules for One D&D.
         </page>
         <page title="Choose a Race" selection="race">
           Details can be found in the Unearthed Arcana - Origins (page 3-10)
           <ol>
-            <li>
-              Write your race
-              <i>
-                (or sub-race, if picking from the "... of Many Worlds" section
-                of a race)
-              </i>
-              in the "RACE" field in the header
-            </li>
+            <li>Write your race in the "RACE" field in the header</li>
             <li>
               Write your movement speed in the "SPEED" box
               <i>(this should be 30ft, unless otherwise stated)</i>
@@ -96,7 +83,7 @@ const app: TramOneComponent = () => {
               <tr>
                 <td><b>Orc</b></td>
                 <td>
-                  Adrenaline Rush, Darkvision, Powerful BUild, Relentless
+                  Adrenaline Rush, Darkvision, Powerful Build, Relentless
                   Endurance
                 </td>
               </tr>
@@ -112,12 +99,12 @@ const app: TramOneComponent = () => {
           <ol>
             <li>
               Set your "HIT DICE" to whatever value dice roll for your class
-              (e.g. 1d8) and write "1 of 1" for your "Total"
+              write "1 of 1" for your "Total"
               <i>(Table Below)</i>
             </li>
             <li>
               Write your armor, weapon, and tool proficiencies in the bottom
-              right box under "OTHER PROFICIENCIES & LANGUAGES"
+              left box under "OTHER PROFICIENCIES & LANGUAGES"
               <i>(Table Below)</i>
             </li>
             <li>
@@ -129,8 +116,8 @@ const app: TramOneComponent = () => {
               in the "SAVING THROWS" box <i>(Table Below)</i>
             </li>
             <li>
-              Select your starting equipment and add any damage options in
-              "ATTACKS & SPELLCASTING" (Ignore ATK BONUS for now)
+              Select your starting equipment and add any weapons in "ATTACKS &
+              SPELLCASTING" (Ignore ATK BONUS for now)
             </li>
             <li>Add any 1st level features to the "FEATURES & TRAITS" box</li>
             <li>
@@ -146,13 +133,13 @@ const app: TramOneComponent = () => {
             <table>
               <tr>
                 <th>Class</th>
-                <th>Hit Die</th>
+                <th>Hit Dice</th>
                 <th>Saving Throw Proficiencies</th>
                 <th>Armor & Weapon Proficiences</th>
               </tr>
               <tr>
                 <td><b>Barbarian</b></td>
-                <td>d12</td>
+                <td>1d12</td>
                 <td>STR & CON</td>
                 <td>
                   Light and medium armor, shields, simple and martial weapons
@@ -161,7 +148,7 @@ const app: TramOneComponent = () => {
 
               <tr>
                 <td><b>Bard</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>DEX & CHA</td>
                 <td>
                   Light armor, simple weapons, hand crossbows, longswords,
@@ -170,13 +157,13 @@ const app: TramOneComponent = () => {
               </tr>
               <tr>
                 <td><b>Cleric</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>WIS & CHA</td>
                 <td>Light and medium armor, shields, simple weapons</td>
               </tr>
               <tr>
                 <td><b>Druid</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>INT & WIS</td>
                 <td>
                   Light and medium armor (nonmetal), shields (nonmetal), clubs,
@@ -186,25 +173,25 @@ const app: TramOneComponent = () => {
               </tr>
               <tr>
                 <td><b>Fighter</b></td>
-                <td>d10</td>
+                <td>1d10</td>
                 <td>STR & CON</td>
                 <td>All armor, shields, simple and martial weapons</td>
               </tr>
               <tr>
                 <td><b>Monk</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>STR & DEX</td>
                 <td>Simple weapons, shortswords</td>
               </tr>
               <tr>
                 <td><b>Palidin</b></td>
-                <td>d10</td>
+                <td>1d10</td>
                 <td>WIS & CHA</td>
                 <td>All armor, shields, simmple and martial weapons</td>
               </tr>
               <tr>
                 <td><b>Ranger</b></td>
-                <td>d10</td>
+                <td>1d10</td>
                 <td>STR & DEX</td>
                 <td>
                   Light and medium armor, shields, simple and martial weapons
@@ -212,7 +199,7 @@ const app: TramOneComponent = () => {
               </tr>
               <tr>
                 <td><b>Rogue</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>DEX & INT</td>
                 <td>
                   Light armor, simple weapons, hand crossbows, longswords,
@@ -221,19 +208,19 @@ const app: TramOneComponent = () => {
               </tr>
               <tr>
                 <td><b>Sorcerer</b></td>
-                <td>d6</td>
+                <td>1d6</td>
                 <td>CON & CHA</td>
                 <td>Daggers, darts, sligngs, quarterstaffs, light crossbows</td>
               </tr>
               <tr>
                 <td><b>Warlock</b></td>
-                <td>d8</td>
+                <td>1d8</td>
                 <td>WIS & CHA</td>
                 <td>Light armor, simple weapons</td>
               </tr>
               <tr>
                 <td><b>Wizard</b></td>
-                <td>d6</td>
+                <td>1d6</td>
                 <td>INT & WIS</td>
                 <td>Daggers, darts, slings, quarterstaffs, light crossbows</td>
               </tr>
@@ -253,7 +240,7 @@ const app: TramOneComponent = () => {
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
         </page>
-        <page title="Choose Three Languages" selection="language">
+        <page title="Add a Language" selection="language">
           Your character should start with Common, a language provided by the
           character background, and an additional starting language listed below
           (UA Origins, pg 16)
@@ -284,9 +271,6 @@ const app: TramOneComponent = () => {
             <li>Thieves' Cant</li>
             <li>Undercommon</li>
           </fieldset>
-        </page>
-        <page title="Add Unarmed Strike" selection="unarmed-strike">
-          (UA Origins, pg 20) to the "ATTACKS & SPELLCASTING" section
         </page>
         <page title="Set Stat Blocks" selection="stat-block">
           Set your stats using the standard array - 15, 14, 13, 12, 10, 8
@@ -354,6 +338,7 @@ const app: TramOneComponent = () => {
           <ol>
             <li>
               Set your "SPELLCASTING ABILITY" based on your class or background
+              <i>(table below)</i>
             </li>
 
             <li>
@@ -375,39 +360,46 @@ const app: TramOneComponent = () => {
               <li>Sorcerer: CHA</li>
               <li>Warlock: CHA</li>
               <li>Wizard: INT</li>
-              <br />
-              <p style="font-size:small">
-                <i>
-                  If you got spellcasting from "MAGIC INITIATE" feat, choose one
-                  from either INT, WIS, or CHA
-                </i>
-              </p>
             </ul>
+            <p style="font-size:small">
+              <i>
+                If you got spellcasting from "MAGIC INITIATE" feat, choose
+                either INT, WIS, or CHA
+              </i>
+            </p>
           </fieldset>
+        </page>
+        <page title="Add Unarmed Strike" selection="unarmed-strike">
+          Add Unarmed Strike as an option in the "ATTACKS & SPELLCASTING"
+          section. For the damage, write 1 + your STR Mod "Bludgeoning".
+
+          <i>
+            Note: On a successful stike, you may alternatively grapple or shove
+            instead of damaging with Unarmed Strike, see UA Origins - page 20.
+          </i>
         </page>
         <page title="Fill in Attack Bonus" selection="atk-bonus">
           Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section
           <ul>
-            <ol>
-              For melee weapon attacks, add your STR modifier + Proficiency
-              bonus
-            </ol>
-            <ol>
+            <li>
               For finess weapons, add either your STR or DEX modifier +
               Proficiency bonus
-            </ol>
-            <ol>
-              For ranged weapons, add either your DEX modifier + Proficiency
-              bonus
-            </ol>
-            <ol>
+            </li>
+            <li>
+              For melee weapon attacks and unarmed strike, add your STR modifier
+              + Proficiency bonus
+            </li>
+            <li>
+              For ranged weapons, add your DEX modifier + Proficiency bonus
+            </li>
+            <li>
               For spells (that ask for an attack roll, not a DC check) use your
               "SPELL ATTACK BONUS"
-            </ol>
-            <ol>
+            </li>
+            <li>
               For spells that have a Spell Save DC check use your "SPELL SAVE
               DC"
-            </ol>
+            </li>
           </ul>
         </page>
       </page-scroller>

@@ -17,3 +17,7 @@ body,
 fieldset {
   border-color: inherit;
 }
+
+li {
+  padding-bottom: 0.2em;
+}

@@ -1,11 +1,6 @@
 .app {
 }
 
-/* .page {
-  display: none !important;
+.page[page-selection="character-guide"] {
+  max-width: 90%;
 }
-
-.page[page-selection="character-guide"],
-.page[page-selection="race"] {
-  display: inherit !important;
-} */
