@@ -18,6 +18,32 @@ const app: TramOneComponent = () => {
         <page title="Character Guide" selection="character-guide">
           Use this web-app to guide you through creating a D&D Character. This
           includes the latest playtest rules for One D&D.
+          <fieldset>
+            <legend>Useful links</legend>
+            <ul>
+              <li>
+                D&D Beyond
+              <li>
+                <a target="_blank" href="https://www.dndbeyond.com/spells"
+                  >D&D Beyond Spells</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://www.dndbeyond.com/classes"
+                  >D&D Beyond Classes</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="https://www.dndbeyond.com/sources/basic-rules/equipment"
+                  >D&D Beyond Equipment</a
+                >
+              </li>
+              </li>
+              <li> 5e Tools
+                <li><a target="_blank" href="https://5e.tools/spells.html">5e Tools Spells</a></li>
+              </li>
+            </ul>
+          </fieldset>
         </page>
         <page title="Choose a Race" selection="race">
           Details can be found in the Unearthed Arcana - Origins (page 3-10)
@@ -95,17 +121,15 @@ const app: TramOneComponent = () => {
           </fieldset>
         </page>
         <page title="Choose a Class" selection="class">
-          Read the Classes in the PHB (page XXX)
+          Read the Classes or in the links below
           <ol>
             <li>
               Set your "HIT DICE" to whatever value dice roll for your class
-              write "1 of 1" for your "Total"
-              <i>(Table Below)</i>
+              (e.g. 1d8), write "1 of 1" for your "Total"
             </li>
             <li>
               Write your armor, weapon, and tool proficiencies in the bottom
               left box under "OTHER PROFICIENCIES & LANGUAGES"
-              <i>(Table Below)</i>
             </li>
             <li>
               Mark your 2 chosen skill proficiencies by filling in the circle in
@@ -113,7 +137,7 @@ const app: TramOneComponent = () => {
             </li>
             <li>
               Mark your 2 Saving Throw Proficiencies by filling in the circles
-              in the "SAVING THROWS" box <i>(Table Below)</i>
+              in the "SAVING THROWS" box
             </li>
             <li>
               Select your starting equipment and add any weapons in "ATTACKS &
@@ -130,101 +154,104 @@ const app: TramOneComponent = () => {
 
           <fieldset>
             <legend>Classes</legend>
-            <table>
-              <tr>
-                <th>Class</th>
-                <th>Hit Dice</th>
-                <th>Saving Throw Proficiencies</th>
-                <th>Armor & Weapon Proficiences</th>
-              </tr>
-              <tr>
-                <td><b>Barbarian</b></td>
-                <td>1d12</td>
-                <td>STR & CON</td>
-                <td>
-                  Light and medium armor, shields, simple and martial weapons
-                </td>
-              </tr>
-
-              <tr>
-                <td><b>Bard</b></td>
-                <td>1d8</td>
-                <td>DEX & CHA</td>
-                <td>
-                  Light armor, simple weapons, hand crossbows, longswords,
-                  rapiers, shortswords
-                </td>
-              </tr>
-              <tr>
-                <td><b>Cleric</b></td>
-                <td>1d8</td>
-                <td>WIS & CHA</td>
-                <td>Light and medium armor, shields, simple weapons</td>
-              </tr>
-              <tr>
-                <td><b>Druid</b></td>
-                <td>1d8</td>
-                <td>INT & WIS</td>
-                <td>
-                  Light and medium armor (nonmetal), shields (nonmetal), clubs,
-                  daggers, darts, javelins, maces, quarterstaffs, scimitars,
-                  sickles, slings, spears
-                </td>
-              </tr>
-              <tr>
-                <td><b>Fighter</b></td>
-                <td>1d10</td>
-                <td>STR & CON</td>
-                <td>All armor, shields, simple and martial weapons</td>
-              </tr>
-              <tr>
-                <td><b>Monk</b></td>
-                <td>1d8</td>
-                <td>STR & DEX</td>
-                <td>Simple weapons, shortswords</td>
-              </tr>
-              <tr>
-                <td><b>Palidin</b></td>
-                <td>1d10</td>
-                <td>WIS & CHA</td>
-                <td>All armor, shields, simmple and martial weapons</td>
-              </tr>
-              <tr>
-                <td><b>Ranger</b></td>
-                <td>1d10</td>
-                <td>STR & DEX</td>
-                <td>
-                  Light and medium armor, shields, simple and martial weapons
-                </td>
-              </tr>
-              <tr>
-                <td><b>Rogue</b></td>
-                <td>1d8</td>
-                <td>DEX & INT</td>
-                <td>
-                  Light armor, simple weapons, hand crossbows, longswords,
-                  rapiers, shortswords
-                </td>
-              </tr>
-              <tr>
-                <td><b>Sorcerer</b></td>
-                <td>1d6</td>
-                <td>CON & CHA</td>
-                <td>Daggers, darts, sligngs, quarterstaffs, light crossbows</td>
-              </tr>
-              <tr>
-                <td><b>Warlock</b></td>
-                <td>1d8</td>
-                <td>WIS & CHA</td>
-                <td>Light armor, simple weapons</td>
-              </tr>
-              <tr>
-                <td><b>Wizard</b></td>
-                <td>1d6</td>
-                <td>INT & WIS</td>
-                <td>Daggers, darts, slings, quarterstaffs, light crossbows</td>
-              </tr>
-            </table>
+            <ul>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Barbarian"
+                >
+                  Barbarian</a
+                >, (PHB 46)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Bard"
+                >
+                  Bard</a
+                >, (PHB 51)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Cleric"
+                >
+                  Cleric</a
+                >, (PHB 56)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Druid"
+                >
+                  Druid</a
+                >, (PHB 64)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Fighter"
+                >
+                  Fighter</a
+                >, (PHB 70)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Monk"
+                >
+                  Monk</a
+                >, (PHB 76)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Palidin"
+                >
+                  Palidin</a
+                >, (PHB 82)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Ranger"
+                >
+                  Ranger</a
+                >, (PHB 89)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Rogue"
+                >
+                  Rogue</a
+                >, (PHB 94)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Sorcerer"
+                >
+                  Sorcerer</a
+                >, (PHB 99)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Warlock"
+                >
+                  Warlock</a
+                >, (PHB 105)
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/classes/Wizard"
+                >
+                  Wizard</a
+                >, (PHB 112)
+              </li>
+            </ul>
           </fieldset>
         </page>
         <page title="Choose a Background" selection="background">
@@ -399,6 +426,15 @@ const app: TramOneComponent = () => {
             <li>
               For spells that have a Spell Save DC check use your "SPELL SAVE
               DC"
+            </li>
+          </ul>
+        </page>
+        <page title="Finishing Touches" selection="finishing-touches">
+          <ul>
+            <li>Write your name in header under "PLAYER NAME"</li>
+            <li>
+              Write your character's name in the top left header under
+              "CHARACTER NAME"
             </li>
           </ul>
         </page>
