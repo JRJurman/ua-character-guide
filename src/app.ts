@@ -4,10 +4,12 @@ import "./app.css";
 import "./table.css";
 import pageScroller from "./page-scroller";
 import page from "./page";
+import annotation from "./annotation";
 
 const html = registerHtml({
   "selection-card": selectionCard,
   "page-scroller": pageScroller,
+  annotation: annotation,
   page: page,
 });
 
@@ -23,24 +25,35 @@ const app: TramOneComponent = () => {
             <ul>
               <li>
                 D&D Beyond
-              <li>
-                <a target="_blank" href="https://www.dndbeyond.com/spells"
-                  >D&D Beyond Spells</a
-                >
+                <ul>
+                  <li>
+                    <a target="_blank" href="https://www.dndbeyond.com/spells"
+                      >D&D Beyond Spells</a
+                    >
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://www.dndbeyond.com/classes"
+                      >D&D Beyond Classes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment"
+                      >D&D Beyond Equipment</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li>
-                <a target="_blank" href="https://www.dndbeyond.com/classes"
-                  >D&D Beyond Classes</a
-                >
-              </li>
-              <li>
-                <a target="_blank" href="https://www.dndbeyond.com/sources/basic-rules/equipment"
-                  >D&D Beyond Equipment</a
-                >
-              </li>
-              </li>
-              <li> 5e Tools
-                <li><a target="_blank" href="https://5e.tools/spells.html">5e Tools Spells</a></li>
+                5e Tools
+                <ul>
+                  <li>
+                    <a target="_blank" href="https://5e.tools/spells.html"
+                      >5e Tools Spells</a
+                    >
+                  </li>
+                </ul>
               </li>
             </ul>
           </fieldset>
@@ -121,8 +134,13 @@ const app: TramOneComponent = () => {
           </fieldset>
         </page>
         <page title="Choose a Class" selection="class">
-          Read the Classes or in the links below
+          Read the Classes in the PHB or go to the D&D Beyond links (listed
+          below)
           <ol>
+            <li>
+              Choose a class and write the class name and "1" under "CLASS &
+              LEVEL" in the top header (e.g. "Fighter 1")
+            </li>
             <li>
               Set your "HIT DICE" to whatever value dice roll for your class
               (e.g. 1d8), write "1 of 1" for your "Total"
@@ -132,12 +150,12 @@ const app: TramOneComponent = () => {
               left box under "OTHER PROFICIENCIES & LANGUAGES"
             </li>
             <li>
-              Mark your 2 chosen skill proficiencies by filling in the circle in
-              the "SKILLS" box
-            </li>
-            <li>
               Mark your 2 Saving Throw Proficiencies by filling in the circles
               in the "SAVING THROWS" box
+            </li>
+            <li>
+              Mark your 2 chosen skill proficiencies by filling in the circle in
+              the "SKILLS" box
             </li>
             <li>
               Select your starting equipment and add any weapons in "ATTACKS &
@@ -257,12 +275,26 @@ const app: TramOneComponent = () => {
         <page title="Choose a Background" selection="background">
           Read the UA Origins (page 11-15) Ignore Ability Scores for now
           <ol>
-            <li>Mark the 2 skill proficiencies in the "SKILLS" section</li>
+            <li>
+              Choose a background and write the name under "BACKGROUND" in the
+              top header
+            </li>
+            <li>
+              Mark any 2 skill proficiencies in the "SKILLS" section
+              <annotation>
+                You may treat the 2 skills listed in your selected background as
+                recommendations, but you can choose any 2, as long as they are
+                thematic
+              </annotation>
+            </li>
             <li>
               Add the tool and language proficiencies in the "OTHER
               PROFICIENCIES & LANGUAGES" section
             </li>
-            <li>Add the Feat in the "FEATURES & TRAITS" box</li>
+            <li>
+              Add the Feat in the "FEATURES & TRAITS" box
+              <i>(Feats are detailed starting on page 16 of UA Origins)</i>
+            </li>
             <li>Write the equipment in the "EQUIPMENT" section</li>
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
@@ -299,47 +331,77 @@ const app: TramOneComponent = () => {
             <li>Undercommon</li>
           </fieldset>
         </page>
-        <page title="Set Stat Blocks" selection="stat-block">
-          Set your stats using the standard array - 15, 14, 13, 12, 10, 8
-          <p style="font-size: small">
-            <i>
-              Look at the Class Priorities section below for recommendation as
-              far as distrubuting stats in the standard array
-            </i>
-          </p>
+        <page title="Set Ability Scores" selection="stat-block">
           <ol>
             <li>
-              Add an additional +2 and +1 to any two stats based on your
-              background
-              <ul>
-                <li>You may choose any stats, as long as they are thematic</li>
-                <li>
-                  <i>
-                    Note: you benefit from even number values, so use these to
-                    get to 16, 14, etc
-                  </i>
-                </li>
-              </ul>
+              Using the standard array (15, 14, 13, 12, 10, 8), assign each
+              value into the Ability Scores listed on the left of your character
+              sheet, writing them in the tiny area under each option
+              <annotation>
+                Look at the Class Priorities section below for recommendation as
+                far as distrubuting ability scores in the standard array
+              </annotation>
             </li>
             <li>
-              Set Proficiency Modifier
-              <i>
-                (All level 1 characters, regardless of class or race, get a +2
-                proficiency bonus)
-              </i>
+              Add an additional +2 and +1 to any two ability scores based on
+              your background
+              <annotation>
+                You may treat the 2 ability scores listed in your selected
+                background as recommendations, but you can choose any 2 in any
+                order, as long as they are thematic
+              </annotation>
             </li>
             <li>
-              Based on your class, set your "HIT POINTS" based on a starting
-              value + CON modifier
+              Fill in the large box above each score the modifier for that value
+              <annotation>
+                <table>
+                  <tr>
+                    <th>Score</th>
+                    <th>Modifier</th>
+                  </tr>
+                  <tr>
+                    <td>8, 9</td>
+                    <td>-1</td>
+                  </tr>
+                  <tr>
+                    <td>10, 11</td>
+                    <td>+0</td>
+                  </tr>
+                  <tr>
+                    <td>12, 13</td>
+                    <td>+1</td>
+                  </tr>
+                  <tr>
+                    <td>14, 15</td>
+                    <td>+2</td>
+                  </tr>
+                  <tr>
+                    <td>16, 17</td>
+                    <td>+3</td>
+                  </tr>
+                </table>
+              </annotation>
+            </li>
+            <li>Set your "INITIATIVE" to your DEX modifier</li>
+            <li>Set your "PROFICIENCY BONUS" to +2</li>
+            <li>
+              Set your "PASSIVE WISDOM (PERCEPTION)" to 10 + WIS Modifier (and
+              add +2 if you have proficiency in the Perception skill)
+            </li>
+            <li>
+              Set your "HIT POINT MAXIMUM" and "CURRENT HIT POINTS" to your max
+              hit dice value (e.g. 8 for 1d8) + your CON Modifier
             </li>
             <li>
               Based on the armor you recieved from your class, and relevant
-              stats from that armor, set your "ARMOR CLASS"
-            </li>
-            <li>Set your "INITIATIVE" to your DEX modifier</li>
-            <li>
-              Set your "PASSIVE WISDOM (PERCEPTION)" to 10 + Perception skill
-              modifier
+              ability score from that armor, set your "ARMOR CLASS" (
+              <a
+                href="https://www.dndbeyond.com/sources/basic-rules/equipment#ArmorandShields"
+                target="_blank"
+              >
+                D&D Beyond - Armor and Shields
+              </a>
+              )
             </li>
           </ol>
           <fieldset>
@@ -388,12 +450,10 @@ const app: TramOneComponent = () => {
               <li>Warlock: CHA</li>
               <li>Wizard: INT</li>
             </ul>
-            <p style="font-size:small">
-              <i>
-                If you got spellcasting from "MAGIC INITIATE" feat, choose
-                either INT, WIS, or CHA
-              </i>
-            </p>
+            <annotation>
+              If you got spellcasting from "MAGIC INITIATE" feat, choose either
+              INT, WIS, or CHA
+            </annotation>
           </fieldset>
         </page>
         <page title="Add Unarmed Strike" selection="unarmed-strike">

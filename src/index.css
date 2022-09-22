@@ -21,3 +21,13 @@ fieldset {
 li {
   padding-bottom: 0.2em;
 }
+
+a,
+a:visited {
+  text-decoration: underline;
+  color: inherit;
+}
+
+ul {
+  font-size: inherit;
+}
