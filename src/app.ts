@@ -59,7 +59,7 @@ const app: TramOneComponent = () => {
           </fieldset>
         </page>
         <page title="Choose a Race" selection="race">
-          Details can be found in the Unearthed Arcana - Origins (page 3-10)
+          Details can be found in the Unearthed Arcana - Origins (page 2-10)
           <ol>
             <li>Write your race in the "RACE" field in the header</li>
             <li>
@@ -84,51 +84,58 @@ const app: TramOneComponent = () => {
               </tr>
               <tr>
                 <td><b>Human</b></td>
-                <td>Resourceful, Skillful, Versatile</td>
+                <td>Resourceful, Skillful, Versatile - page 2</td>
               </tr>
               <tr>
                 <td><b>Ardling</b></td>
                 <td>
                   Angelic Flight, Celestial Legacy, Damage Resistance (Radiant)
+                  - page 3
                 </td>
               </tr>
               <tr>
                 <td><b>Dragonborn</b></td>
                 <td>
                   Draconic Ancestry, Breath Weapon, Damage Resistance,
-                  Darkvision, Draconic Language
+                  Darkvision, Draconic Language - page 4
                 </td>
               </tr>
               <tr>
                 <td><b>Dwarf</b></td>
                 <td>
-                  Darkvision, Dwarven Resilience, Forge Wise, Stonecunning
+                  Darkvision, Dwarven Resilience, Forge Wise, Stonecunning -
+                  page 5
                 </td>
               </tr>
               <tr>
                 <td><b>Elf</b></td>
                 <td>
-                  Darkvision, Elven Lineage, Fey Ancestry, Keen Senses, Trance
+                  Darkvision, Elven Lineage, Fey Ancestry, Keen Senses, Trance -
+                  page 6
                 </td>
               </tr>
               <tr>
                 <td><b>Gnome</b></td>
-                <td>Darkvision, Gnomish Cunning, Gnomish Lineage</td>
+                <td>Darkvision, Gnomish Cunning, Gnomish Lineage - page 7</td>
               </tr>
               <tr>
                 <td><b>Halfling</b></td>
-                <td>Brave, Halfling Nimbleness, Luck, Naturally Stealthy</td>
+                <td>
+                  Brave, Halfling Nimbleness, Luck, Naturally Stealthy - page 8
+                </td>
               </tr>
               <tr>
                 <td><b>Orc</b></td>
                 <td>
                   Adrenaline Rush, Darkvision, Powerful Build, Relentless
-                  Endurance
+                  Endurance - page 9
                 </td>
               </tr>
               <tr>
                 <td><b>Tiefling</b></td>
-                <td>Darkvision, Fiendish Legacy, Otherwordly Presence</td>
+                <td>
+                  Darkvision, Fiendish Legacy, Otherwordly Presence - page 9
+                </td>
               </tr>
             </table>
           </fieldset>
@@ -224,9 +231,9 @@ const app: TramOneComponent = () => {
               <li>
                 <a
                   target="_blank"
-                  href="https://www.dndbeyond.com/classes/Palidin"
+                  href="https://www.dndbeyond.com/classes/Paladin"
                 >
-                  Palidin</a
+                  Paladin</a
                 >, (PHB 82)
               </li>
               <li>
@@ -337,10 +344,23 @@ const app: TramOneComponent = () => {
               Using the standard array (15, 14, 13, 12, 10, 8), assign each
               value into the Ability Scores listed on the left of your character
               sheet, writing them in the tiny area under each option
-              <annotation>
-                Look at the Class Priorities section below for recommendation as
-                far as distrubuting ability scores in the standard array
-              </annotation>
+              <fieldset>
+                <legend>Class Priorities</legend>
+                <ul>
+                  <li>Barbarian: STR, CON, DEX</li>
+                  <li>Bard: CHA, DEX</li>
+                  <li>Cleric: WIS, STR or CON</li>
+                  <li>Druid: WIS, CON</li>
+                  <li>Fighter: STR (or DEX for ranged weapons), CON</li>
+                  <li>Monk: DEX, WIS</li>
+                  <li>Paladin: STR, CHA</li>
+                  <li>Ranger: DEX, WIS</li>
+                  <li>Rogue: DEX, INT or CHA</li>
+                  <li>Sorcerer: CHA, CON</li>
+                  <li>Warlock: CHA, CON</li>
+                  <li>Wizard: INT, CON or DEX</li>
+                </ul>
+              </fieldset>
             </li>
             <li>
               Add an additional +2 and +1 to any two ability scores based on
@@ -404,21 +424,6 @@ const app: TramOneComponent = () => {
               )
             </li>
           </ol>
-          <fieldset>
-            <legend>Class Priorities</legend>
-            <li>Barbarian: STR, CON, DEX</li>
-            <li>Bard: CHA, DEX</li>
-            <li>Cleric: WIS, STR or CON</li>
-            <li>Druid: WIS, CON</li>
-            <li>Fighter: STR (or DEX for ranged weapons), CON</li>
-            <li>Monk: DEX, WIS</li>
-            <li>Paladin: STR, CHA</li>
-            <li>Ranger: DEX, WIS</li>
-            <li>Rogue: DEX, INT or CHA</li>
-            <li>Sorcerer: CHA, CON</li>
-            <li>Warlock: CHA, CON</li>
-            <li>Wizard: INT, CON or DEX</li>
-          </fieldset>
         </page>
         <page title="Set Spellcasting Details" selection="spellcasting">
           If you have spells as part of your class or background, do the
@@ -455,15 +460,6 @@ const app: TramOneComponent = () => {
               INT, WIS, or CHA
             </annotation>
           </fieldset>
-        </page>
-        <page title="Add Unarmed Strike" selection="unarmed-strike">
-          Add Unarmed Strike as an option in the "ATTACKS & SPELLCASTING"
-          section. For the damage, write 1 + your STR Mod "Bludgeoning".
-
-          <i>
-            Note: On a successful stike, you may alternatively grapple or shove
-            instead of damaging with Unarmed Strike, see UA Origins - page 20.
-          </i>
         </page>
         <page title="Fill in Attack Bonus" selection="atk-bonus">
           Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section
