@@ -11,6 +11,7 @@ body,
 #root div {
   margin: 0px;
   height: 100vh;
+  min-width: 2000vw;
   overflow: hidden;
 }
 

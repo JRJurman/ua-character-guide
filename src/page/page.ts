@@ -7,11 +7,17 @@ const html = registerHtml();
 
 const page: TramOneComponent<{
   title: string;
+  group?: string;
   selection: string;
-  source: string;
-}> = ({ title, selection, source }, children) => {
+  source?: string;
+}> = ({ title, group, selection, source }, children) => {
   return html`
-    <section class="page" page-color="grey" page-selection=${selection}>
+    <section
+      class="page"
+      page-color="grey"
+      page-group=${group}
+      page-selection=${selection}
+    >
       <h2 class="header">
         <span class="title">${title}</span>
         <span class="source">${source}</span>
