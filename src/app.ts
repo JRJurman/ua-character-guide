@@ -36,41 +36,22 @@ const app: TramOneComponent = () => {
               >https://github.com/jrjurman/ua-character-guide/issues</a
             >
           </p>
-
+          <br />
           <fieldset>
             <legend>Useful links</legend>
             <ul>
               <li>
-                D&D Beyond
-                <ul>
-                  <li>
-                    <a target="_blank" href="https://www.dndbeyond.com/spells"
-                      >D&D Beyond Spells</a
-                    >
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://www.dndbeyond.com/classes"
-                      >D&D Beyond Classes</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      target="_blank"
-                      href="https://www.dndbeyond.com/sources/basic-rules/equipment"
-                      >D&D Beyond Equipment</a
-                    >
-                  </li>
-                </ul>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment"
+                >
+                  D&D Beyond Equipment
+                </a>
               </li>
               <li>
-                5e Tools
-                <ul>
-                  <li>
-                    <a target="_blank" href="https://5e.tools/spells.html"
-                      >5e Tools Spells</a
-                    >
-                  </li>
-                </ul>
+                <a target="_blank" href="https://5e.tools/spells.html">
+                  5e Tools Spells
+                </a>
               </li>
             </ul>
           </fieldset>
@@ -89,61 +70,30 @@ const app: TramOneComponent = () => {
         <page-filters />
         <races-content />
         <classes-content />
-        <page title="Choose a Class" selection="class">
-          Read the Classes in the PHB or go to the D&D Beyond links (listed
-          below)
+        <page
+          title="Background"
+          selection="background"
+          source="UA-Origins, Pg 11"
+        >
+          Read the UA Origins (page 11-15) to see the list of sample
+          backgrounds, ignoring Ability Scores for now
           <ol>
             <li>
-              Choose a class and write the class name and "1" under "CLASS &
-              LEVEL" in the top header (e.g. "Fighter 1")
+              Choose a background and write the name under <b>BACKGROUND</b> in
+              the top header
             </li>
             <li>
-              Set your "HIT DICE" to whatever value dice roll for your class
-              (e.g. 1d8), write "1 of 1" for your "Total"
-            </li>
-            <li>
-              Write your armor, weapon, and tool proficiencies in the bottom
-              left box under "OTHER PROFICIENCIES & LANGUAGES"
-            </li>
-            <li>
-              Mark your 2 Saving Throw Proficiencies by filling in the circles
-              in the "SAVING THROWS" box
-            </li>
-            <li>
-              Mark your 2 chosen skill proficiencies by filling in the circle in
-              the "SKILLS" box
-            </li>
-            <li>
-              Select your starting equipment and add any weapons in "ATTACKS &
-              SPELLCASTING" (Ignore ATK BONUS for now)
-            </li>
-            <li>Add any 1st level features to the "FEATURES & TRAITS" box</li>
-            <li>
-              If you get spellcasting as part of your 1st level features, add
-              damage spells to the "ATTACKS & SPELLCASTING" section (Ignore ATK
-              BONUS for now), and list spells in the dedicated Spellcasting
-              sheet
-            </li>
-          </ol>
-        </page>
-        <page title="Choose a Background" selection="background">
-          Read the UA Origins (page 11-15) Ignore Ability Scores for now
-          <ol>
-            <li>
-              Choose a background and write the name under "BACKGROUND" in the
-              top header
-            </li>
-            <li>
-              Mark any 2 skill proficiencies in the "SKILLS" section
+              Fill in the circles for any two skill proficiencies in the
+              <b>SKILLS</b> section
               <annotation>
-                You may treat the 2 skills listed in your selected background as
-                recommendations, but you can choose any 2, as long as they are
-                thematic
+                You may treat the two skills listed in your selected background
+                as recommendations, but you can choose any two, as long as they
+                are thematic
               </annotation>
             </li>
             <li>
-              Add the tool and language proficiencies in the "OTHER
-              PROFICIENCIES & LANGUAGES" section
+              Add the tool and language proficiencies in the
+              <b>PROFICIENCIES & LANGUAGES</b> section
             </li>
             <li>
               Add the Feat in the "FEATURES & TRAITS" box
@@ -153,13 +103,11 @@ const app: TramOneComponent = () => {
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
         </page>
-        <page title="Add a Language" selection="language">
+        <page title="Languages" selection="language" source="UA-Origins, Pg 16">
           Your character should start with Common, a language provided by the
           character background, and an additional starting language listed below
-          (UA Origins, pg 16)
           <fieldset>
             <legend>Standard Languages</legend>
-            <li>Common</li>
             <li>Common Sign Language</li>
             <li>Dwarvish</li>
             <li>Giant</li>
@@ -175,37 +123,24 @@ const app: TramOneComponent = () => {
             <li>Celestial</li>
             <li>Deep Speech</li>
             <li>Draconic</li>
-            <li>Druidic</li>
             <li>Infernal</li>
-            <li>
-              Primordial (includes the Aquan, Auran, Ignan, and Terran dialects)
-            </li>
+            <li>Primordial</li>
             <li>Sylvan</li>
-            <li>Thieves' Cant</li>
             <li>Undercommon</li>
           </fieldset>
         </page>
-        <page title="Set Ability Scores" selection="stat-block">
+        <page title="Ability Scores" selection="stat-block">
           <ol>
             <li>
               Using the standard array (15, 14, 13, 12, 10, 8), assign each
               value into the Ability Scores listed on the left of your character
-              sheet, writing them in the tiny area under each option
+              sheet, writing them in the tiny box adjacent to each option
               <fieldset>
-                <legend>Class Priorities</legend>
+                <legend>Primary Abilities</legend>
                 <ul>
-                  <li>Barbarian: STR, CON, DEX</li>
-                  <li>Bard: CHA, DEX</li>
-                  <li>Cleric: WIS, STR or CON</li>
-                  <li>Druid: WIS, CON</li>
-                  <li>Fighter: STR (or DEX for ranged weapons), CON</li>
-                  <li>Monk: DEX, WIS</li>
-                  <li>Paladin: STR, CHA</li>
-                  <li>Ranger: DEX, WIS</li>
-                  <li>Rogue: DEX, INT or CHA</li>
-                  <li>Sorcerer: CHA, CON</li>
-                  <li>Warlock: CHA, CON</li>
-                  <li>Wizard: INT, CON or DEX</li>
+                  <li>Bard: Charisma</li>
+                  <li>Ranger: Dexterity, Wisdom</li>
+                  <li>Rogue: Dexterity</li>
                 </ul>
               </fieldset>
             </li>

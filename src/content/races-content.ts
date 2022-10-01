@@ -18,7 +18,7 @@ const racesContent: TramOneComponent = () => {
 
   return html`
 		<>
-			<page title="Choose a Race" selection="race">
+			<page title="Race" selection="race" source="UA-Origins, Pg 2">
 				Details can be found in the Unearthed Arcana - Origins (page 2-10).
 				Select one of the following races to see instructions for writing in
 				the details in your character sheet.

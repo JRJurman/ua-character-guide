@@ -14,7 +14,7 @@ const classesContent: TramOneComponent = () => {
 
   return html`
     <>
-      <page title="Choose a Class" selection="class">
+      <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
         Details can be found in the Unearthed Arcana - Expert Classes (page
         3-15). Select one of the following classes to see instructions for
         writing in the details in your character sheet.
