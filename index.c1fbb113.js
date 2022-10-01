@@ -1,4 +1,4 @@
-const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),i=e=>n(e).branch.join("/"),o=e=>{n(e).branchIndices[i(e)]+=1},r=e=>{const t=n(e).branchIndices[i(e)];return`${i(e)}[${t}]`};var l=new WeakMap,s=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function h(e){e.cleaners&&e.cleaners.forEach(d,e),e.cleaners=[]}function d(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){h(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function f(e){var t=u[u.length-1];t&&(A(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=s);var i=l.get(a),o=i.get(n);o||(o=new Set,i.set(n,o)),o.has(e)||(o.add(e),e.cleaners.push(o))}(t,e))}function p(e){(function(e){var t=e.target,a=e.key,n=e.type,i=l.get(t),o=new Set;if("clear"===n?i.forEach((function(e,t){c(o,i,t)})):c(o,i,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":s;c(o,i,r)}return o})(e).forEach(y,e)}function y(e){A(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function A(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function m(){return u.length>0}var S=Symbol("is reaction");function T(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var E=new WeakMap,w=new WeakMap,v=Object.prototype.hasOwnProperty;function k(e){var t=w.get(e);return m()&&"object"==typeof e&&null!==e?t||M(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),i=n.done,o=n.value;return i||(t?o[1]=k(o[1]):o=k(o)),{done:i,value:o}},e}var C={has:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"get"}),k(a.get.apply(t,arguments))},add:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.add.apply(t,arguments);return n||p({target:t,key:e,value:e,type:"add"}),i},set:function(e,t){var a=E.get(this),n=Reflect.getPrototypeOf(this),i=n.has.call(a,e),o=n.get.call(a,e),r=n.set.apply(a,arguments);return i?t!==o&&p({target:a,key:e,value:t,oldValue:o,type:"set"}):p({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.get?a.get.call(t,e):void 0,o=a.delete.apply(t,arguments);return n&&p({target:t,key:e,oldValue:i,type:"delete"}),o},clear:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),i=t.clear.apply(e,arguments);return a&&p({target:e,oldTarget:n,type:"clear"}),i},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=E.get(this),i=Reflect.getPrototypeOf(this);f({target:n,type:"iterate"});var o,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[k(t)].concat(a))};return(o=i.forEach).call.apply(o,[n,r].concat(t))},keys:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=E.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};C[Symbol.iterator]=function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var P={get:function(e,t,a){return e=v.call(C,t)?C:e,Reflect.get(e,t,a)}},R="object"==typeof window?window:Function("return this")(),L=new Map([[Map,P],[Set,P],[WeakMap,P],[WeakSet,P],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,D=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var O={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&D.has(t))return n;f({target:e,key:t,receiver:a,type:"get"});var i=w.get(n);if(m()&&"object"==typeof n&&null!==n){if(i)return i;var o=Reflect.getOwnPropertyDescriptor(e,t);if(!o||!1!==o.writable||!1!==o.configurable)return M(n)}return i||n},has:function(e,t){var a=Reflect.has(e,t);return f({target:e,key:t,type:"has"}),a},ownKeys:function(e){return f({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=E.get(a)||a);var i=N.call(e,t),o=e[t],r=Reflect.set(e,t,a,n);return e!==E.get(n)||(i?a!==o&&p({target:e,key:t,value:a,oldValue:o,receiver:n,type:"set"}):p({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],i=Reflect.deleteProperty(e,t);return a&&p({target:e,key:t,oldValue:n,type:"delete"}),i}};function M(e){return void 0===e&&(e={}),E.has(e)||"function"==typeof(t=e.constructor)&&t.name in R&&R[t.name]===t&&!L.has(t)?e:w.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||O,a=new Proxy(e,t);return w.set(e,a),E.set(a,e),function(e){l.set(e,new Map)}(e),a}(e);var t}var F=T;const U=(e,t)=>t,G=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),i=[n.currentNode];for(;n.nextNode();)i.push(n.currentNode);return i},W={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var B=e=>{let t;const a=F((()=>{let a=t,n=W;if(a){n=W;if(a.contains(document.activeElement)){const e=document.activeElement,t=G(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=G(t,n.tagName),o=a.map(U).sort((i=n.index,(e,t)=>Math.abs(e-i)-Math.abs(t-i)))[0];e=a[o];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var i}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:Y,get:x,set:_}=t((()=>({}))),q=_,{setup:H,get:K,set:$}=t((()=>[])),j=e=>{const t=K(e);t.splice(0,t.length)},Q=$;var V=e=>{const t={...x("tram-effect-queue")},a=[...K("tram-key-queue")];(e=>{const t=x(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),j("tram-key-queue"),j("tram-global-key-queue");const n=e(),i=x("tram-effect-store"),o=x("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],l=Object.keys(o).filter((e=>!(e in i))).map((e=>o[e])),s=r.concat(l);n["tram-tag-new-effects"]=s;const c=n["tram-tag-store-keys"]||[],h=K("tram-key-queue"),d=c.concat(h);return n["tram-tag-store-keys"]=d,q("tram-effect-queue",t),Q("tram-key-queue",a),n},X={},z={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};z=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,ie=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const i=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(i)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(i)),z(i,n),i};(X=ie).html=ie(),X.svg=ie("http://www.w3.org/2000/svg");var oe;oe=function(e,t,a){const n=function(e,n,i){const o=a[e];return o?o(n,i):t(e,n,i)},i=e(n);return i.h=n,i};var re,le={};le=function(e){return function(t,a,n){for(var i in a)i in se&&(a[se[i]]=a[i],delete a[i]);return e(t,a,n)}};var se={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=le(e)),function(i){for(var o=1,r="",l=arguments.length,s=[],c=0;c<i.length;c++)if(c<l-1){var h=arguments[c+1],d=E(i[c]),u=o;switch(u){case 13:r+=h,h="";case 10:case 9:case 7:u=8;break;case 4:u=5}d.push([0,u,h]),s.push.apply(s,d)}else s.push.apply(s,E(i[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<s.length;c++){var f=g[g.length-1][0],p=(d=s[c])[0];if(2===p&&/^\//.test(d[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0))}else if(2===p){var A=[d[1],{},[]];f[2].push(A),g.push([A,f[2].length-1])}else if(5===p||0===p&&5===d[1]){for(var m,S="";c<s.length;c++)if(5===s[c][0])S=a(S,s[c][1]);else{if(0!==s[c][0]||5!==s[c][1])break;if("object"!=typeof s[c][2]||S)S=a(S,s[c][2]);else for(m in s[c][2])s[c][2].hasOwnProperty(m)&&!f[1][m]&&(f[1][m]=s[c][2][m])}11===s[c][0]&&c++;for(var T=c;c<s.length;c++)if(8===s[c][0]||5===s[c][0])f[1][S]?""===s[c][1]||(f[1][S]=a(f[1][S],s[c][1])):f[1][S]=n(s[c][1]);else{if(0!==s[c][0]||8!==s[c][1]&&5!==s[c][1]){!S.length||f[1][S]||c!==T||3!==s[c][0]&&12!==s[c][0]||(f[1][S]=S.toLowerCase()),3===s[c][0]&&c--;break}f[1][S]?""===s[c][2]||(f[1][S]=a(f[1][S],s[c][2])):f[1][S]=n(s[c][2])}}else if(14===p){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0)}else if(0===p&&1===d[1])void 0===d[2]||null===d[2]?d[2]="":d[2]||(d[2]=a("",d[2])),Array.isArray(d[2][0])?f[2].push.apply(f[2],d[2]):f[2].push(d[2]);else if(1===p)f[2].push(d[1]);else if(11!==p&&12!==p&&3!==p)throw new Error("unhandled: "+p)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function E(e){var a=[];7===o&&(o=4);for(var n=0;n<e.length;n++){var i=e.charAt(n);if(13===o){if(!/-$/.test(r)||"-"!==i){r+=i;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",o=1}1===o&&"<"===i?(r.length&&a.push([1,r]),r="",o=2):">"===i&&"/"===e.charAt(n-1)||">"===i&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",o=1):">"!==i||ce(o)||13===o?2===o&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=i,o=13):1===o?r+=i:2===o&&"/"===i&&r.length?(a.push([2,r]),r="",o=1):2===o&&/\s/.test(i)?(a.push([2,r]),r="",o=4):2===o?r+=i:4===o&&/[^\s"'=/]/.test(i)?(o=5,r=i):4===o&&/\s/.test(i)?(r.length&&a.push([5,r]),a.push([12])):5===o&&/\s/.test(i)?(a.push([5,r]),r="",o=6):5===o&&"="===i?(a.push([5,r],[11]),r="",o=7):5===o?r+=i:6!==o&&4!==o||"="!==i?6!==o&&4!==o||/\s/.test(i)?7===o&&'"'===i?o=10:7===o&&"'"===i?o=9:10===o&&'"'===i||9===o&&"'"===i?(a.push([8,r],[12]),r="",o=4):7!==o||/\s/.test(i)?8===o&&/\s/.test(i)?(a.push([8,r],[12]),r="",o=4):8!==o&&9!==o&&10!==o||(r+=i):(o=8,n--):(a.push([12]),/[\w-]/.test(i)?(r+=i,o=5):o=4):(a.push([11]),o=7):(2===o?a.push([2,r]):5===o?a.push([5,r]):8===o&&r.length&&a.push([8,r]),a.push([3]),r="",o=1)}if(r.length)switch(o){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===o&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,he=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const l=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[i(e)]||(a.branchIndices[i(e)]=0)})("tram-hook-key",`${a}[${l}]`),o("tram-hook-key");const s=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),i=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{i[e]=t.branchIndices[e]||0}))})("tram-hook-key",s);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},h=B((()=>V(c)));return n("tram-hook-key").branch.pop(),h["tram-tag"]=!0,h["tram-tag-new-effects"]=h["tram-tag-new-effects"]||[],h["tram-tag-cleanup-effects"]=[],h}}}),{});return oe(re,X(e),a)};var de=e=>{const t=x("tram-effect-queue"),a=r("tram-hook-key");o("tram-hook-key");t[`${a}()`]=e};const ue=he(null),be=(e,t)=>(de((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>he(null,{"":be,...e});var fe=M;const{setup:pe,get:ye}=t((()=>fe({})));var Ae=(e,t)=>{const a=ye("tram-observable-store");o("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const i=a[n];return!e&&K("tram-key-queue").push(n),i},me=e=>Ae(void 0,e);var Se,Te,Ee,we,ve,ke={};we=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)l(e,t[e])}(),function(t,r){var l=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:i;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),i=(n<0?e:e.slice(0,n)).split("&"),o=0;o<i.length;++o){var r=i[o].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],o(t[0].split("/"),r,0,a,[])||{},r)}(t);return(l.cb||e)(l.params,r,t)};function i(e){return e}function o(e,t,a,n,i){if(n){if(a>=e.length){var l=n["@"];return l&&{cb:l,params:i.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var s=t(e[a]),c=i.length;return o(e,t,a+1,n[s.toLowerCase()],i)||r(e,t,a+1,n,":",s,i,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),i,c)}}function r(e,t,a,n,i,r,l,s){l.length=s;var c=n[i];return c&&l.push([c["~"],r]),o(e,t,a,c,l)}function l(e,t){for(var n=e.split("/"),i=a,o=+("/"===e[0]);o<n.length;++o){var r=n[o],l=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();i=i[l]||(i[l]={}),(":"==l||"*"==l)&&(i["~"]=r.slice(1))}i["@"]=t}}},(ve=(Ee=ke)&&Ee.define)&&ve.amd?ve("rlite",[],we):ke?ke=we():Ee.Rlite=we();const Ie=()=>({matches:!1}),Ce=e=>({matches:!0,...e});Se=Te=e=>(t="*")=>ke(Ie,{[t]:Ce})(e());var Pe={};Pe=Te((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Pe.setupUrlParams=Se,Pe.useUrlParams=Pe;function Re(e,t){return Ae(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:De,set:Oe}=t((()=>({})));var Me=T,Fe=function(e){e.unobserved||(e.unobserved=!0,h(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Ue=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=De(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Me((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Fe(n)}))})),e["tram-tag-new-effects"]=[])},Ge=e=>{e.forEach((e=>{var t;t=e,De("tram-key-store")[t]--}))},We=e=>{"tram-tag"in e&&(Fe(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),Ge(e["tram-tag-store-keys"]))},Be=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,Ye=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Be),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:xe,get:_e}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap(Ye).forEach(We);e.flatMap((e=>[...e.addedNodes])).flatMap(Ye).forEach(Ue),(()=>{const e=ye("tram-observable-store"),t=De("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const qe=ge();var He=()=>qe` <section class="blank-page" /> `;const Ke=ge();var $e=({title:e,group:t,selection:a,source:n},i)=>Ke`
+const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),i=e=>n(e).branch.join("/"),o=e=>{n(e).branchIndices[i(e)]+=1},r=e=>{const t=n(e).branchIndices[i(e)];return`${i(e)}[${t}]`};var s=new WeakMap,l=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function h(e){e.cleaners&&e.cleaners.forEach(d,e),e.cleaners=[]}function d(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){h(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function f(e){var t=u[u.length-1];t&&(m(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=l);var i=s.get(a),o=i.get(n);o||(o=new Set,i.set(n,o)),o.has(e)||(o.add(e),e.cleaners.push(o))}(t,e))}function p(e){(function(e){var t=e.target,a=e.key,n=e.type,i=s.get(t),o=new Set;if("clear"===n?i.forEach((function(e,t){c(o,i,t)})):c(o,i,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":l;c(o,i,r)}return o})(e).forEach(y,e)}function y(e){m(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function m(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function A(){return u.length>0}var S=Symbol("is reaction");function E(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var T=new WeakMap,v=new WeakMap,w=Object.prototype.hasOwnProperty;function k(e){var t=v.get(e);return A()&&"object"==typeof e&&null!==e?t||M(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),i=n.done,o=n.value;return i||(t?o[1]=k(o[1]):o=k(o)),{done:i,value:o}},e}var P={has:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"get"}),k(a.get.apply(t,arguments))},add:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.add.apply(t,arguments);return n||p({target:t,key:e,value:e,type:"add"}),i},set:function(e,t){var a=T.get(this),n=Reflect.getPrototypeOf(this),i=n.has.call(a,e),o=n.get.call(a,e),r=n.set.apply(a,arguments);return i?t!==o&&p({target:a,key:e,value:t,oldValue:o,type:"set"}):p({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.get?a.get.call(t,e):void 0,o=a.delete.apply(t,arguments);return n&&p({target:t,key:e,oldValue:i,type:"delete"}),o},clear:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),i=t.clear.apply(e,arguments);return a&&p({target:e,oldTarget:n,type:"clear"}),i},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=T.get(this),i=Reflect.getPrototypeOf(this);f({target:n,type:"iterate"});var o,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[k(t)].concat(a))};return(o=i.forEach).call.apply(o,[n,r].concat(t))},keys:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=T.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};P[Symbol.iterator]=function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var C={get:function(e,t,a){return e=w.call(P,t)?P:e,Reflect.get(e,t,a)}},R="object"==typeof window?window:Function("return this")(),L=new Map([[Map,C],[Set,C],[WeakMap,C],[WeakSet,C],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,O=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var D={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&O.has(t))return n;f({target:e,key:t,receiver:a,type:"get"});var i=v.get(n);if(A()&&"object"==typeof n&&null!==n){if(i)return i;var o=Reflect.getOwnPropertyDescriptor(e,t);if(!o||!1!==o.writable||!1!==o.configurable)return M(n)}return i||n},has:function(e,t){var a=Reflect.has(e,t);return f({target:e,key:t,type:"has"}),a},ownKeys:function(e){return f({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=T.get(a)||a);var i=N.call(e,t),o=e[t],r=Reflect.set(e,t,a,n);return e!==T.get(n)||(i?a!==o&&p({target:e,key:t,value:a,oldValue:o,receiver:n,type:"set"}):p({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],i=Reflect.deleteProperty(e,t);return a&&p({target:e,key:t,oldValue:n,type:"delete"}),i}};function M(e){return void 0===e&&(e={}),T.has(e)||"function"==typeof(t=e.constructor)&&t.name in R&&R[t.name]===t&&!L.has(t)?e:v.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||D,a=new Proxy(e,t);return v.set(e,a),T.set(a,e),function(e){s.set(e,new Map)}(e),a}(e);var t}var F=E;const U=(e,t)=>t,G=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),i=[n.currentNode];for(;n.nextNode();)i.push(n.currentNode);return i},W={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var Y=e=>{let t;const a=F((()=>{let a=t,n=W;if(a){n=W;if(a.contains(document.activeElement)){const e=document.activeElement,t=G(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=G(t,n.tagName),o=a.map(U).sort((i=n.index,(e,t)=>Math.abs(e-i)-Math.abs(t-i)))[0];e=a[o];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var i}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:x,get:B,set:_}=t((()=>({}))),q=_,{setup:K,get:H,set:$}=t((()=>[])),j=e=>{const t=H(e);t.splice(0,t.length)},Q=$;var V=e=>{const t={...B("tram-effect-queue")},a=[...H("tram-key-queue")];(e=>{const t=B(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),j("tram-key-queue"),j("tram-global-key-queue");const n=e(),i=B("tram-effect-store"),o=B("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],s=Object.keys(o).filter((e=>!(e in i))).map((e=>o[e])),l=r.concat(s);n["tram-tag-new-effects"]=l;const c=n["tram-tag-store-keys"]||[],h=H("tram-key-queue"),d=c.concat(h);return n["tram-tag-store-keys"]=d,q("tram-effect-queue",t),Q("tram-key-queue",a),n},z={},X={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};X=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,ie=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const i=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(i)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(i)),X(i,n),i};(z=ie).html=ie(),z.svg=ie("http://www.w3.org/2000/svg");var oe;oe=function(e,t,a){const n=function(e,n,i){const o=a[e];return o?o(n,i):t(e,n,i)},i=e(n);return i.h=n,i};var re,se={};se=function(e){return function(t,a,n){for(var i in a)i in le&&(a[le[i]]=a[i],delete a[i]);return e(t,a,n)}};var le={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=se(e)),function(i){for(var o=1,r="",s=arguments.length,l=[],c=0;c<i.length;c++)if(c<s-1){var h=arguments[c+1],d=T(i[c]),u=o;switch(u){case 13:r+=h,h="";case 10:case 9:case 7:u=8;break;case 4:u=5}d.push([0,u,h]),l.push.apply(l,d)}else l.push.apply(l,T(i[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<l.length;c++){var f=g[g.length-1][0],p=(d=l[c])[0];if(2===p&&/^\//.test(d[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0))}else if(2===p){var m=[d[1],{},[]];f[2].push(m),g.push([m,f[2].length-1])}else if(5===p||0===p&&5===d[1]){for(var A,S="";c<l.length;c++)if(5===l[c][0])S=a(S,l[c][1]);else{if(0!==l[c][0]||5!==l[c][1])break;if("object"!=typeof l[c][2]||S)S=a(S,l[c][2]);else for(A in l[c][2])l[c][2].hasOwnProperty(A)&&!f[1][A]&&(f[1][A]=l[c][2][A])}11===l[c][0]&&c++;for(var E=c;c<l.length;c++)if(8===l[c][0]||5===l[c][0])f[1][S]?""===l[c][1]||(f[1][S]=a(f[1][S],l[c][1])):f[1][S]=n(l[c][1]);else{if(0!==l[c][0]||8!==l[c][1]&&5!==l[c][1]){!S.length||f[1][S]||c!==E||3!==l[c][0]&&12!==l[c][0]||(f[1][S]=S.toLowerCase()),3===l[c][0]&&c--;break}f[1][S]?""===l[c][2]||(f[1][S]=a(f[1][S],l[c][2])):f[1][S]=n(l[c][2])}}else if(14===p){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0)}else if(0===p&&1===d[1])void 0===d[2]||null===d[2]?d[2]="":d[2]||(d[2]=a("",d[2])),Array.isArray(d[2][0])?f[2].push.apply(f[2],d[2]):f[2].push(d[2]);else if(1===p)f[2].push(d[1]);else if(11!==p&&12!==p&&3!==p)throw new Error("unhandled: "+p)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function T(e){var a=[];7===o&&(o=4);for(var n=0;n<e.length;n++){var i=e.charAt(n);if(13===o){if(!/-$/.test(r)||"-"!==i){r+=i;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",o=1}1===o&&"<"===i?(r.length&&a.push([1,r]),r="",o=2):">"===i&&"/"===e.charAt(n-1)||">"===i&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",o=1):">"!==i||ce(o)||13===o?2===o&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=i,o=13):1===o?r+=i:2===o&&"/"===i&&r.length?(a.push([2,r]),r="",o=1):2===o&&/\s/.test(i)?(a.push([2,r]),r="",o=4):2===o?r+=i:4===o&&/[^\s"'=/]/.test(i)?(o=5,r=i):4===o&&/\s/.test(i)?(r.length&&a.push([5,r]),a.push([12])):5===o&&/\s/.test(i)?(a.push([5,r]),r="",o=6):5===o&&"="===i?(a.push([5,r],[11]),r="",o=7):5===o?r+=i:6!==o&&4!==o||"="!==i?6!==o&&4!==o||/\s/.test(i)?7===o&&'"'===i?o=10:7===o&&"'"===i?o=9:10===o&&'"'===i||9===o&&"'"===i?(a.push([8,r],[12]),r="",o=4):7!==o||/\s/.test(i)?8===o&&/\s/.test(i)?(a.push([8,r],[12]),r="",o=4):8!==o&&9!==o&&10!==o||(r+=i):(o=8,n--):(a.push([12]),/[\w-]/.test(i)?(r+=i,o=5):o=4):(a.push([11]),o=7):(2===o?a.push([2,r]):5===o?a.push([5,r]):8===o&&r.length&&a.push([8,r]),a.push([3]),r="",o=1)}if(r.length)switch(o){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===o&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,he=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const s=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[i(e)]||(a.branchIndices[i(e)]=0)})("tram-hook-key",`${a}[${s}]`),o("tram-hook-key");const l=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),i=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{i[e]=t.branchIndices[e]||0}))})("tram-hook-key",l);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},h=Y((()=>V(c)));return n("tram-hook-key").branch.pop(),h["tram-tag"]=!0,h["tram-tag-new-effects"]=h["tram-tag-new-effects"]||[],h["tram-tag-cleanup-effects"]=[],h}}}),{});return oe(re,z(e),a)};var de=e=>{const t=B("tram-effect-queue"),a=r("tram-hook-key");o("tram-hook-key");t[`${a}()`]=e};const ue=he(null),be=(e,t)=>(de((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>he(null,{"":be,...e});var fe=M;const{setup:pe,get:ye}=t((()=>fe({})));var me=(e,t)=>{const a=ye("tram-observable-store");o("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const i=a[n];return!e&&H("tram-key-queue").push(n),i},Ae=e=>me(void 0,e);var Se,Ee,Te,ve,we,ke={};ve=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)s(e,t[e])}(),function(t,r){var s=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:i;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),i=(n<0?e:e.slice(0,n)).split("&"),o=0;o<i.length;++o){var r=i[o].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],o(t[0].split("/"),r,0,a,[])||{},r)}(t);return(s.cb||e)(s.params,r,t)};function i(e){return e}function o(e,t,a,n,i){if(n){if(a>=e.length){var s=n["@"];return s&&{cb:s,params:i.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var l=t(e[a]),c=i.length;return o(e,t,a+1,n[l.toLowerCase()],i)||r(e,t,a+1,n,":",l,i,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),i,c)}}function r(e,t,a,n,i,r,s,l){s.length=l;var c=n[i];return c&&s.push([c["~"],r]),o(e,t,a,c,s)}function s(e,t){for(var n=e.split("/"),i=a,o=+("/"===e[0]);o<n.length;++o){var r=n[o],s=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();i=i[s]||(i[s]={}),(":"==s||"*"==s)&&(i["~"]=r.slice(1))}i["@"]=t}}},(we=(Te=ke)&&Te.define)&&we.amd?we("rlite",[],ve):ke?ke=ve():Te.Rlite=ve();const Ie=()=>({matches:!1}),Pe=e=>({matches:!0,...e});Se=Ee=e=>(t="*")=>ke(Ie,{[t]:Pe})(e());var Ce={};Ce=Ee((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Ce.setupUrlParams=Se,Ce.useUrlParams=Ce;function Re(e,t){return me(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:Oe,set:De}=t((()=>({})));var Me=E,Fe=function(e){e.unobserved||(e.unobserved=!0,h(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Ue=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=Oe(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Me((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Fe(n)}))})),e["tram-tag-new-effects"]=[])},Ge=e=>{e.forEach((e=>{var t;t=e,Oe("tram-key-store")[t]--}))},We=e=>{"tram-tag"in e&&(Fe(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),Ge(e["tram-tag-store-keys"]))},Ye=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,xe=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Ye),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:Be,get:_e}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap(xe).forEach(We);e.flatMap((e=>[...e.addedNodes])).flatMap(xe).forEach(Ue),(()=>{const e=ye("tram-observable-store"),t=Oe("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const qe=ge();var Ke=()=>qe` <section class="blank-page" /> `;const He=ge();var $e=({title:e,group:t,selection:a,source:n},i)=>He`
     <section
       class="page"
       page-color="grey"
@@ -11,15 +11,15 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
       </h2>
       ${i}
     </section>
-  `;const je=ge({page:$e,"blank-page":He});var Qe=(e,t)=>(de((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,i=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:i?"auto":"smooth"})})(t)))})),je` <section class="page-scroller">
+  `;const je=ge({page:$e,"blank-page":Ke});var Qe=(e,t)=>(de((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,i=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:i?"auto":"smooth"})})(t)))})),je` <section class="page-scroller">
     <section class="page-scroller-flex">${t} <blank-page /></section>
-  </section>`);const Ve=ge();var Xe=(e,t)=>Ve`
+  </section>`);const Ve=ge();var ze=(e,t)=>Ve`
     <fieldset class="annotation">
       <i>${t}</i>
     </fieldset>
-  `;const ze=ge({annotation:Xe,page:$e});var Je=()=>{const e=Re("PAGE_FILTERS",{race:""}),t=t=>e.race=t;return ze`
+  `;const Xe=ge({annotation:ze,page:$e});var Je=()=>{const e=Re("PAGE_FILTERS",{race:""}),t=t=>e.race=t;return Xe`
 		<>
-			<page title="Choose a Race" selection="race">
+			<page title="Race" selection="race" source="UA-Origins, Pg 2">
 				Details can be found in the Unearthed Arcana - Origins (page 2-10).
 				Select one of the following races to see instructions for writing in
 				the details in your character sheet.
@@ -662,7 +662,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
 				</ol>
 			</page>
 		</>
-  `};const Ze=ge({annotation:Xe,page:$e});var et=()=>{const e=Re("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return Ze`
+  `};const Ze=ge({annotation:ze,page:$e});var et=()=>{const e=Re("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return Ze`
     <style>
       .page[page-group="race"] {
         display: none;
@@ -677,9 +677,9 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         display: inherit;
       }
     </style>
-  `};const tt=ge({annotation:Xe,page:$e});const at=ge({"page-scroller":Qe,"races-content":Je,"page-filters":et,"classes-content":()=>{const e=Re("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t;return tt`
+  `};const tt=ge({annotation:ze,page:$e});const at=ge({"page-scroller":Qe,"races-content":Je,"page-filters":et,"classes-content":()=>{const e=Re("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t;return tt`
     <>
-      <page title="Choose a Class" selection="class">
+      <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
         Details can be found in the Unearthed Arcana - Expert Classes (page
         3-15). Select one of the following classes to see instructions for
         writing in the details in your character sheet.
@@ -1136,7 +1136,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         selection="rogue"
         source="UA-Expert-Classes, Pg 12"></page>
     </>
-  `},annotation:Xe,page:$e});((e,t)=>{const n=Le(t);var i;window["tram-space"]={},Y("tram-effect-store"),Y("tram-effect-queue"),a("tram-hook-key"),pe("tram-observable-store"),Ne("tram-key-store"),H("tram-key-queue"),H("tram-global-key-queue"),xe("tram-mutation-observer"),i=n,_e("tram-mutation-observer").observe(i,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{me({race:"",class:""});return at`
+  `},annotation:ze,page:$e});((e,t)=>{const n=Le(t);var i;window["tram-space"]={},x("tram-effect-store"),x("tram-effect-queue"),a("tram-hook-key"),pe("tram-observable-store"),Ne("tram-key-store"),K("tram-key-queue"),K("tram-global-key-queue"),Be("tram-mutation-observer"),i=n,_e("tram-mutation-observer").observe(i,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{Ae({race:"",class:""});return at`
     <main class="app">
       <page-scroller>
         <page title="Character Guide" selection="character-guide">
@@ -1154,41 +1154,22 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
               >https://github.com/jrjurman/ua-character-guide/issues</a
             >
           </p>
-
+          <br />
           <fieldset>
             <legend>Useful links</legend>
             <ul>
               <li>
-                D&D Beyond
-                <ul>
-                  <li>
-                    <a target="_blank" href="https://www.dndbeyond.com/spells"
-                      >D&D Beyond Spells</a
-                    >
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://www.dndbeyond.com/classes"
-                      >D&D Beyond Classes</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      target="_blank"
-                      href="https://www.dndbeyond.com/sources/basic-rules/equipment"
-                      >D&D Beyond Equipment</a
-                    >
-                  </li>
-                </ul>
+                <a
+                  target="_blank"
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment"
+                >
+                  D&D Beyond Equipment
+                </a>
               </li>
               <li>
-                5e Tools
-                <ul>
-                  <li>
-                    <a target="_blank" href="https://5e.tools/spells.html"
-                      >5e Tools Spells</a
-                    >
-                  </li>
-                </ul>
+                <a target="_blank" href="https://5e.tools/spells.html">
+                  5e Tools Spells
+                </a>
               </li>
             </ul>
           </fieldset>
@@ -1207,61 +1188,30 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         <page-filters />
         <races-content />
         <classes-content />
-        <page title="Choose a Class" selection="class">
-          Read the Classes in the PHB or go to the D&D Beyond links (listed
-          below)
+        <page
+          title="Background"
+          selection="background"
+          source="UA-Origins, Pg 11"
+        >
+          Read the UA Origins (page 11-15) to see the list of sample
+          backgrounds, ignoring Ability Scores for now
           <ol>
             <li>
-              Choose a class and write the class name and "1" under "CLASS &
-              LEVEL" in the top header (e.g. "Fighter 1")
+              Choose a background and write the name under <b>BACKGROUND</b> in
+              the top header
             </li>
             <li>
-              Set your "HIT DICE" to whatever value dice roll for your class
-              (e.g. 1d8), write "1 of 1" for your "Total"
-            </li>
-            <li>
-              Write your armor, weapon, and tool proficiencies in the bottom
-              left box under "OTHER PROFICIENCIES & LANGUAGES"
-            </li>
-            <li>
-              Mark your 2 Saving Throw Proficiencies by filling in the circles
-              in the "SAVING THROWS" box
-            </li>
-            <li>
-              Mark your 2 chosen skill proficiencies by filling in the circle in
-              the "SKILLS" box
-            </li>
-            <li>
-              Select your starting equipment and add any weapons in "ATTACKS &
-              SPELLCASTING" (Ignore ATK BONUS for now)
-            </li>
-            <li>Add any 1st level features to the "FEATURES & TRAITS" box</li>
-            <li>
-              If you get spellcasting as part of your 1st level features, add
-              damage spells to the "ATTACKS & SPELLCASTING" section (Ignore ATK
-              BONUS for now), and list spells in the dedicated Spellcasting
-              sheet
-            </li>
-          </ol>
-        </page>
-        <page title="Choose a Background" selection="background">
-          Read the UA Origins (page 11-15) Ignore Ability Scores for now
-          <ol>
-            <li>
-              Choose a background and write the name under "BACKGROUND" in the
-              top header
-            </li>
-            <li>
-              Mark any 2 skill proficiencies in the "SKILLS" section
+              Fill in the circles for any two skill proficiencies in the
+              <b>SKILLS</b> section
               <annotation>
-                You may treat the 2 skills listed in your selected background as
-                recommendations, but you can choose any 2, as long as they are
-                thematic
+                You may treat the two skills listed in your selected background
+                as recommendations, but you can choose any two, as long as they
+                are thematic
               </annotation>
             </li>
             <li>
-              Add the tool and language proficiencies in the "OTHER
-              PROFICIENCIES & LANGUAGES" section
+              Add the tool and language proficiencies in the
+              <b>PROFICIENCIES & LANGUAGES</b> section
             </li>
             <li>
               Add the Feat in the "FEATURES & TRAITS" box
@@ -1271,13 +1221,11 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
         </page>
-        <page title="Add a Language" selection="language">
+        <page title="Languages" selection="language" source="UA-Origins, Pg 16">
           Your character should start with Common, a language provided by the
           character background, and an additional starting language listed below
-          (UA Origins, pg 16)
           <fieldset>
             <legend>Standard Languages</legend>
-            <li>Common</li>
             <li>Common Sign Language</li>
             <li>Dwarvish</li>
             <li>Giant</li>
@@ -1293,37 +1241,24 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             <li>Celestial</li>
             <li>Deep Speech</li>
             <li>Draconic</li>
-            <li>Druidic</li>
             <li>Infernal</li>
-            <li>
-              Primordial (includes the Aquan, Auran, Ignan, and Terran dialects)
-            </li>
+            <li>Primordial</li>
             <li>Sylvan</li>
-            <li>Thieves' Cant</li>
             <li>Undercommon</li>
           </fieldset>
         </page>
-        <page title="Set Ability Scores" selection="stat-block">
+        <page title="Ability Scores" selection="stat-block">
           <ol>
             <li>
               Using the standard array (15, 14, 13, 12, 10, 8), assign each
               value into the Ability Scores listed on the left of your character
-              sheet, writing them in the tiny area under each option
+              sheet, writing them in the tiny box adjacent to each option
               <fieldset>
-                <legend>Class Priorities</legend>
+                <legend>Primary Abilities</legend>
                 <ul>
-                  <li>Barbarian: STR, CON, DEX</li>
-                  <li>Bard: CHA, DEX</li>
-                  <li>Cleric: WIS, STR or CON</li>
-                  <li>Druid: WIS, CON</li>
-                  <li>Fighter: STR (or DEX for ranged weapons), CON</li>
-                  <li>Monk: DEX, WIS</li>
-                  <li>Paladin: STR, CHA</li>
-                  <li>Ranger: DEX, WIS</li>
-                  <li>Rogue: DEX, INT or CHA</li>
-                  <li>Sorcerer: CHA, CON</li>
-                  <li>Warlock: CHA, CON</li>
-                  <li>Wizard: INT, CON or DEX</li>
+                  <li>Bard: Charisma</li>
+                  <li>Ranger: Dexterity, Wisdom</li>
+                  <li>Rogue: Dexterity</li>
                 </ul>
               </fieldset>
             </li>
@@ -1461,4 +1396,4 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
       </page-scroller>
     </main>
   `}),"#root");
-//# sourceMappingURL=index.ef1e8fec.js.map
+//# sourceMappingURL=index.c1fbb113.js.map
