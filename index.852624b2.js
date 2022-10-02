@@ -1,4 +1,4 @@
-const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),o=e=>n(e).branch.join("/"),i=e=>{n(e).branchIndices[o(e)]+=1},r=e=>{const t=n(e).branchIndices[o(e)];return`${o(e)}[${t}]`};var s=new WeakMap,l=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function h(e){e.cleaners&&e.cleaners.forEach(d,e),e.cleaners=[]}function d(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){h(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function p(e){var t=u[u.length-1];t&&(m(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=l);var o=s.get(a),i=o.get(n);i||(i=new Set,o.set(n,i)),i.has(e)||(i.add(e),e.cleaners.push(i))}(t,e))}function f(e){(function(e){var t=e.target,a=e.key,n=e.type,o=s.get(t),i=new Set;if("clear"===n?o.forEach((function(e,t){c(i,o,t)})):c(i,o,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":l;c(i,o,r)}return i})(e).forEach(y,e)}function y(e){m(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function m(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function A(){return u.length>0}var S=Symbol("is reaction");function E(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var v=new WeakMap,k=new WeakMap,T=Object.prototype.hasOwnProperty;function w(e){var t=k.get(e);return A()&&"object"==typeof e&&null!==e?t||F(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),o=n.done,i=n.value;return o||(t?i[1]=w(i[1]):i=w(i)),{done:o,value:i}},e}var P={has:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"get"}),w(a.get.apply(t,arguments))},add:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.add.apply(t,arguments);return n||f({target:t,key:e,value:e,type:"add"}),o},set:function(e,t){var a=v.get(this),n=Reflect.getPrototypeOf(this),o=n.has.call(a,e),i=n.get.call(a,e),r=n.set.apply(a,arguments);return o?t!==i&&f({target:a,key:e,value:t,oldValue:i,type:"set"}):f({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.get?a.get.call(t,e):void 0,i=a.delete.apply(t,arguments);return n&&f({target:t,key:e,oldValue:o,type:"delete"}),i},clear:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),o=t.clear.apply(e,arguments);return a&&f({target:e,oldTarget:n,type:"clear"}),o},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=v.get(this),o=Reflect.getPrototypeOf(this);p({target:n,type:"iterate"});var i,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[w(t)].concat(a))};return(i=o.forEach).call.apply(i,[n,r].concat(t))},keys:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=v.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};P[Symbol.iterator]=function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var R={get:function(e,t,a){return e=T.call(P,t)?P:e,Reflect.get(e,t,a)}},C="object"==typeof window?window:Function("return this")(),L=new Map([[Map,R],[Set,R],[WeakMap,R],[WeakSet,R],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,D=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var O={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&D.has(t))return n;p({target:e,key:t,receiver:a,type:"get"});var o=k.get(n);if(A()&&"object"==typeof n&&null!==n){if(o)return o;var i=Reflect.getOwnPropertyDescriptor(e,t);if(!i||!1!==i.writable||!1!==i.configurable)return F(n)}return o||n},has:function(e,t){var a=Reflect.has(e,t);return p({target:e,key:t,type:"has"}),a},ownKeys:function(e){return p({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=v.get(a)||a);var o=N.call(e,t),i=e[t],r=Reflect.set(e,t,a,n);return e!==v.get(n)||(o?a!==i&&f({target:e,key:t,value:a,oldValue:i,receiver:n,type:"set"}):f({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],o=Reflect.deleteProperty(e,t);return a&&f({target:e,key:t,oldValue:n,type:"delete"}),o}};function F(e){return void 0===e&&(e={}),v.has(e)||"function"==typeof(t=e.constructor)&&t.name in C&&C[t.name]===t&&!L.has(t)?e:k.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||O,a=new Proxy(e,t);return k.set(e,a),v.set(a,e),function(e){s.set(e,new Map)}(e),a}(e);var t}var M=E;const U=(e,t)=>t,W=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),o=[n.currentNode];for(;n.nextNode();)o.push(n.currentNode);return o},x={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var G=e=>{let t;const a=M((()=>{let a=t,n=x;if(a){n=x;if(a.contains(document.activeElement)){const e=document.activeElement,t=W(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=W(t,n.tagName),i=a.map(U).sort((o=n.index,(e,t)=>Math.abs(e-o)-Math.abs(t-o)))[0];e=a[i];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var o}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:Y,get:_,set:B}=t((()=>({}))),q=B,{setup:H,get:$,set:j}=t((()=>[])),K=e=>{const t=$(e);t.splice(0,t.length)},Q=j;var V=e=>{const t={..._("tram-effect-queue")},a=[...$("tram-key-queue")];(e=>{const t=_(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),K("tram-key-queue"),K("tram-global-key-queue");const n=e(),o=_("tram-effect-store"),i=_("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],s=Object.keys(i).filter((e=>!(e in o))).map((e=>i[e])),l=r.concat(s);n["tram-tag-new-effects"]=l;const c=n["tram-tag-store-keys"]||[],h=$("tram-key-queue"),d=c.concat(h);return n["tram-tag-store-keys"]=d,q("tram-effect-queue",t),Q("tram-key-queue",a),n},X={},z={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};z=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,oe=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const o=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(o)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(o)),z(o,n),o};(X=oe).html=oe(),X.svg=oe("http://www.w3.org/2000/svg");var ie;ie=function(e,t,a){const n=function(e,n,o){const i=a[e];return i?i(n,o):t(e,n,o)},o=e(n);return o.h=n,o};var re,se={};se=function(e){return function(t,a,n){for(var o in a)o in le&&(a[le[o]]=a[o],delete a[o]);return e(t,a,n)}};var le={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=se(e)),function(o){for(var i=1,r="",s=arguments.length,l=[],c=0;c<o.length;c++)if(c<s-1){var h=arguments[c+1],d=v(o[c]),u=i;switch(u){case 13:r+=h,h="";case 10:case 9:case 7:u=8;break;case 4:u=5}d.push([0,u,h]),l.push.apply(l,d)}else l.push.apply(l,v(o[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<l.length;c++){var p=g[g.length-1][0],f=(d=l[c])[0];if(2===f&&/^\//.test(d[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0))}else if(2===f){var m=[d[1],{},[]];p[2].push(m),g.push([m,p[2].length-1])}else if(5===f||0===f&&5===d[1]){for(var A,S="";c<l.length;c++)if(5===l[c][0])S=a(S,l[c][1]);else{if(0!==l[c][0]||5!==l[c][1])break;if("object"!=typeof l[c][2]||S)S=a(S,l[c][2]);else for(A in l[c][2])l[c][2].hasOwnProperty(A)&&!p[1][A]&&(p[1][A]=l[c][2][A])}11===l[c][0]&&c++;for(var E=c;c<l.length;c++)if(8===l[c][0]||5===l[c][0])p[1][S]?""===l[c][1]||(p[1][S]=a(p[1][S],l[c][1])):p[1][S]=n(l[c][1]);else{if(0!==l[c][0]||8!==l[c][1]&&5!==l[c][1]){!S.length||p[1][S]||c!==E||3!==l[c][0]&&12!==l[c][0]||(p[1][S]=S.toLowerCase()),3===l[c][0]&&c--;break}p[1][S]?""===l[c][2]||(p[1][S]=a(p[1][S],l[c][2])):p[1][S]=n(l[c][2])}}else if(14===f){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0)}else if(0===f&&1===d[1])void 0===d[2]||null===d[2]?d[2]="":d[2]||(d[2]=a("",d[2])),Array.isArray(d[2][0])?p[2].push.apply(p[2],d[2]):p[2].push(d[2]);else if(1===f)p[2].push(d[1]);else if(11!==f&&12!==f&&3!==f)throw new Error("unhandled: "+f)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function v(e){var a=[];7===i&&(i=4);for(var n=0;n<e.length;n++){var o=e.charAt(n);if(13===i){if(!/-$/.test(r)||"-"!==o){r+=o;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",i=1}1===i&&"<"===o?(r.length&&a.push([1,r]),r="",i=2):">"===o&&"/"===e.charAt(n-1)||">"===o&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",i=1):">"!==o||ce(i)||13===i?2===i&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=o,i=13):1===i?r+=o:2===i&&"/"===o&&r.length?(a.push([2,r]),r="",i=1):2===i&&/\s/.test(o)?(a.push([2,r]),r="",i=4):2===i?r+=o:4===i&&/[^\s"'=/]/.test(o)?(i=5,r=o):4===i&&/\s/.test(o)?(r.length&&a.push([5,r]),a.push([12])):5===i&&/\s/.test(o)?(a.push([5,r]),r="",i=6):5===i&&"="===o?(a.push([5,r],[11]),r="",i=7):5===i?r+=o:6!==i&&4!==i||"="!==o?6!==i&&4!==i||/\s/.test(o)?7===i&&'"'===o?i=10:7===i&&"'"===o?i=9:10===i&&'"'===o||9===i&&"'"===o?(a.push([8,r],[12]),r="",i=4):7!==i||/\s/.test(o)?8===i&&/\s/.test(o)?(a.push([8,r],[12]),r="",i=4):8!==i&&9!==i&&10!==i||(r+=o):(i=8,n--):(a.push([12]),/[\w-]/.test(o)?(r+=o,i=5):i=4):(a.push([11]),i=7):(2===i?a.push([2,r]):5===i?a.push([5,r]):8===i&&r.length&&a.push([8,r]),a.push([3]),r="",i=1)}if(r.length)switch(i){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===i&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,he=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const s=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[o(e)]||(a.branchIndices[o(e)]=0)})("tram-hook-key",`${a}[${s}]`),i("tram-hook-key");const l=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),o=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{o[e]=t.branchIndices[e]||0}))})("tram-hook-key",l);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},h=G((()=>V(c)));return n("tram-hook-key").branch.pop(),h["tram-tag"]=!0,h["tram-tag-new-effects"]=h["tram-tag-new-effects"]||[],h["tram-tag-cleanup-effects"]=[],h}}}),{});return ie(re,X(e),a)};var de=e=>{const t=_("tram-effect-queue"),a=r("tram-hook-key");i("tram-hook-key");t[`${a}()`]=e};const ue=he(null),be=(e,t)=>(de((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>he(null,{"":be,...e});var pe=F;const{setup:fe,get:ye}=t((()=>pe({})));var me=(e,t)=>{const a=ye("tram-observable-store");i("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const o=a[n];return!e&&$("tram-key-queue").push(n),o},Ae=e=>me(void 0,e);var Se,Ee,ve,ke,Te,we={};ke=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)s(e,t[e])}(),function(t,r){var s=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:o;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),o=(n<0?e:e.slice(0,n)).split("&"),i=0;i<o.length;++i){var r=o[i].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],i(t[0].split("/"),r,0,a,[])||{},r)}(t);return(s.cb||e)(s.params,r,t)};function o(e){return e}function i(e,t,a,n,o){if(n){if(a>=e.length){var s=n["@"];return s&&{cb:s,params:o.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var l=t(e[a]),c=o.length;return i(e,t,a+1,n[l.toLowerCase()],o)||r(e,t,a+1,n,":",l,o,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),o,c)}}function r(e,t,a,n,o,r,s,l){s.length=l;var c=n[o];return c&&s.push([c["~"],r]),i(e,t,a,c,s)}function s(e,t){for(var n=e.split("/"),o=a,i=+("/"===e[0]);i<n.length;++i){var r=n[i],s=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();o=o[s]||(o[s]={}),(":"==s||"*"==s)&&(o["~"]=r.slice(1))}o["@"]=t}}},(Te=(ve=we)&&ve.define)&&Te.amd?Te("rlite",[],ke):we?we=ke():ve.Rlite=ke();const Ie=()=>({matches:!1}),Pe=e=>({matches:!0,...e});Se=Ee=e=>(t="*")=>we(Ie,{[t]:Pe})(e());var Re={};Re=Ee((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Re.setupUrlParams=Se,Re.useUrlParams=Re;function Ce(e,t){return me(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:De,set:Oe}=t((()=>({})));var Fe=E,Me=function(e){e.unobserved||(e.unobserved=!0,h(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Ue=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=De(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Fe((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Me(n)}))})),e["tram-tag-new-effects"]=[])},We=e=>{e.forEach((e=>{var t;t=e,De("tram-key-store")[t]--}))},xe=e=>{"tram-tag"in e&&(Me(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),We(e["tram-tag-store-keys"]))},Ge=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,Ye=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Ge),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:_e,get:Be}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap(Ye).forEach(xe);e.flatMap((e=>[...e.addedNodes])).flatMap(Ye).forEach(Ue),(()=>{const e=ye("tram-observable-store"),t=De("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const qe=ge();var He=()=>qe` <section class="blank-page" /> `;const $e=ge();var je=({title:e,group:t,selection:a,source:n},o)=>$e`
+const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),o=e=>n(e).branch.join("/"),i=e=>{n(e).branchIndices[o(e)]+=1},r=e=>{const t=n(e).branchIndices[o(e)];return`${o(e)}[${t}]`};var s=new WeakMap,l=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function d(e){e.cleaners&&e.cleaners.forEach(h,e),e.cleaners=[]}function h(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){d(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function p(e){var t=u[u.length-1];t&&(m(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=l);var o=s.get(a),i=o.get(n);i||(i=new Set,o.set(n,i)),i.has(e)||(i.add(e),e.cleaners.push(i))}(t,e))}function f(e){(function(e){var t=e.target,a=e.key,n=e.type,o=s.get(t),i=new Set;if("clear"===n?o.forEach((function(e,t){c(i,o,t)})):c(i,o,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":l;c(i,o,r)}return i})(e).forEach(y,e)}function y(e){m(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function m(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function A(){return u.length>0}var S=Symbol("is reaction");function k(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var E=new WeakMap,v=new WeakMap,w=Object.prototype.hasOwnProperty;function T(e){var t=v.get(e);return A()&&"object"==typeof e&&null!==e?t||F(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),o=n.done,i=n.value;return o||(t?i[1]=T(i[1]):i=T(i)),{done:o,value:i}},e}var P={has:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"get"}),T(a.get.apply(t,arguments))},add:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.add.apply(t,arguments);return n||f({target:t,key:e,value:e,type:"add"}),o},set:function(e,t){var a=E.get(this),n=Reflect.getPrototypeOf(this),o=n.has.call(a,e),i=n.get.call(a,e),r=n.set.apply(a,arguments);return o?t!==i&&f({target:a,key:e,value:t,oldValue:i,type:"set"}):f({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=E.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.get?a.get.call(t,e):void 0,i=a.delete.apply(t,arguments);return n&&f({target:t,key:e,oldValue:o,type:"delete"}),i},clear:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),o=t.clear.apply(e,arguments);return a&&f({target:e,oldTarget:n,type:"clear"}),o},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=E.get(this),o=Reflect.getPrototypeOf(this);p({target:n,type:"iterate"});var i,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[T(t)].concat(a))};return(i=o.forEach).call.apply(i,[n,r].concat(t))},keys:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=E.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};P[Symbol.iterator]=function(){var e=E.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var C={get:function(e,t,a){return e=w.call(P,t)?P:e,Reflect.get(e,t,a)}},R="object"==typeof window?window:Function("return this")(),L=new Map([[Map,C],[Set,C],[WeakMap,C],[WeakSet,C],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,D=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var O={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&D.has(t))return n;p({target:e,key:t,receiver:a,type:"get"});var o=v.get(n);if(A()&&"object"==typeof n&&null!==n){if(o)return o;var i=Reflect.getOwnPropertyDescriptor(e,t);if(!i||!1!==i.writable||!1!==i.configurable)return F(n)}return o||n},has:function(e,t){var a=Reflect.has(e,t);return p({target:e,key:t,type:"has"}),a},ownKeys:function(e){return p({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=E.get(a)||a);var o=N.call(e,t),i=e[t],r=Reflect.set(e,t,a,n);return e!==E.get(n)||(o?a!==i&&f({target:e,key:t,value:a,oldValue:i,receiver:n,type:"set"}):f({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],o=Reflect.deleteProperty(e,t);return a&&f({target:e,key:t,oldValue:n,type:"delete"}),o}};function F(e){return void 0===e&&(e={}),E.has(e)||"function"==typeof(t=e.constructor)&&t.name in R&&R[t.name]===t&&!L.has(t)?e:v.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||O,a=new Proxy(e,t);return v.set(e,a),E.set(a,e),function(e){s.set(e,new Map)}(e),a}(e);var t}var U=k;const M=(e,t)=>t,G=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),o=[n.currentNode];for(;n.nextNode();)o.push(n.currentNode);return o},W={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var Y=e=>{let t;const a=U((()=>{let a=t,n=W;if(a){n=W;if(a.contains(document.activeElement)){const e=document.activeElement,t=G(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=G(t,n.tagName),i=a.map(M).sort((o=n.index,(e,t)=>Math.abs(e-o)-Math.abs(t-o)))[0];e=a[i];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var o}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:$,get:x,set:_}=t((()=>({}))),B=_,{setup:q,get:H,set:K}=t((()=>[])),j=e=>{const t=H(e);t.splice(0,t.length)},Q=K;var V=e=>{const t={...x("tram-effect-queue")},a=[...H("tram-key-queue")];(e=>{const t=x(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),j("tram-key-queue"),j("tram-global-key-queue");const n=e(),o=x("tram-effect-store"),i=x("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],s=Object.keys(i).filter((e=>!(e in o))).map((e=>i[e])),l=r.concat(s);n["tram-tag-new-effects"]=l;const c=n["tram-tag-store-keys"]||[],d=H("tram-key-queue"),h=c.concat(d);return n["tram-tag-store-keys"]=h,B("tram-effect-queue",t),Q("tram-key-queue",a),n},X={},z={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};z=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,oe=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const o=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(o)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(o)),z(o,n),o};(X=oe).html=oe(),X.svg=oe("http://www.w3.org/2000/svg");var ie;ie=function(e,t,a){const n=function(e,n,o){const i=a[e];return i?i(n,o):t(e,n,o)},o=e(n);return o.h=n,o};var re,se={};se=function(e){return function(t,a,n){for(var o in a)o in le&&(a[le[o]]=a[o],delete a[o]);return e(t,a,n)}};var le={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=se(e)),function(o){for(var i=1,r="",s=arguments.length,l=[],c=0;c<o.length;c++)if(c<s-1){var d=arguments[c+1],h=E(o[c]),u=i;switch(u){case 13:r+=d,d="";case 10:case 9:case 7:u=8;break;case 4:u=5}h.push([0,u,d]),l.push.apply(l,h)}else l.push.apply(l,E(o[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<l.length;c++){var p=g[g.length-1][0],f=(h=l[c])[0];if(2===f&&/^\//.test(h[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0))}else if(2===f){var m=[h[1],{},[]];p[2].push(m),g.push([m,p[2].length-1])}else if(5===f||0===f&&5===h[1]){for(var A,S="";c<l.length;c++)if(5===l[c][0])S=a(S,l[c][1]);else{if(0!==l[c][0]||5!==l[c][1])break;if("object"!=typeof l[c][2]||S)S=a(S,l[c][2]);else for(A in l[c][2])l[c][2].hasOwnProperty(A)&&!p[1][A]&&(p[1][A]=l[c][2][A])}11===l[c][0]&&c++;for(var k=c;c<l.length;c++)if(8===l[c][0]||5===l[c][0])p[1][S]?""===l[c][1]||(p[1][S]=a(p[1][S],l[c][1])):p[1][S]=n(l[c][1]);else{if(0!==l[c][0]||8!==l[c][1]&&5!==l[c][1]){!S.length||p[1][S]||c!==k||3!==l[c][0]&&12!==l[c][0]||(p[1][S]=S.toLowerCase()),3===l[c][0]&&c--;break}p[1][S]?""===l[c][2]||(p[1][S]=a(p[1][S],l[c][2])):p[1][S]=n(l[c][2])}}else if(14===f){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0)}else if(0===f&&1===h[1])void 0===h[2]||null===h[2]?h[2]="":h[2]||(h[2]=a("",h[2])),Array.isArray(h[2][0])?p[2].push.apply(p[2],h[2]):p[2].push(h[2]);else if(1===f)p[2].push(h[1]);else if(11!==f&&12!==f&&3!==f)throw new Error("unhandled: "+f)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function E(e){var a=[];7===i&&(i=4);for(var n=0;n<e.length;n++){var o=e.charAt(n);if(13===i){if(!/-$/.test(r)||"-"!==o){r+=o;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",i=1}1===i&&"<"===o?(r.length&&a.push([1,r]),r="",i=2):">"===o&&"/"===e.charAt(n-1)||">"===o&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",i=1):">"!==o||ce(i)||13===i?2===i&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=o,i=13):1===i?r+=o:2===i&&"/"===o&&r.length?(a.push([2,r]),r="",i=1):2===i&&/\s/.test(o)?(a.push([2,r]),r="",i=4):2===i?r+=o:4===i&&/[^\s"'=/]/.test(o)?(i=5,r=o):4===i&&/\s/.test(o)?(r.length&&a.push([5,r]),a.push([12])):5===i&&/\s/.test(o)?(a.push([5,r]),r="",i=6):5===i&&"="===o?(a.push([5,r],[11]),r="",i=7):5===i?r+=o:6!==i&&4!==i||"="!==o?6!==i&&4!==i||/\s/.test(o)?7===i&&'"'===o?i=10:7===i&&"'"===o?i=9:10===i&&'"'===o||9===i&&"'"===o?(a.push([8,r],[12]),r="",i=4):7!==i||/\s/.test(o)?8===i&&/\s/.test(o)?(a.push([8,r],[12]),r="",i=4):8!==i&&9!==i&&10!==i||(r+=o):(i=8,n--):(a.push([12]),/[\w-]/.test(o)?(r+=o,i=5):i=4):(a.push([11]),i=7):(2===i?a.push([2,r]):5===i?a.push([5,r]):8===i&&r.length&&a.push([8,r]),a.push([3]),r="",i=1)}if(r.length)switch(i){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===i&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,de=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const s=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[o(e)]||(a.branchIndices[o(e)]=0)})("tram-hook-key",`${a}[${s}]`),i("tram-hook-key");const l=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),o=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{o[e]=t.branchIndices[e]||0}))})("tram-hook-key",l);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},d=Y((()=>V(c)));return n("tram-hook-key").branch.pop(),d["tram-tag"]=!0,d["tram-tag-new-effects"]=d["tram-tag-new-effects"]||[],d["tram-tag-cleanup-effects"]=[],d}}}),{});return ie(re,X(e),a)};var he=e=>{const t=x("tram-effect-queue"),a=r("tram-hook-key");i("tram-hook-key");t[`${a}()`]=e};const ue=de(null),be=(e,t)=>(he((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>de(null,{"":be,...e});var pe=F;const{setup:fe,get:ye}=t((()=>pe({})));var me=(e,t)=>{const a=ye("tram-observable-store");i("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const o=a[n];return!e&&H("tram-key-queue").push(n),o},Ae=e=>me(void 0,e);var Se,ke,Ee,ve,we,Te={};ve=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)s(e,t[e])}(),function(t,r){var s=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:o;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),o=(n<0?e:e.slice(0,n)).split("&"),i=0;i<o.length;++i){var r=o[i].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],i(t[0].split("/"),r,0,a,[])||{},r)}(t);return(s.cb||e)(s.params,r,t)};function o(e){return e}function i(e,t,a,n,o){if(n){if(a>=e.length){var s=n["@"];return s&&{cb:s,params:o.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var l=t(e[a]),c=o.length;return i(e,t,a+1,n[l.toLowerCase()],o)||r(e,t,a+1,n,":",l,o,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),o,c)}}function r(e,t,a,n,o,r,s,l){s.length=l;var c=n[o];return c&&s.push([c["~"],r]),i(e,t,a,c,s)}function s(e,t){for(var n=e.split("/"),o=a,i=+("/"===e[0]);i<n.length;++i){var r=n[i],s=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();o=o[s]||(o[s]={}),(":"==s||"*"==s)&&(o["~"]=r.slice(1))}o["@"]=t}}},(we=(Ee=Te)&&Ee.define)&&we.amd?we("rlite",[],ve):Te?Te=ve():Ee.Rlite=ve();const Ie=()=>({matches:!1}),Pe=e=>({matches:!0,...e});Se=ke=e=>(t="*")=>Te(Ie,{[t]:Pe})(e());var Ce={};Ce=ke((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Ce.setupUrlParams=Se,Ce.useUrlParams=Ce;function Re(e,t){return me(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:De,set:Oe}=t((()=>({})));var Fe=k,Ue=function(e){e.unobserved||(e.unobserved=!0,d(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Me=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=De(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Fe((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Ue(n)}))})),e["tram-tag-new-effects"]=[])},Ge=e=>{e.forEach((e=>{var t;t=e,De("tram-key-store")[t]--}))},We=e=>{"tram-tag"in e&&(Ue(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),Ge(e["tram-tag-store-keys"]))},Ye=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,$e=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Ye),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:xe,get:_e}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap($e).forEach(We);e.flatMap((e=>[...e.addedNodes])).flatMap($e).forEach(Me),(()=>{const e=ye("tram-observable-store"),t=De("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const Be=ge();var qe=()=>Be` <section class="blank-page" /> `;const He=ge();var Ke=({title:e,group:t,selection:a,source:n},o)=>He`
     <section
       class="page"
       page-color="grey"
@@ -11,28 +11,32 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
       </h2>
       ${o}
     </section>
-  `;const Ke=ge({page:je,"blank-page":He});var Qe=(e,t)=>(de((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,o=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:o?"auto":"smooth"})})(t)))})),Ke` <section class="page-scroller">
+  `;const je=ge({page:Ke,"blank-page":qe});var Qe=(e,t)=>(he((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,o=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:o?"auto":"smooth"})})(t)))})),je` <section class="page-scroller">
     <section class="page-scroller-flex">${t} <blank-page /></section>
   </section>`);const Ve=ge();var Xe=(e,t)=>Ve`
     <fieldset class="annotation">
       <i>${t}</i>
     </fieldset>
-  `;const ze=ge({annotation:Xe,page:je});var Je=()=>{const e=Ce("PAGE_FILTERS",{race:""}),t=t=>e.race=t;return ze`
+  `;const ze=ge({annotation:Xe,page:Ke});const Je=ge({annotation:Xe,page:Ke,"races-selector":()=>{const e=Re("PAGE_FILTERS",{race:""}),t=t=>e.race=t,a=e.race;return ze`
+		<page title="Race" selection="race" source="UA-Origins, Pg 2">
+			Details can be found in the Unearthed Arcana - Origins (page 2-10).
+			Select one of the following races to see instructions for writing in
+			the details in your character sheet.
+			<div class="three-col-wrapper">
+				<button class=${"human"==a?"selected":""} onclick=${()=>t("human")}>Human</button>
+				<button class=${"ardling"==a?"selected":""} onclick=${()=>t("ardling")}>Ardling</button>
+			<button class=${"dragonborn"==a?"selected":""}" onclick=${()=>t("dragonborn")}>Dragonborn</button>
+				<button class=${"dwarf"==a?"selected":""} onclick=${()=>t("dwarf")}>Dwarf</button>
+				<button class=${"elf"==a?"selected":""} onclick=${()=>t("elf")}>Elf</button>
+				<button class=${"gnome"==a?"selected":""} onclick=${()=>t("gnome")}>Gnome</button>
+				<button class=${"halfling"==a?"selected":""} onclick=${()=>t("halfling")}>Halfling</button>
+				<button class=${"orc"==a?"selected":""} onclick=${()=>t("orc")}>Orc</button>
+				<button class=${"tiefling"==a?"selected":""} onclick=${()=>t("tiefling")}>Tiefling</button>
+			</div>
+		</page>
+  `}});var Ze=()=>Je`
 		<>
-			<page title="Race" selection="race" source="UA-Origins, Pg 2">
-				Details can be found in the Unearthed Arcana - Origins (page 2-10).
-				Select one of the following races to see instructions for writing in
-				the details in your character sheet.
-				<button onclick=${()=>t("human")}>Human</button>
-				<button onclick=${()=>t("ardling")}>Ardling</button>
-				<button onclick=${()=>t("dragonborn")}>Dragonborn</button>
-				<button onclick=${()=>t("dwarf")}>Dwarf</button>
-				<button onclick=${()=>t("elf")}>Elf</button>
-				<button onclick=${()=>t("gnome")}>Gnome</button>
-				<button onclick=${()=>t("halfling")}>Halfling</button>
-				<button onclick=${()=>t("orc")}>Orc</button>
-				<button onclick=${()=>t("tiefling")}>Tiefling</button>
-			</page>
+			<races-selector />
 			<page title="Human" group="race" selection="human" source="UA-Origins, Pg 2">
 				<ol>
 					<li>Write <b>Human</b> in the <b>RACE</b> field in the header</li>
@@ -211,9 +215,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
 					<li>
 						Add the <b>Breath Weapon</b> trait to the
 						<b>FEATS & TRAITS</b> and add a <b>Breath Weapon</b> attack to the
-						<b>ATTACKS & SPELLCASTING</b> table. Write <b>1d10 + 1</b> and the
-						damage type from your Draconic Ancestry in the
-						<b>DAMAGE / TYPE</b> field. Ignore <b>ATK BONUS</b> for now.
+						<b>ATTACKS & SPELLCASTING</b> table.
 						<annotation>
 							<b>Breath Weapon.</b> As an Action, you exhale destructive
 							energy in a 15-foot cone. Each creature in that area must make a
@@ -248,6 +250,27 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
 							dragons. You can therefore speak, read, and write Draconic.
 						</annotation>
 					</li>
+					<li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/races/16-dragonborn"
+                    target="_blank"
+                    >Breath Weapon</a
+                  >
+                </td>
+                <td>DC 10 + CON</td>
+                <td>1d10 + 1 DMG type</td>
+              </tr>
+            </tbody>
+          </li>
 				</ol>
 			</page>
 			<page title="Dwarf" group="race" selection="dwarf" source="UA-Origins, Pg 5">
@@ -659,10 +682,53 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
 							Legacy trait.
 						</annotation>
 					</li>
+					<li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with the cantrip associated with the taken legacy.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#poison%20spray_phb"
+                    target="_blank"
+                    >Poison Spray</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d12 Poison</td>
+              </tr>
+							<tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#chill%20touch_phb"
+                    target="_blank"
+                    >Chill Touch</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d8 necrotic</td>
+              </tr>
+							<tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#fire%20bolt_phb"
+                    target="_blank"
+                    >Fire bolt</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d10 fire</td>
+              </tr>
+            </tbody>
+          </li>
 				</ol>
 			</page>
 		</>
-  `};const Ze=ge({annotation:Xe,page:je});var et=()=>{const e=Ce("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return Ze`
+  `;const et=ge({annotation:Xe,page:Ke});var tt=()=>{const e=Re("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return et`
     <style>
       .page[page-group="race"] {
         display: none;
@@ -677,20 +743,39 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         display: inherit;
       }
     </style>
-  `};const tt=ge({annotation:Xe,page:je});const at=ge({"page-scroller":Qe,"races-content":Je,"page-filters":et,"classes-content":()=>{const e=Ce("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t;return tt`
+  `};const at=ge({annotation:Xe,page:Ke});const nt=ge({annotation:Xe,page:Ke,"classes-selector":()=>{const e=Re("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t,a=e.selectedClass;return at`
+    <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
+      Details can be found in the Unearthed Arcana - Expert Classes (page 3-15).
+      Select one of the following classes to see instructions for writing in the
+      details in your character sheet.
+      <annotation>
+        Note, only the Expert Classes are available for now. More will be added
+        as the UA expands.
+      </annotation>
+      <div class="three-col-wrapper">
+        <button
+          class=${"bard"==a?"selected":""}
+          onclick=${()=>t("bard")}
+        >
+          Bard
+        </button>
+        <button
+          class=${"ranger"==a?"selected":""}
+          onclick=${()=>t("ranger")}
+        >
+          Ranger
+        </button>
+        <button
+          class=${"rogue"==a?"selected":""}
+          onclick=${()=>t("rogue")}
+        >
+          Rogue
+        </button>
+      </div>
+    </page>
+  `}});var ot=()=>{Re("PAGE_FILTERS",{selectedClass:"bard"});return nt`
     <>
-      <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
-        Details can be found in the Unearthed Arcana - Expert Classes (page
-        3-15). Select one of the following classes to see instructions for
-        writing in the details in your character sheet.
-        <annotation>
-          Note, only the Expert Classes are available for now. More will be
-          added as the UA expands.
-        </annotation>
-        <button onclick=${()=>t("bard")}>Bard</button>
-        <button onclick=${()=>t("ranger")}>Ranger</button>
-        <button onclick=${()=>t("rogue")}>Rogue</button>
-      </page>
+      <classes-selector />
       <page
         title="Bard"
         group="classes"
@@ -1226,7 +1311,226 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         </ol>
       </page>
     </>
-  `},annotation:Xe,page:je});((e,t)=>{const n=Le(t);var o;window["tram-space"]={},Y("tram-effect-store"),Y("tram-effect-queue"),a("tram-hook-key"),fe("tram-observable-store"),Ne("tram-key-store"),H("tram-key-queue"),H("tram-global-key-queue"),_e("tram-mutation-observer"),o=n,Be("tram-mutation-observer").observe(o,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{Ae({race:"",class:""});return at`
+  `};const it=ge({annotation:Xe,page:Ke});const rt=ge({annotation:Xe,page:Ke,"backgrounds-selector":()=>{const e=Re("PAGE_FILTERS",{background:"acolyte"}),t=t=>e.background=t;return it`
+    <page title="Background" selection="background" source="UA-Origins, Pg 11">
+      Details can be found in the Unearthed Arcana - Origins (page 11-15).
+      Select one of the following backgrounds to see instructions for writing in
+      the details in your character sheet.
+      <button
+        class=${"custom"==e.background?"selected":""}
+        onclick=${()=>t("custom")}
+      >
+        Custom Background
+      </button>
+      <div class="three-col-wrapper">
+        <button
+          class=${"acolyte"==e.background?"selected":""}
+          onclick=${()=>t("acolyte")}
+        >
+          Acolyte
+        </button>
+        <button
+          class=${"artisan"==e.background?"selected":""}
+          onclick=${()=>t("artisan")}
+        >
+          Artisan
+        </button>
+        <button
+          class=${"charlatan"==e.background?"selected":""}
+          onclick=${()=>t("charlatan")}
+        >
+          Charlatan
+        </button>
+        <button
+          class=${"criminal"==e.background?"selected":""}
+          onclick=${()=>t("criminal")}
+        >
+          Criminal
+        </button>
+        <button
+          class=${"cultist"==e.background?"selected":""}
+          onclick=${()=>t("cultist")}
+        >
+          Cultist
+        </button>
+        <button
+          class=${"entertainer"==e.background?"selected":""}
+          onclick=${()=>t("entertainer")}
+        >
+          Entertainer
+        </button>
+        <button
+          class=${"farmer"==e.background?"selected":""}
+          onclick=${()=>t("farmer")}
+        >
+          Farmer
+        </button>
+        <button
+          class=${"gladiator"==e.background?"selected":""}
+          onclick=${()=>t("gladiator")}
+        >
+          Gladiator
+        </button>
+        <button
+          class=${"guard"==e.background?"selected":""}
+          onclick=${()=>t("guard")}
+        >
+          Guard
+        </button>
+        <button
+          class=${"guide"==e.background?"selected":""}
+          onclick=${()=>t("guide")}
+        >
+          Guide
+        </button>
+        <button
+          class=${"hermit"==e.background?"selected":""}
+          onclick=${()=>t("hermit")}
+        >
+          Hermit
+        </button>
+        <button
+          class=${"laborer"==e.background?"selected":""}
+          onclick=${()=>t("laborer")}
+        >
+          Laborer
+        </button>
+        <button
+          class=${"noble"==e.background?"selected":""}
+          onclick=${()=>t("noble")}
+        >
+          Noble
+        </button>
+        <button
+          class=${"pilgrim"==e.background?"selected":""}
+          onclick=${()=>t("pilgrim")}
+        >
+          Pilgrim
+        </button>
+        <button
+          class=${"sage"==e.background?"selected":""}
+          onclick=${()=>t("sage")}
+        >
+          Sage
+        </button>
+        <button
+          class=${"sailor"==e.background?"selected":""}
+          onclick=${()=>t("sailor")}
+        >
+          Sailor
+        </button>
+        <button
+          class=${"soldier"==e.background?"selected":""}
+          onclick=${()=>t("soldier")}
+        >
+          Soldier
+        </button>
+        <button
+          class=${"urchin"==e.background?"selected":""}
+          onclick=${()=>t("urchin")}
+        >
+          Urchin
+        </button>
+      </div>
+    </page>
+  `}});const st=ge({"page-scroller":Qe,"races-content":Ze,"page-filters":tt,"classes-content":ot,"backgrounds-content":()=>{Re("PAGE_FILTERS",{background:"acolyte"});return rt`
+    <>
+    <backgrounds-selector />
+    <page
+      title="Acolyte"
+      group="backgrounds"
+      selection="acolyte"
+      source="UA-Origins, Pg 11"
+    >
+      <ol>
+        <li>
+          Fill in the circles for <b>Insight</b> and <b>Religion</b> in the
+          <b>SKILLS</b> section
+          <annotation>
+            If you already have proficiency in these two skills, feel free to
+            select any two skills, so long as they are thematic.
+          </annotation>
+        </li>
+        <li>
+          Add the <b>Calligrapher's Supplies</b> and <b>Celestial</b> to the
+          <b>PROFICIENCIES & LANGUAGES</b> section
+        </li>
+        <li>
+          Add the <b>Magic Initiate (Divine)</b> to the "FEATURES & TRAITS" box.
+          You can read more details about this feat in UA-Origins, Pg 17. The
+          Divine spell list can be found in UA-Origins, Pg 21
+
+          <annotation>
+            <b>Magic Initiate.</b> You gain the following benefits related to a
+            magical tradition: <br />
+            <b>Two Cantrips.</b> You learn two cantrips of your choice from the
+            [Divine] Spell list. <br />
+            <b>1st-Level Spell.</b> Choose one 1st-level Spell from the [Divine]
+            Spell list. You always have that Spell prepared. You can cast it
+            once without a Spell Slot, and you regain the ability to cast it in
+            that way when you finish a Long Rest. You can also cast the Spell
+            using any Spell Slots you have.
+          </annotation>
+        </li>
+        <li>
+          Write the following items in the <b>EQUIPMENT</b> section:<br />
+          Book (Prayers), Parchment (10 sheets), Calligrapher's Supplies, Holy
+          Symbol, Robe
+        </li>
+        <li>
+          Add <b>3</b> to your existing Gold Pieces in the
+          <b>EQUIPMENT</b> section.
+        </li>
+      </ol>
+    </page>
+    <page
+      title="Artisan"
+      group="backgrounds"
+      selection="artisan"
+      source="UA-Origins, Pg 12"
+    >
+      <ol>
+        <li>
+          Fill in the circles for <b>Investigation</b> and <b>Persuasion</b> in the
+          <b>SKILLS</b> section
+          <annotation>
+            If you already have proficiency in these two skills, feel free to
+            select any two skills, so long as they are thematic.
+          </annotation>
+        </li>
+        <li>
+          Add the
+          <a href="https://www.dndbeyond.com/sources/basic-rules/equipment#ArtisansTools" target="_blank">
+          <b>Artisan's Tools</b> (one of your choice)</a> and <b>Gnomish</b> to the
+          <b>PROFICIENCIES & LANGUAGES</b> section
+        </li>
+        <li>
+          Add the <b>Crafter</b> to the "FEATURES & TRAITS" box.
+          You can read more details about this feat in UA-Origins, Pg 16
+          <annotation>
+            <b>Crafter.</b> You gain the following benefits: <br />
+            <b>Tool .</b> You learn two cantrips of your choice from the
+            [Divine] Spell list. <br />
+            <b>1st-Level Spell.</b> Choose one 1st-level Spell from the [Divine]
+            Spell list. You always have that Spell prepared. You can cast it
+            once without a Spell Slot, and you regain the ability to cast it in
+            that way when you finish a Long Rest. You can also cast the Spell
+            using any Spell Slots you have.
+          </annotation>
+        </li>
+        <li>
+          Write the following items in the <b>EQUIPMENT</b> section:<br />
+          Book (Prayers), Parchment (10 sheets), Calligrapher's Supplies, Holy
+          Symbol, Robe
+        </li>
+        <li>
+          Add <b>3</b> to your existing Gold Pieces in the
+          <b>EQUIPMENT</b> section.
+        </li>
+      </ol>
+    </page>
+    </>
+  `},annotation:Xe,page:Ke});((e,t)=>{const n=Le(t);var o;window["tram-space"]={},$("tram-effect-store"),$("tram-effect-queue"),a("tram-hook-key"),fe("tram-observable-store"),Ne("tram-key-store"),q("tram-key-queue"),q("tram-global-key-queue"),xe("tram-mutation-observer"),o=n,_e("tram-mutation-observer").observe(o,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{Ae({race:"",class:""});return st`
     <main class="app">
       <page-scroller>
         <page title="Character Guide" selection="character-guide">
@@ -1477,4 +1781,4 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
       </page-scroller>
     </main>
   `}),"#root");
-//# sourceMappingURL=index.69912049.js.map
+//# sourceMappingURL=index.852624b2.js.map
