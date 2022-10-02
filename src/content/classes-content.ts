@@ -1,10 +1,12 @@
 import { registerHtml, TramOneComponent, useGlobalStore } from "tram-one";
 import page from "../page";
 import annotation from "../annotation";
+import classesSelector from "./classes-selector";
 
 const html = registerHtml({
   annotation: annotation,
   page: page,
+  "classes-selector": classesSelector,
 });
 
 const classesContent: TramOneComponent = () => {
@@ -14,18 +16,7 @@ const classesContent: TramOneComponent = () => {
 
   return html`
     <>
-      <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
-        Details can be found in the Unearthed Arcana - Expert Classes (page
-        3-15). Select one of the following classes to see instructions for
-        writing in the details in your character sheet.
-        <annotation>
-          Note, only the Expert Classes are available for now. More will be
-          added as the UA expands.
-        </annotation>
-        <button onclick=${() => setClass("bard")}>Bard</button>
-        <button onclick=${() => setClass("ranger")}>Ranger</button>
-        <button onclick=${() => setClass("rogue")}>Rogue</button>
-      </page>
+      <classes-selector />
       <page
         title="Bard"
         group="classes"

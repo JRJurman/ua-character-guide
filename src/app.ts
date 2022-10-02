@@ -4,13 +4,19 @@ import "./table.css";
 import pageScroller from "./page-scroller";
 import page from "./page";
 import annotation from "./annotation";
-import { racesContent, pageFilters, classesContent } from "./content";
+import {
+  racesContent,
+  pageFilters,
+  classesContent,
+  backgroundsContent,
+} from "./content";
 
 const html = registerHtml({
   "page-scroller": pageScroller,
   "races-content": racesContent,
   "page-filters": pageFilters,
   "classes-content": classesContent,
+  "backgrounds-content": backgroundsContent,
   annotation: annotation,
   page: page,
 });

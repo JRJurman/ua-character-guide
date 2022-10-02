@@ -7,8 +7,7 @@ body {
 
 /* set the margin and height so that page takes full width */
 body,
-#root,
-#root div {
+#root {
   margin: 0px;
   height: 100vh;
   min-width: 2000vw;
@@ -31,4 +30,52 @@ a:visited {
 
 ul {
   font-size: inherit;
+}
+
+button {
+  background: var(--surface-1);
+  margin: 6px;
+  border-radius: 10px;
+  padding: 15px 0px;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.two-col-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.three-col-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* if we are in dark mode, made the shadow more pronounced */
+@media (prefers-color-scheme: dark) {
+  b {
+    color: white;
+  }
+
+  .selected {
+    background: var(--surface-4);
+    color: var(--surface-1);
+    border: 3px solid var(--surface-1);
+  }
+}
+
+/* if we are in dark mode, made the shadow more pronounced */
+@media (prefers-color-scheme: light) {
+  b {
+    color: black;
+  }
+
+  .selected {
+    background: var(--gray-6);
+    color: var(--surface-1);
+    border: 3px solid var(--surface-1);
+  }
 }

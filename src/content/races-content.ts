@@ -1,37 +1,18 @@
-import {
-  registerHtml,
-  TramOneComponent,
-  useGlobalStore,
-  useStore,
-} from "tram-one";
+import { registerHtml, TramOneComponent } from "tram-one";
 import page from "../page";
 import annotation from "../annotation";
+import racesSelector from "./races-selector";
 
 const html = registerHtml({
   annotation: annotation,
   page: page,
+  "races-selector": racesSelector,
 });
 
 const racesContent: TramOneComponent = () => {
-  const pageFilters = useGlobalStore("PAGE_FILTERS", { race: "" });
-  const setRace = (race) => (pageFilters.race = race);
-
   return html`
 		<>
-			<page title="Race" selection="race" source="UA-Origins, Pg 2">
-				Details can be found in the Unearthed Arcana - Origins (page 2-10).
-				Select one of the following races to see instructions for writing in
-				the details in your character sheet.
-				<button onclick=${() => setRace("human")}>Human</button>
-				<button onclick=${() => setRace("ardling")}>Ardling</button>
-				<button onclick=${() => setRace("dragonborn")}>Dragonborn</button>
-				<button onclick=${() => setRace("dwarf")}>Dwarf</button>
-				<button onclick=${() => setRace("elf")}>Elf</button>
-				<button onclick=${() => setRace("gnome")}>Gnome</button>
-				<button onclick=${() => setRace("halfling")}>Halfling</button>
-				<button onclick=${() => setRace("orc")}>Orc</button>
-				<button onclick=${() => setRace("tiefling")}>Tiefling</button>
-			</page>
+			<races-selector />
 			<page title="Human" group="race" selection="human" source="UA-Origins, Pg 2">
 				<ol>
 					<li>Write <b>Human</b> in the <b>RACE</b> field in the header</li>
@@ -210,9 +191,7 @@ const racesContent: TramOneComponent = () => {
 					<li>
 						Add the <b>Breath Weapon</b> trait to the
 						<b>FEATS & TRAITS</b> and add a <b>Breath Weapon</b> attack to the
-						<b>ATTACKS & SPELLCASTING</b> table. Write <b>1d10 + 1</b> and the
-						damage type from your Draconic Ancestry in the
-						<b>DAMAGE / TYPE</b> field. Ignore <b>ATK BONUS</b> for now.
+						<b>ATTACKS & SPELLCASTING</b> table.
 						<annotation>
 							<b>Breath Weapon.</b> As an Action, you exhale destructive
 							energy in a 15-foot cone. Each creature in that area must make a
@@ -247,6 +226,27 @@ const racesContent: TramOneComponent = () => {
 							dragons. You can therefore speak, read, and write Draconic.
 						</annotation>
 					</li>
+					<li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/races/16-dragonborn"
+                    target="_blank"
+                    >Breath Weapon</a
+                  >
+                </td>
+                <td>DC 10 + CON</td>
+                <td>1d10 + 1 DMG type</td>
+              </tr>
+            </tbody>
+          </li>
 				</ol>
 			</page>
 			<page title="Dwarf" group="race" selection="dwarf" source="UA-Origins, Pg 5">
@@ -658,6 +658,49 @@ const racesContent: TramOneComponent = () => {
 							Legacy trait.
 						</annotation>
 					</li>
+					<li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with the cantrip associated with the taken legacy.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#poison%20spray_phb"
+                    target="_blank"
+                    >Poison Spray</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d12 Poison</td>
+              </tr>
+							<tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#chill%20touch_phb"
+                    target="_blank"
+                    >Chill Touch</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d8 necrotic</td>
+              </tr>
+							<tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#fire%20bolt_phb"
+                    target="_blank"
+                    >Fire bolt</a
+                  >
+                </td>
+                <td>SPL + 2</td>
+                <td>1d10 fire</td>
+              </tr>
+            </tbody>
+          </li>
 				</ol>
 			</page>
 		</>
