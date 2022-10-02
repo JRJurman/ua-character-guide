@@ -71,15 +71,7 @@ const classesContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Dagger</b> in the <b>EQUIPMENT</b> section. Additionally, add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-              target="_blank"
-            >
-              Dagger
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d4 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Dagger</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Add <b>Entertainer's Pack</b> in the <b>EQUIPMENT</b> section. This
@@ -99,16 +91,7 @@ const classesContent: TramOneComponent = () => {
             the <b>EQUIPMENT</b> section
           </li>
           <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Write in <b>18</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
@@ -172,9 +155,7 @@ const classesContent: TramOneComponent = () => {
               >Disguise Self</a
             >
             under level 1 spells.<br />
-            Add Vicious Mockery to the <b>ATTACKS & SPELLCASTING</b> section,
-            ignoring ATK BONUS for now, write in <b>1d4 Psychic</b> for the
-            <b>DAMAGE/TYPE</b>.
+            Add Vicious Mockery to the <b>ATTACKS & SPELLCASTING</b> section.
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               practice your bardic arts and replace any Spell you have prepared
@@ -188,6 +169,49 @@ const classesContent: TramOneComponent = () => {
           <li>
             In the spellcasting sheet, write <b>Charisma</b> as your
             <b>SPELLCASTING ABILITY</b>
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                    target="_blank"
+                    >Dagger</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d4 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                    target="_blank"
+                    >Shortsword</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#vicious%20mockery_phb"
+                    target="_blank"
+                    >Vicious Mockery</a
+                  >
+                </td>
+                <td>DC 10 + WIS</td>
+                <td>1d4 Psychic</td>
+              </tr>
+            </tbody>
           </li>
         </ol>
       </page>
@@ -231,18 +255,7 @@ const classesContent: TramOneComponent = () => {
             Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
             <b>EQUIPMENT</b> section
           </li>
-          <li>
-            Add <b>Longbow</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
-              target="_blank"
-            >
-              Longbow
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d8 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
+          <li>Add <b>Longbow</b> in the <b>EQUIPMENT</b> section.</li>
           <li>
             Add <b>Explorer's Pack</b> in the <b>EQUIPMENT</b> section. This
             includes
@@ -260,28 +273,10 @@ const classesContent: TramOneComponent = () => {
             Add <b>Studded Leather Armor</b> in the <b>EQUIPMENT</b> section
           </li>
           <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
-            Add <b>Scimitar</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Scimitar
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Slashing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Scimitar</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Write in <b>8</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
@@ -297,8 +292,9 @@ const classesContent: TramOneComponent = () => {
         <ol>
           <li>
             Choose two skills for which you have proficiency, and mark these for
-            you as having <b>Expertise</b>. For these skills you'll add your
-            proficiency bonus twice
+            you as having <b>Expertise</b> (you can mark this by adding another
+            circle on the character sheet, or annotating in some other way). For
+            these skills you'll add your proficiency bonus twice
             <annotation>
               Stealth and Survival are iconic choices for a Ranger if you have
               Proficiency in them.
@@ -346,9 +342,7 @@ const classesContent: TramOneComponent = () => {
               >Speak with Animals</a
             >
             under level 1 spells.<br />
-            Add Thorn Whip to the <b>ATTACKS & SPELLCASTING</b> section,
-            ignoring ATK BONUS for now, write in <b>1d6 piercing</b> for the
-            <b>DAMAGE/TYPE</b>.
+            Add Thorn Whip to the <b>ATTACKS & SPELLCASTING</b> section.
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               commune with nature and replace any Spell you have prepared for
@@ -361,6 +355,56 @@ const classesContent: TramOneComponent = () => {
           <li>
             In the spellcasting sheet, write <b>Wisdom</b> as your
             <b>SPELLCASTING ABILITY</b>
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
+                  target="_blank"
+                >Longbow</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d8 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                  target="_blank"
+                >Shortsword</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                  target="_blank"
+                >Scimitar</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Slashing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://5e.tools/spells.html#thorn%20whip_phb"
+                  target="_blank"
+                >Thorn whip</a>
+                </td>
+                <td>WIS + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+            </tbody>
           </li>
         </ol>
       </page>
@@ -409,42 +453,9 @@ const classesContent: TramOneComponent = () => {
             Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
             <b>EQUIPMENT</b> section
           </li>
-          <li>
-            Add <b>Shortbow</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
-              target="_blank"
-            >
-              Shortbow
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
-          <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
-          <li>
-            Add <b>Dagger (2)</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-              target="_blank"
-            >
-              Dagger
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d4 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
+          <li>Add <b>Shortbow</b> in the <b>EQUIPMENT</b> section.</li>
+          <li>Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.</li>
+          <li>Add <b>Dagger (2)</b> in the <b>EQUIPMENT</b> section</li>
           <li>
             Add <b>Burglar's Pack</b> in the <b>EQUIPMENT</b> section. This
             includes
@@ -466,10 +477,89 @@ const classesContent: TramOneComponent = () => {
           </li>
         </ol>
       </page>
-      <page title="Rogue cont."
+      <page
+        title="Rogue cont."
         group="classes"
         selection="rogue"
-        source="UA-Expert-Classes, Pg 12"></page>
+        source="UA-Expert-Classes, Pg 12"
+      >
+        <ol>
+          <li>
+            Choose two skills for which you have proficiency, and mark these for
+            you as having <b>Expertise</b> (you can mark this by adding another
+            circle on the character sheet, or annotating in some other way). For
+            these skills you'll add your proficiency bonus twice
+            <annotation>
+              Sleight and Stealth are iconic choices for a Rogue if you have
+              Proficiency in them.
+            </annotation>
+          </li>
+          <li>
+            Add <b>Sneak Attack</b> to the <b>FEATURES & TRAITS</b> section. The
+            sneak attack damage for level 1 is <b>1d6</b>
+            <annotation>
+              <b>Sneak Attack</b>. Once on each of your turns when you take the
+              Attack Action, you can deal extra damage to one creature you hit
+              with an Attack Roll if you're attacking with a Finesse Weapon or a
+              Ranged Weapon and if at least one of the following requirements is
+              met:<br />
+              <b>Advantage.</b> You have Advantage on the Attack Roll.<br />
+              <b>Ally Adjacent to Target.</b> At least one of your allies is
+              within 5 feet of the target, the ally isn't Incapacitated, and you
+              don't have Disadvantage on the Attack Roll.
+            </annotation>
+          </li>
+          <li>
+            Add <b>Theives' Cant</b> and one other language to the
+            <b>PROFICIENCIES & LANGUAGES</b> section. You can ses a listing of
+            available languages in UA-Origins, Pg 16 or <b>Languages</b> later
+            in this guide
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                    target="_blank"
+                    >Dagger</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d4 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
+                    target="_blank"
+                    >Shortbow</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                    target="_blank"
+                    >Shortsword</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+            </tbody>
+          </li>
+        </ol>
+      </page>
     </>
   `;
 };

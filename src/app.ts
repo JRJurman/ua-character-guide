@@ -266,15 +266,6 @@ const app: TramOneComponent = () => {
             </li>
           </ul>
         </page>
-        <page title="Finishing Touches" selection="finishing-touches">
-          <ul>
-            <li>Write your name in header under "PLAYER NAME"</li>
-            <li>
-              Write your character's name in the top left header under
-              "CHARACTER NAME"
-            </li>
-          </ul>
-        </page>
       </page-scroller>
     </main>
   `;
