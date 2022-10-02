@@ -1,4 +1,4 @@
-const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),i=e=>n(e).branch.join("/"),o=e=>{n(e).branchIndices[i(e)]+=1},r=e=>{const t=n(e).branchIndices[i(e)];return`${i(e)}[${t}]`};var s=new WeakMap,l=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function h(e){e.cleaners&&e.cleaners.forEach(d,e),e.cleaners=[]}function d(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){h(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function f(e){var t=u[u.length-1];t&&(m(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=l);var i=s.get(a),o=i.get(n);o||(o=new Set,i.set(n,o)),o.has(e)||(o.add(e),e.cleaners.push(o))}(t,e))}function p(e){(function(e){var t=e.target,a=e.key,n=e.type,i=s.get(t),o=new Set;if("clear"===n?i.forEach((function(e,t){c(o,i,t)})):c(o,i,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":l;c(o,i,r)}return o})(e).forEach(y,e)}function y(e){m(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function m(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function A(){return u.length>0}var S=Symbol("is reaction");function E(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var T=new WeakMap,v=new WeakMap,w=Object.prototype.hasOwnProperty;function k(e){var t=v.get(e);return A()&&"object"==typeof e&&null!==e?t||M(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),i=n.done,o=n.value;return i||(t?o[1]=k(o[1]):o=k(o)),{done:i,value:o}},e}var P={has:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this);return f({target:t,key:e,type:"get"}),k(a.get.apply(t,arguments))},add:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.add.apply(t,arguments);return n||p({target:t,key:e,value:e,type:"add"}),i},set:function(e,t){var a=T.get(this),n=Reflect.getPrototypeOf(this),i=n.has.call(a,e),o=n.get.call(a,e),r=n.set.apply(a,arguments);return i?t!==o&&p({target:a,key:e,value:t,oldValue:o,type:"set"}):p({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=T.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),i=a.get?a.get.call(t,e):void 0,o=a.delete.apply(t,arguments);return n&&p({target:t,key:e,oldValue:i,type:"delete"}),o},clear:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),i=t.clear.apply(e,arguments);return a&&p({target:e,oldTarget:n,type:"clear"}),i},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=T.get(this),i=Reflect.getPrototypeOf(this);f({target:n,type:"iterate"});var o,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[k(t)].concat(a))};return(o=i.forEach).call.apply(o,[n,r].concat(t))},keys:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=T.get(this),t=Reflect.getPrototypeOf(this);return f({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};P[Symbol.iterator]=function(){var e=T.get(this),t=Reflect.getPrototypeOf(this);f({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var C={get:function(e,t,a){return e=w.call(P,t)?P:e,Reflect.get(e,t,a)}},R="object"==typeof window?window:Function("return this")(),L=new Map([[Map,C],[Set,C],[WeakMap,C],[WeakSet,C],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,O=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var D={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&O.has(t))return n;f({target:e,key:t,receiver:a,type:"get"});var i=v.get(n);if(A()&&"object"==typeof n&&null!==n){if(i)return i;var o=Reflect.getOwnPropertyDescriptor(e,t);if(!o||!1!==o.writable||!1!==o.configurable)return M(n)}return i||n},has:function(e,t){var a=Reflect.has(e,t);return f({target:e,key:t,type:"has"}),a},ownKeys:function(e){return f({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=T.get(a)||a);var i=N.call(e,t),o=e[t],r=Reflect.set(e,t,a,n);return e!==T.get(n)||(i?a!==o&&p({target:e,key:t,value:a,oldValue:o,receiver:n,type:"set"}):p({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],i=Reflect.deleteProperty(e,t);return a&&p({target:e,key:t,oldValue:n,type:"delete"}),i}};function M(e){return void 0===e&&(e={}),T.has(e)||"function"==typeof(t=e.constructor)&&t.name in R&&R[t.name]===t&&!L.has(t)?e:v.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||D,a=new Proxy(e,t);return v.set(e,a),T.set(a,e),function(e){s.set(e,new Map)}(e),a}(e);var t}var F=E;const U=(e,t)=>t,G=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),i=[n.currentNode];for(;n.nextNode();)i.push(n.currentNode);return i},W={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var Y=e=>{let t;const a=F((()=>{let a=t,n=W;if(a){n=W;if(a.contains(document.activeElement)){const e=document.activeElement,t=G(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=G(t,n.tagName),o=a.map(U).sort((i=n.index,(e,t)=>Math.abs(e-i)-Math.abs(t-i)))[0];e=a[o];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var i}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:x,get:B,set:_}=t((()=>({}))),q=_,{setup:K,get:H,set:$}=t((()=>[])),j=e=>{const t=H(e);t.splice(0,t.length)},Q=$;var V=e=>{const t={...B("tram-effect-queue")},a=[...H("tram-key-queue")];(e=>{const t=B(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),j("tram-key-queue"),j("tram-global-key-queue");const n=e(),i=B("tram-effect-store"),o=B("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],s=Object.keys(o).filter((e=>!(e in i))).map((e=>o[e])),l=r.concat(s);n["tram-tag-new-effects"]=l;const c=n["tram-tag-store-keys"]||[],h=H("tram-key-queue"),d=c.concat(h);return n["tram-tag-store-keys"]=d,q("tram-effect-queue",t),Q("tram-key-queue",a),n},z={},X={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};X=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,ie=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const i=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(i)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(i)),X(i,n),i};(z=ie).html=ie(),z.svg=ie("http://www.w3.org/2000/svg");var oe;oe=function(e,t,a){const n=function(e,n,i){const o=a[e];return o?o(n,i):t(e,n,i)},i=e(n);return i.h=n,i};var re,se={};se=function(e){return function(t,a,n){for(var i in a)i in le&&(a[le[i]]=a[i],delete a[i]);return e(t,a,n)}};var le={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=se(e)),function(i){for(var o=1,r="",s=arguments.length,l=[],c=0;c<i.length;c++)if(c<s-1){var h=arguments[c+1],d=T(i[c]),u=o;switch(u){case 13:r+=h,h="";case 10:case 9:case 7:u=8;break;case 4:u=5}d.push([0,u,h]),l.push.apply(l,d)}else l.push.apply(l,T(i[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<l.length;c++){var f=g[g.length-1][0],p=(d=l[c])[0];if(2===p&&/^\//.test(d[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0))}else if(2===p){var m=[d[1],{},[]];f[2].push(m),g.push([m,f[2].length-1])}else if(5===p||0===p&&5===d[1]){for(var A,S="";c<l.length;c++)if(5===l[c][0])S=a(S,l[c][1]);else{if(0!==l[c][0]||5!==l[c][1])break;if("object"!=typeof l[c][2]||S)S=a(S,l[c][2]);else for(A in l[c][2])l[c][2].hasOwnProperty(A)&&!f[1][A]&&(f[1][A]=l[c][2][A])}11===l[c][0]&&c++;for(var E=c;c<l.length;c++)if(8===l[c][0]||5===l[c][0])f[1][S]?""===l[c][1]||(f[1][S]=a(f[1][S],l[c][1])):f[1][S]=n(l[c][1]);else{if(0!==l[c][0]||8!==l[c][1]&&5!==l[c][1]){!S.length||f[1][S]||c!==E||3!==l[c][0]&&12!==l[c][0]||(f[1][S]=S.toLowerCase()),3===l[c][0]&&c--;break}f[1][S]?""===l[c][2]||(f[1][S]=a(f[1][S],l[c][2])):f[1][S]=n(l[c][2])}}else if(14===p){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(f[0],f[1],f[2].length?f[2]:void 0)}else if(0===p&&1===d[1])void 0===d[2]||null===d[2]?d[2]="":d[2]||(d[2]=a("",d[2])),Array.isArray(d[2][0])?f[2].push.apply(f[2],d[2]):f[2].push(d[2]);else if(1===p)f[2].push(d[1]);else if(11!==p&&12!==p&&3!==p)throw new Error("unhandled: "+p)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function T(e){var a=[];7===o&&(o=4);for(var n=0;n<e.length;n++){var i=e.charAt(n);if(13===o){if(!/-$/.test(r)||"-"!==i){r+=i;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",o=1}1===o&&"<"===i?(r.length&&a.push([1,r]),r="",o=2):">"===i&&"/"===e.charAt(n-1)||">"===i&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",o=1):">"!==i||ce(o)||13===o?2===o&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=i,o=13):1===o?r+=i:2===o&&"/"===i&&r.length?(a.push([2,r]),r="",o=1):2===o&&/\s/.test(i)?(a.push([2,r]),r="",o=4):2===o?r+=i:4===o&&/[^\s"'=/]/.test(i)?(o=5,r=i):4===o&&/\s/.test(i)?(r.length&&a.push([5,r]),a.push([12])):5===o&&/\s/.test(i)?(a.push([5,r]),r="",o=6):5===o&&"="===i?(a.push([5,r],[11]),r="",o=7):5===o?r+=i:6!==o&&4!==o||"="!==i?6!==o&&4!==o||/\s/.test(i)?7===o&&'"'===i?o=10:7===o&&"'"===i?o=9:10===o&&'"'===i||9===o&&"'"===i?(a.push([8,r],[12]),r="",o=4):7!==o||/\s/.test(i)?8===o&&/\s/.test(i)?(a.push([8,r],[12]),r="",o=4):8!==o&&9!==o&&10!==o||(r+=i):(o=8,n--):(a.push([12]),/[\w-]/.test(i)?(r+=i,o=5):o=4):(a.push([11]),o=7):(2===o?a.push([2,r]):5===o?a.push([5,r]):8===o&&r.length&&a.push([8,r]),a.push([3]),r="",o=1)}if(r.length)switch(o){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===o&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,he=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const s=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[i(e)]||(a.branchIndices[i(e)]=0)})("tram-hook-key",`${a}[${s}]`),o("tram-hook-key");const l=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),i=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{i[e]=t.branchIndices[e]||0}))})("tram-hook-key",l);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},h=Y((()=>V(c)));return n("tram-hook-key").branch.pop(),h["tram-tag"]=!0,h["tram-tag-new-effects"]=h["tram-tag-new-effects"]||[],h["tram-tag-cleanup-effects"]=[],h}}}),{});return oe(re,z(e),a)};var de=e=>{const t=B("tram-effect-queue"),a=r("tram-hook-key");o("tram-hook-key");t[`${a}()`]=e};const ue=he(null),be=(e,t)=>(de((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>he(null,{"":be,...e});var fe=M;const{setup:pe,get:ye}=t((()=>fe({})));var me=(e,t)=>{const a=ye("tram-observable-store");o("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const i=a[n];return!e&&H("tram-key-queue").push(n),i},Ae=e=>me(void 0,e);var Se,Ee,Te,ve,we,ke={};ve=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)s(e,t[e])}(),function(t,r){var s=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:i;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),i=(n<0?e:e.slice(0,n)).split("&"),o=0;o<i.length;++o){var r=i[o].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],o(t[0].split("/"),r,0,a,[])||{},r)}(t);return(s.cb||e)(s.params,r,t)};function i(e){return e}function o(e,t,a,n,i){if(n){if(a>=e.length){var s=n["@"];return s&&{cb:s,params:i.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var l=t(e[a]),c=i.length;return o(e,t,a+1,n[l.toLowerCase()],i)||r(e,t,a+1,n,":",l,i,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),i,c)}}function r(e,t,a,n,i,r,s,l){s.length=l;var c=n[i];return c&&s.push([c["~"],r]),o(e,t,a,c,s)}function s(e,t){for(var n=e.split("/"),i=a,o=+("/"===e[0]);o<n.length;++o){var r=n[o],s=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();i=i[s]||(i[s]={}),(":"==s||"*"==s)&&(i["~"]=r.slice(1))}i["@"]=t}}},(we=(Te=ke)&&Te.define)&&we.amd?we("rlite",[],ve):ke?ke=ve():Te.Rlite=ve();const Ie=()=>({matches:!1}),Pe=e=>({matches:!0,...e});Se=Ee=e=>(t="*")=>ke(Ie,{[t]:Pe})(e());var Ce={};Ce=Ee((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Ce.setupUrlParams=Se,Ce.useUrlParams=Ce;function Re(e,t){return me(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:Oe,set:De}=t((()=>({})));var Me=E,Fe=function(e){e.unobserved||(e.unobserved=!0,h(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Ue=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=Oe(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Me((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Fe(n)}))})),e["tram-tag-new-effects"]=[])},Ge=e=>{e.forEach((e=>{var t;t=e,Oe("tram-key-store")[t]--}))},We=e=>{"tram-tag"in e&&(Fe(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),Ge(e["tram-tag-store-keys"]))},Ye=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,xe=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Ye),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:Be,get:_e}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap(xe).forEach(We);e.flatMap((e=>[...e.addedNodes])).flatMap(xe).forEach(Ue),(()=>{const e=ye("tram-observable-store"),t=Oe("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const qe=ge();var Ke=()=>qe` <section class="blank-page" /> `;const He=ge();var $e=({title:e,group:t,selection:a,source:n},i)=>He`
+const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has not started yet, but hook was called. Is it being invoked outside a component function?\n\t\t\thttps://github.com/Tram-One/tram-one/issues/178\n\t\t");return window},t=t=>({setup:a=>{const n=e();return n["tram-space"][a]=t(),n["tram-space"][a]},get:t=>e()["tram-space"][t],set:(t,a)=>{e()["tram-space"][t]=a}}),{setup:a,get:n}=t((()=>({branch:[],branchIndices:{"":0}}))),o=e=>n(e).branch.join("/"),i=e=>{n(e).branchIndices[o(e)]+=1},r=e=>{const t=n(e).branchIndices[o(e)];return`${o(e)}[${t}]`};var s=new WeakMap,l=Symbol("iteration key");function c(e,t,a){var n=t.get(a);n&&n.forEach(e.add,e)}function h(e){e.cleaners&&e.cleaners.forEach(d,e),e.cleaners=[]}function d(e){e.delete(this)}var u=[],b=!1;function g(e,t,a,n){if(e.unobserved)return Reflect.apply(t,a,n);if(-1===u.indexOf(e)){h(e);try{return u.push(e),Reflect.apply(t,a,n)}finally{u.pop()}}}function p(e){var t=u[u.length-1];t&&(m(t,e),function(e,t){var a=t.target,n=t.key;"iterate"===t.type&&(n=l);var o=s.get(a),i=o.get(n);i||(i=new Set,o.set(n,i)),i.has(e)||(i.add(e),e.cleaners.push(i))}(t,e))}function f(e){(function(e){var t=e.target,a=e.key,n=e.type,o=s.get(t),i=new Set;if("clear"===n?o.forEach((function(e,t){c(i,o,t)})):c(i,o,a),"add"===n||"delete"===n||"clear"===n){var r=Array.isArray(t)?"length":l;c(i,o,r)}return i})(e).forEach(y,e)}function y(e){m(e,this),"function"==typeof e.scheduler?e.scheduler(e):"object"==typeof e.scheduler?e.scheduler.add(e):e()}function m(e,t){if(e.debugger&&!b)try{b=!0,e.debugger(t)}finally{b=!1}}function A(){return u.length>0}var S=Symbol("is reaction");function E(e,t){void 0===t&&(t={});var a=e[S]?e:function t(){return g(t,e,this,arguments)};return a.scheduler=t.scheduler,a.debugger=t.debugger,a[S]=!0,t.lazy||a(),a}var v=new WeakMap,k=new WeakMap,T=Object.prototype.hasOwnProperty;function w(e){var t=k.get(e);return A()&&"object"==typeof e&&null!==e?t||F(e):t||e}function I(e,t){var a=e.next;return e.next=function(){var n=a.call(e),o=n.done,i=n.value;return o||(t?i[1]=w(i[1]):i=w(i)),{done:o,value:i}},e}var P={has:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"has"}),a.has.apply(t,arguments)},get:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this);return p({target:t,key:e,type:"get"}),w(a.get.apply(t,arguments))},add:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.add.apply(t,arguments);return n||f({target:t,key:e,value:e,type:"add"}),o},set:function(e,t){var a=v.get(this),n=Reflect.getPrototypeOf(this),o=n.has.call(a,e),i=n.get.call(a,e),r=n.set.apply(a,arguments);return o?t!==i&&f({target:a,key:e,value:t,oldValue:i,type:"set"}):f({target:a,key:e,value:t,type:"add"}),r},delete:function(e){var t=v.get(this),a=Reflect.getPrototypeOf(this),n=a.has.call(t,e),o=a.get?a.get.call(t,e):void 0,i=a.delete.apply(t,arguments);return n&&f({target:t,key:e,oldValue:o,type:"delete"}),i},clear:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this),a=0!==e.size,n=e instanceof Map?new Map(e):new Set(e),o=t.clear.apply(e,arguments);return a&&f({target:e,oldTarget:n,type:"clear"}),o},forEach:function(e){for(var t=[],a=arguments.length-1;a-- >0;)t[a]=arguments[a+1];var n=v.get(this),o=Reflect.getPrototypeOf(this);p({target:n,type:"iterate"});var i,r=function(t){for(var a=[],n=arguments.length-1;n-- >0;)a[n]=arguments[n+1];return e.apply(void 0,[w(t)].concat(a))};return(i=o.forEach).call.apply(i,[n,r].concat(t))},keys:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),t.keys.apply(e,arguments)},values:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.values.apply(e,arguments);return I(a,!1)},entries:function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t.entries.apply(e,arguments);return I(a,!0)},get size(){var e=v.get(this),t=Reflect.getPrototypeOf(this);return p({target:e,type:"iterate"}),Reflect.get(t,"size",e)}};P[Symbol.iterator]=function(){var e=v.get(this),t=Reflect.getPrototypeOf(this);p({target:e,type:"iterate"});var a=t[Symbol.iterator].apply(e,arguments);return I(a,e instanceof Map)};var R={get:function(e,t,a){return e=T.call(P,t)?P:e,Reflect.get(e,t,a)}},C="object"==typeof window?window:Function("return this")(),L=new Map([[Map,R],[Set,R],[WeakMap,R],[WeakSet,R],[Object,!1],[Array,!1],[Int8Array,!1],[Uint8Array,!1],[Uint8ClampedArray,!1],[Int16Array,!1],[Uint16Array,!1],[Int32Array,!1],[Uint32Array,!1],[Float32Array,!1],[Float64Array,!1]]);var N=Object.prototype.hasOwnProperty,D=new Set(Object.getOwnPropertyNames(Symbol).map((function(e){return Symbol[e]})).filter((function(e){return"symbol"==typeof e})));var O={get:function(e,t,a){var n=Reflect.get(e,t,a);if("symbol"==typeof t&&D.has(t))return n;p({target:e,key:t,receiver:a,type:"get"});var o=k.get(n);if(A()&&"object"==typeof n&&null!==n){if(o)return o;var i=Reflect.getOwnPropertyDescriptor(e,t);if(!i||!1!==i.writable||!1!==i.configurable)return F(n)}return o||n},has:function(e,t){var a=Reflect.has(e,t);return p({target:e,key:t,type:"has"}),a},ownKeys:function(e){return p({target:e,type:"iterate"}),Reflect.ownKeys(e)},set:function(e,t,a,n){"object"==typeof a&&null!==a&&(a=v.get(a)||a);var o=N.call(e,t),i=e[t],r=Reflect.set(e,t,a,n);return e!==v.get(n)||(o?a!==i&&f({target:e,key:t,value:a,oldValue:i,receiver:n,type:"set"}):f({target:e,key:t,value:a,receiver:n,type:"add"})),r},deleteProperty:function(e,t){var a=N.call(e,t),n=e[t],o=Reflect.deleteProperty(e,t);return a&&f({target:e,key:t,oldValue:n,type:"delete"}),o}};function F(e){return void 0===e&&(e={}),v.has(e)||"function"==typeof(t=e.constructor)&&t.name in C&&C[t.name]===t&&!L.has(t)?e:k.get(e)||function(e){var t=function(e){return L.get(e.constructor)}(e)||O,a=new Proxy(e,t);return k.set(e,a),v.set(a,e),function(e){s.set(e,new Map)}(e),a}(e);var t}var M=E;const U=(e,t)=>t,W=(e,t)=>{const a=(e=>t=>"tagName"in t&&t.tagName===e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP)(t),n=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,a),o=[n.currentNode];for(;n.nextNode();)o.push(n.currentNode);return o},x={index:-1,tagName:"",scrollLeft:0,scrollTop:0,selectionStart:null,selectionEnd:null,selectionDirection:void 0};var G=e=>{let t;const a=M((()=>{let a=t,n=x;if(a){n=x;if(a.contains(document.activeElement)){const e=document.activeElement,t=W(a,e.tagName);n.index=t.findIndex((t=>t===e)),n.tagName=e.tagName,n.scrollLeft=e.scrollLeft,n.scrollTop=e.scrollTop,n.selectionStart=e.selectionStart,n.selectionEnd=e.selectionEnd,n.selectionDirection=e.selectionDirection||void 0}const e=document.createElement("div");a.replaceWith(e),e["tram-tag-reaction"]=a["tram-tag-reaction"],e["tram-tag-new-effects"]=a["tram-tag-new-effects"],e["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a=e}if(t=e(),a){let e;if(n.index>=0){const a=W(t,n.tagName),i=a.map(U).sort((o=n.index,(e,t)=>Math.abs(e-o)-Math.abs(t-o)))[0];e=a[i];try{void 0!==e.setSelectionRange&&e.setSelectionRange(n.selectionStart,n.selectionEnd,n.selectionDirection)}catch(e){}e.scrollLeft=n.scrollLeft,e.scrollTop=n.scrollTop}t["tram-tag"]=!0,t["tram-tag-reaction"]=a["tram-tag-reaction"],t["tram-tag-new-effects"]=a["tram-tag-new-effects"],t["tram-tag-cleanup-effects"]=a["tram-tag-cleanup-effects"],a.replaceWith(t),e&&e.focus&&e.focus()}var o}));if(void 0===t)throw new Error("\n\t\t\tTram-One: tagResult was not defined after building the tag.\n\t\t\thttps://github.com/Tram-One/tram-one/issues/177\n\t\t");return t["tram-tag-reaction"]=a,t};const{setup:Y,get:_,set:B}=t((()=>({}))),q=B,{setup:H,get:$,set:j}=t((()=>[])),K=e=>{const t=$(e);t.splice(0,t.length)},Q=j;var V=e=>{const t={..._("tram-effect-queue")},a=[...$("tram-key-queue")];(e=>{const t=_(e);Object.keys(t).forEach((e=>delete t[e]))})("tram-effect-queue"),K("tram-key-queue"),K("tram-global-key-queue");const n=e(),o=_("tram-effect-store"),i=_("tram-effect-queue"),r=n["tram-tag-new-effects"]||[],s=Object.keys(i).filter((e=>!(e in o))).map((e=>i[e])),l=r.concat(s);n["tram-tag-new-effects"]=l;const c=n["tram-tag-store-keys"]||[],h=$("tram-key-queue"),d=c.concat(h);return n["tram-tag-store-keys"]=d,q("tram-effect-queue",t),Q("tram-key-queue",a),n},X={},z={};const J=e=>"number"==typeof e||"boolean"==typeof e||"function"==typeof e||e instanceof Date||e instanceof RegExp?e.toString():e,Z=e=>!("string"==typeof e&&/^[\n\r\s]+$/.test(e)),ee=(e,t)=>{Array.isArray(t)&&t.map(J).filter(Z).forEach((t=>{if(Array.isArray(t))ee(e,t);else{if("string"==typeof t){if(e.lastChild&&"#text"===e.lastChild.nodeName)return void(e.lastChild.nodeValue+=t);t=document.createTextNode(t)}t&&t.nodeType&&e.appendChild(t)}}))};z=ee;const te=e=>!/^xmlns($|:)/i.test(e),ae=e=>"classname"===e.key.toLowerCase()?{key:"class",value:e.value}:e,ne=e=>"htmlFor"===e.key?{key:"for",value:e.value}:e,oe=e=>(t,a,n)=>{if("!--"===t)return document.createComment(a.comment);const o=e?document.createElementNS(e,t):document.createElement(t);return Object.keys(a).filter(te).filter((e=>t=>Object.prototype.hasOwnProperty.call(e,t))(a)).map((e=>t=>({key:t,value:e[t]}))(a)).map(ae).map(ne).filter((e=>t=>"on"!==t.key.slice(0,2)||((e,t,a)=>{e[t]=a,e.events=e.events?e.events.concat(t):[t]})(e,t.key,t.value))(o)).filter((e=>t=>e.setAttributeNS(null,t.key,t.value))(o)),z(o,n),o};(X=oe).html=oe(),X.svg=oe("http://www.w3.org/2000/svg");var ie;ie=function(e,t,a){const n=function(e,n,o){const i=a[e];return i?i(n,o):t(e,n,o)},o=e(n);return o.h=n,o};var re,se={};se=function(e){return function(t,a,n){for(var o in a)o in le&&(a[le[o]]=a[o],delete a[o]);return e(t,a,n)}};var le={class:"className",for:"htmlFor","http-equiv":"httpEquiv"};re=function(e,t){t||(t={comments:!0});const a=t.concat||function(e,t){return String(e)+String(t)},n=e=>{switch(typeof e){case"function":case"string":case"object":case"undefined":return e;default:return a("",e)}};return!1!==t.attrToProp&&(e=se(e)),function(o){for(var i=1,r="",s=arguments.length,l=[],c=0;c<o.length;c++)if(c<s-1){var h=arguments[c+1],d=v(o[c]),u=i;switch(u){case 13:r+=h,h="";case 10:case 9:case 7:u=8;break;case 4:u=5}d.push([0,u,h]),l.push.apply(l,d)}else l.push.apply(l,v(o[c]));var b=[null,{},[]],g=[[b,-1]];for(c=0;c<l.length;c++){var p=g[g.length-1][0],f=(d=l[c])[0];if(2===f&&/^\//.test(d[1])){var y=g[g.length-1][1];g.length>1&&(g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0))}else if(2===f){var m=[d[1],{},[]];p[2].push(m),g.push([m,p[2].length-1])}else if(5===f||0===f&&5===d[1]){for(var A,S="";c<l.length;c++)if(5===l[c][0])S=a(S,l[c][1]);else{if(0!==l[c][0]||5!==l[c][1])break;if("object"!=typeof l[c][2]||S)S=a(S,l[c][2]);else for(A in l[c][2])l[c][2].hasOwnProperty(A)&&!p[1][A]&&(p[1][A]=l[c][2][A])}11===l[c][0]&&c++;for(var E=c;c<l.length;c++)if(8===l[c][0]||5===l[c][0])p[1][S]?""===l[c][1]||(p[1][S]=a(p[1][S],l[c][1])):p[1][S]=n(l[c][1]);else{if(0!==l[c][0]||8!==l[c][1]&&5!==l[c][1]){!S.length||p[1][S]||c!==E||3!==l[c][0]&&12!==l[c][0]||(p[1][S]=S.toLowerCase()),3===l[c][0]&&c--;break}p[1][S]?""===l[c][2]||(p[1][S]=a(p[1][S],l[c][2])):p[1][S]=n(l[c][2])}}else if(14===f){y=g[g.length-1][1];g.pop(),g[g.length-1][0][2][y]=e(p[0],p[1],p[2].length?p[2]:void 0)}else if(0===f&&1===d[1])void 0===d[2]||null===d[2]?d[2]="":d[2]||(d[2]=a("",d[2])),Array.isArray(d[2][0])?p[2].push.apply(p[2],d[2]):p[2].push(d[2]);else if(1===f)p[2].push(d[1]);else if(11!==f&&12!==f&&3!==f)throw new Error("unhandled: "+f)}if(b[2].length>1&&/^\s*$/.test(b[2][0])&&b[2].shift(),b[2].length>2||2===b[2].length&&/\S/.test(b[2][1]))throw new Error("multiple root elements must be wrapped in an enclosing tag");return Array.isArray(b[2][0])&&"string"==typeof b[2][0][0]&&Array.isArray(b[2][0][2])&&(b[2][0]=e(b[2][0][0],b[2][0][1],b[2][0][2])),b[2][0];function v(e){var a=[];7===i&&(i=4);for(var n=0;n<e.length;n++){var o=e.charAt(n);if(13===i){if(!/-$/.test(r)||"-"!==o){r+=o;continue}t.comments&&a.push([8,r.substr(0,r.length-1)],[3]),r="",i=1}1===i&&"<"===o?(r.length&&a.push([1,r]),r="",i=2):">"===o&&"/"===e.charAt(n-1)||">"===o&&"-"===e.charAt(n-1)&&"-"===e.charAt(n-2)?(a.push([14]),r="",i=1):">"!==o||ce(i)||13===i?2===i&&/^!--$/.test(r)?(t.comments&&a.push([2,r],[5,"comment"],[11]),r=o,i=13):1===i?r+=o:2===i&&"/"===o&&r.length?(a.push([2,r]),r="",i=1):2===i&&/\s/.test(o)?(a.push([2,r]),r="",i=4):2===i?r+=o:4===i&&/[^\s"'=/]/.test(o)?(i=5,r=o):4===i&&/\s/.test(o)?(r.length&&a.push([5,r]),a.push([12])):5===i&&/\s/.test(o)?(a.push([5,r]),r="",i=6):5===i&&"="===o?(a.push([5,r],[11]),r="",i=7):5===i?r+=o:6!==i&&4!==i||"="!==o?6!==i&&4!==i||/\s/.test(o)?7===i&&'"'===o?i=10:7===i&&"'"===o?i=9:10===i&&'"'===o||9===i&&"'"===o?(a.push([8,r],[12]),r="",i=4):7!==i||/\s/.test(o)?8===i&&/\s/.test(o)?(a.push([8,r],[12]),r="",i=4):8!==i&&9!==i&&10!==i||(r+=o):(i=8,n--):(a.push([12]),/[\w-]/.test(o)?(r+=o,i=5):i=4):(a.push([11]),i=7):(2===i?a.push([2,r]):5===i?a.push([5,r]):8===i&&r.length&&a.push([8,r]),a.push([3]),r="",i=1)}if(r.length)switch(i){case 1:a.push([1,r]),r="";break;case 8:case 10:case 9:a.push([8,r]),r=""}return 5===i&&(a.push([5,r]),r=""),a}}};const ce=e=>9===e||10===e,he=(e,t={})=>{const a=Object.keys(t).reduce(((e,a)=>{const r=t[a];return{...e,[a]:(e,t)=>{const s=JSON.stringify(e);((e,t)=>{const a=n(e);a.branch.push(t),a.branchIndices[o(e)]||(a.branchIndices[o(e)]=0)})("tram-hook-key",`${a}[${s}]`),i("tram-hook-key");const l=(e=>{const t=n(e);return{branch:[...t.branch],branchIndices:{...t.branchIndices}}})("tram-hook-key"),c=()=>{((e,t)=>{const a=n(e),o=a.branchIndices;a.branch=[...t.branch],Object.keys(a.branchIndices).forEach((e=>{o[e]=t.branchIndices[e]||0}))})("tram-hook-key",l);const a=t?.map((e=>e instanceof Element?e:`${e}`));return r(e,a)},h=G((()=>V(c)));return n("tram-hook-key").branch.pop(),h["tram-tag"]=!0,h["tram-tag-new-effects"]=h["tram-tag-new-effects"]||[],h["tram-tag-cleanup-effects"]=[],h}}}),{});return ie(re,X(e),a)};var de=e=>{const t=_("tram-effect-queue"),a=r("tram-hook-key");i("tram-hook-key");t[`${a}()`]=e};const ue=he(null),be=(e,t)=>(de((e=>{(t||[]).forEach((t=>{"string"==typeof t?e.insertAdjacentText("beforebegin",t):e.insertAdjacentElement("beforebegin",t)})),e.remove()})),ue`<tram-fragment>${t}</tram-fragment>`),ge=e=>he(null,{"":be,...e});var pe=F;const{setup:fe,get:ye}=t((()=>pe({})));var me=(e,t)=>{const a=ye("tram-observable-store");i("tram-hook-key");const n=e||r("tram-hook-key");Object.prototype.hasOwnProperty.call(a,n)||void 0===t||(a[n]=Array.isArray(t)?[...t]:{...t});const o=a[n];return!e&&$("tram-key-queue").push(n),o},Ae=e=>me(void 0,e);var Se,Ee,ve,ke,Te,we={};ke=function(){return function(e,t){var a={},n=decodeURIComponent;return function(){for(var e in t)s(e,t[e])}(),function(t,r){var s=function(e){var t=function(e){return~e.indexOf("/?")&&(e=e.replace("/?","?")),"/"==e[0]&&(e=e.slice(1)),"/"==e[e.length-1]&&(e=e.slice(0,-1)),e}(e).split("?"),r=~e.indexOf("%")?n:o;return function(e,t,a){if(e&&t.cb)for(var n=e.indexOf("#"),o=(n<0?e:e.slice(0,n)).split("&"),i=0;i<o.length;++i){var r=o[i].split("=");t.params[r[0]]=a(r[1])}return t}(t[1],i(t[0].split("/"),r,0,a,[])||{},r)}(t);return(s.cb||e)(s.params,r,t)};function o(e){return e}function i(e,t,a,n,o){if(n){if(a>=e.length){var s=n["@"];return s&&{cb:s,params:o.reduce((function(e,t){return e[t[0]]=t[1],e}),{})}}var l=t(e[a]),c=o.length;return i(e,t,a+1,n[l.toLowerCase()],o)||r(e,t,a+1,n,":",l,o,c)||r(e,t,e.length,n,"*",e.slice(a).join("/"),o,c)}}function r(e,t,a,n,o,r,s,l){s.length=l;var c=n[o];return c&&s.push([c["~"],r]),i(e,t,a,c,s)}function s(e,t){for(var n=e.split("/"),o=a,i=+("/"===e[0]);i<n.length;++i){var r=n[i],s=":"==r[0]?":":"*"==r[0]?"*":r.toLowerCase();o=o[s]||(o[s]={}),(":"==s||"*"==s)&&(o["~"]=r.slice(1))}o["@"]=t}}},(Te=(ve=we)&&ve.define)&&Te.amd?Te("rlite",[],ke):we?we=ke():ve.Rlite=ke();const Ie=()=>({matches:!1}),Pe=e=>({matches:!0,...e});Se=Ee=e=>(t="*")=>we(Ie,{[t]:Pe})(e());var Re={};Re=Ee((()=>{const e=window.location.href.replace(window.location.origin,""),[t,a]=e.split("#"),n=t.includes("?");return`${t}${void 0!==a?n?`&hash=${a}`:`?hash=${a}`:""}`})),Re.setupUrlParams=Se,Re.useUrlParams=Re;function Ce(e,t){return me(e,t)}var Le=e=>{const t=(e=>{if("string"==typeof e){const t=document.querySelector(e);if(null===t)throw new Error("\n\t\t\t\tTram-One: could not find target, is the element on the page yet?\n\t\t\t\thttps://github.com/Tram-One/tram-one/issues/179\n\t\t\t");return t}return e})(e);if(!t.firstElementChild){const e=document.createElement("div");t.appendChild(e)}return t};const{setup:Ne,get:De,set:Oe}=t((()=>({})));var Fe=E,Me=function(e){e.unobserved||(e.unobserved=!0,h(e)),"object"==typeof e.scheduler&&e.scheduler.delete(e)};const Ue=e=>{if(!("tram-tag"in e))return;e["tram-tag-store-keys"]&&e["tram-tag-store-keys"].forEach((e=>{((e,t)=>{const a=De(e);a[t]=a[t]+1||1})("tram-key-store",e)}));e["tram-tag-new-effects"]&&(e["tram-tag-cleanup-effects"]=[],e["tram-tag-new-effects"].forEach((t=>{let a;const n=Fe((()=>{"function"==typeof a&&a(),a=t(e)}));e["tram-tag-cleanup-effects"].push((()=>{"function"==typeof a&&a(),Me(n)}))})),e["tram-tag-new-effects"]=[])},We=e=>{e.forEach((e=>{var t;t=e,De("tram-key-store")[t]--}))},xe=e=>{"tram-tag"in e&&(Me(e["tram-tag-reaction"]),e["tram-tag-cleanup-effects"].forEach((e=>e())),We(e["tram-tag-store-keys"]))},Ge=e=>"tram-tag"in e?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP,Ye=e=>{const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,Ge),a=[];for(;t.nextNode();)a.push(t.currentNode);return a},{setup:_e,get:Be}=t((()=>new MutationObserver((e=>{e.flatMap((e=>[...e.removedNodes])).flatMap(Ye).forEach(xe);e.flatMap((e=>[...e.addedNodes])).flatMap(Ye).forEach(Ue),(()=>{const e=ye("tram-observable-store"),t=De("tram-key-store");Object.entries(t).forEach((([a,n])=>{0===n&&(delete e[a],delete t[a])}))})()}))));const qe=ge();var He=()=>qe` <section class="blank-page" /> `;const $e=ge();var je=({title:e,group:t,selection:a,source:n},o)=>$e`
     <section
       class="page"
       page-color="grey"
@@ -9,15 +9,15 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         <span class="title">${e}</span>
         <span class="source">${n}</span>
       </h2>
-      ${i}
+      ${o}
     </section>
-  `;const je=ge({page:$e,"blank-page":Ke});var Qe=(e,t)=>(de((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,i=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:i?"auto":"smooth"})})(t)))})),je` <section class="page-scroller">
+  `;const Ke=ge({page:je,"blank-page":He});var Qe=(e,t)=>(de((e=>{const t=e.querySelector(".page-scroller-flex");t.addEventListener("focusin",(()=>(e=>{const t=e.scrollLeft,a=document.querySelector(".page:focus-within");e.scrollLeft=0;const n=a.offsetLeft-window.innerWidth/4,o=window.matchMedia("(prefers-reduced-motion: reduce)").matches;e.scrollTo({left:t}),e.scrollTo({left:n,behavior:o?"auto":"smooth"})})(t)))})),Ke` <section class="page-scroller">
     <section class="page-scroller-flex">${t} <blank-page /></section>
-  </section>`);const Ve=ge();var ze=(e,t)=>Ve`
+  </section>`);const Ve=ge();var Xe=(e,t)=>Ve`
     <fieldset class="annotation">
       <i>${t}</i>
     </fieldset>
-  `;const Xe=ge({annotation:ze,page:$e});var Je=()=>{const e=Re("PAGE_FILTERS",{race:""}),t=t=>e.race=t;return Xe`
+  `;const ze=ge({annotation:Xe,page:je});var Je=()=>{const e=Ce("PAGE_FILTERS",{race:""}),t=t=>e.race=t;return ze`
 		<>
 			<page title="Race" selection="race" source="UA-Origins, Pg 2">
 				Details can be found in the Unearthed Arcana - Origins (page 2-10).
@@ -662,7 +662,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
 				</ol>
 			</page>
 		</>
-  `};const Ze=ge({annotation:ze,page:$e});var et=()=>{const e=Re("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return Ze`
+  `};const Ze=ge({annotation:Xe,page:je});var et=()=>{const e=Ce("PAGE_FILTERS",{race:"human",selectedClass:"bard"});return Ze`
     <style>
       .page[page-group="race"] {
         display: none;
@@ -677,7 +677,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         display: inherit;
       }
     </style>
-  `};const tt=ge({annotation:ze,page:$e});const at=ge({"page-scroller":Qe,"races-content":Je,"page-filters":et,"classes-content":()=>{const e=Re("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t;return tt`
+  `};const tt=ge({annotation:Xe,page:je});const at=ge({"page-scroller":Qe,"races-content":Je,"page-filters":et,"classes-content":()=>{const e=Ce("PAGE_FILTERS",{selectedClass:"bard"}),t=t=>e.selectedClass=t;return tt`
     <>
       <page title="Class" selection="class" source="UA-Expert-Classes, Pg 3">
         Details can be found in the Unearthed Arcana - Expert Classes (page
@@ -736,15 +736,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Dagger</b> in the <b>EQUIPMENT</b> section. Additionally, add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-              target="_blank"
-            >
-              Dagger
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d4 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Dagger</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Add <b>Entertainer's Pack</b> in the <b>EQUIPMENT</b> section. This
@@ -764,16 +756,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             the <b>EQUIPMENT</b> section
           </li>
           <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Write in <b>18</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
@@ -837,9 +820,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
               >Disguise Self</a
             >
             under level 1 spells.<br />
-            Add Vicious Mockery to the <b>ATTACKS & SPELLCASTING</b> section,
-            ignoring ATK BONUS for now, write in <b>1d4 Psychic</b> for the
-            <b>DAMAGE/TYPE</b>.
+            Add Vicious Mockery to the <b>ATTACKS & SPELLCASTING</b> section.
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               practice your bardic arts and replace any Spell you have prepared
@@ -853,6 +834,49 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
           <li>
             In the spellcasting sheet, write <b>Charisma</b> as your
             <b>SPELLCASTING ABILITY</b>
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                    target="_blank"
+                    >Dagger</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d4 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                    target="_blank"
+                    >Shortsword</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://5e.tools/spells.html#vicious%20mockery_phb"
+                    target="_blank"
+                    >Vicious Mockery</a
+                  >
+                </td>
+                <td>DC 10 + WIS</td>
+                <td>1d4 Psychic</td>
+              </tr>
+            </tbody>
           </li>
         </ol>
       </page>
@@ -896,18 +920,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
             <b>EQUIPMENT</b> section
           </li>
-          <li>
-            Add <b>Longbow</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
-              target="_blank"
-            >
-              Longbow
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d8 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
+          <li>Add <b>Longbow</b> in the <b>EQUIPMENT</b> section.</li>
           <li>
             Add <b>Explorer's Pack</b> in the <b>EQUIPMENT</b> section. This
             includes
@@ -925,28 +938,10 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             Add <b>Studded Leather Armor</b> in the <b>EQUIPMENT</b> section
           </li>
           <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
-            Add <b>Scimitar</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Scimitar
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Slashing</b> as the <b>DAMAGE/TYPE</b>
+            Add <b>Scimitar</b> in the <b>EQUIPMENT</b> section.
           </li>
           <li>
             Write in <b>8</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
@@ -962,8 +957,9 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
         <ol>
           <li>
             Choose two skills for which you have proficiency, and mark these for
-            you as having <b>Expertise</b>. For these skills you'll add your
-            proficiency bonus twice
+            you as having <b>Expertise</b> (you can mark this by adding another
+            circle on the character sheet, or annotating in some other way). For
+            these skills you'll add your proficiency bonus twice
             <annotation>
               Stealth and Survival are iconic choices for a Ranger if you have
               Proficiency in them.
@@ -1011,9 +1007,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
               >Speak with Animals</a
             >
             under level 1 spells.<br />
-            Add Thorn Whip to the <b>ATTACKS & SPELLCASTING</b> section,
-            ignoring ATK BONUS for now, write in <b>1d6 piercing</b> for the
-            <b>DAMAGE/TYPE</b>.
+            Add Thorn Whip to the <b>ATTACKS & SPELLCASTING</b> section.
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               commune with nature and replace any Spell you have prepared for
@@ -1026,6 +1020,56 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
           <li>
             In the spellcasting sheet, write <b>Wisdom</b> as your
             <b>SPELLCASTING ABILITY</b>
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
+                  target="_blank"
+                >Longbow</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d8 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                  target="_blank"
+                >Shortsword</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                  target="_blank"
+                >Scimitar</a>
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Slashing</td>
+              </tr>
+              <tr>
+                <td>
+                <a
+                  href="https://5e.tools/spells.html#thorn%20whip_phb"
+                  target="_blank"
+                >Thorn whip</a>
+                </td>
+                <td>WIS + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+            </tbody>
           </li>
         </ol>
       </page>
@@ -1074,42 +1118,9 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
             <b>EQUIPMENT</b> section
           </li>
-          <li>
-            Add <b>Shortbow</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
-              target="_blank"
-            >
-              Shortbow
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
-          <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-              target="_blank"
-            >
-              Shortsword
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d6 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
-          <li>
-            Add <b>Dagger (2)</b> in the <b>EQUIPMENT</b> section. Additionally,
-            add
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-              target="_blank"
-            >
-              Dagger
-            </a>
-            in the <b>ATTACKS & SPELLCASTING</b> section, ignoring ATK BONUS for
-            now, write <b>1d4 Piercing</b> as the <b>DAMAGE/TYPE</b>
-          </li>
+          <li>Add <b>Shortbow</b> in the <b>EQUIPMENT</b> section.</li>
+          <li>Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.</li>
+          <li>Add <b>Dagger (2)</b> in the <b>EQUIPMENT</b> section</li>
           <li>
             Add <b>Burglar's Pack</b> in the <b>EQUIPMENT</b> section. This
             includes
@@ -1131,12 +1142,91 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
           </li>
         </ol>
       </page>
-      <page title="Rogue cont."
+      <page
+        title="Rogue cont."
         group="classes"
         selection="rogue"
-        source="UA-Expert-Classes, Pg 12"></page>
+        source="UA-Expert-Classes, Pg 12"
+      >
+        <ol>
+          <li>
+            Choose two skills for which you have proficiency, and mark these for
+            you as having <b>Expertise</b> (you can mark this by adding another
+            circle on the character sheet, or annotating in some other way). For
+            these skills you'll add your proficiency bonus twice
+            <annotation>
+              Sleight and Stealth are iconic choices for a Rogue if you have
+              Proficiency in them.
+            </annotation>
+          </li>
+          <li>
+            Add <b>Sneak Attack</b> to the <b>FEATURES & TRAITS</b> section. The
+            sneak attack damage for level 1 is <b>1d6</b>
+            <annotation>
+              <b>Sneak Attack</b>. Once on each of your turns when you take the
+              Attack Action, you can deal extra damage to one creature you hit
+              with an Attack Roll if you're attacking with a Finesse Weapon or a
+              Ranged Weapon and if at least one of the following requirements is
+              met:<br />
+              <b>Advantage.</b> You have Advantage on the Attack Roll.<br />
+              <b>Ally Adjacent to Target.</b> At least one of your allies is
+              within 5 feet of the target, the ally isn't Incapacitated, and you
+              don't have Disadvantage on the Attack Roll.
+            </annotation>
+          </li>
+          <li>
+            Add <b>Theives' Cant</b> and one other language to the
+            <b>PROFICIENCIES & LANGUAGES</b> section. You can ses a listing of
+            available languages in UA-Origins, Pg 16 or <b>Languages</b> later
+            in this guide
+          </li>
+          <li>
+            Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
+            <thead>
+              <th>NAME</th>
+              <th>ATK BONUS</th>
+              <th>DAMAGE/TYPE</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                    target="_blank"
+                    >Dagger</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d4 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
+                    target="_blank"
+                    >Shortbow</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                    target="_blank"
+                    >Shortsword</a
+                  >
+                </td>
+                <td>DEX + 2</td>
+                <td>1d6 Piercing</td>
+              </tr>
+            </tbody>
+          </li>
+        </ol>
+      </page>
     </>
-  `},annotation:ze,page:$e});((e,t)=>{const n=Le(t);var i;window["tram-space"]={},x("tram-effect-store"),x("tram-effect-queue"),a("tram-hook-key"),pe("tram-observable-store"),Ne("tram-key-store"),K("tram-key-queue"),K("tram-global-key-queue"),Be("tram-mutation-observer"),i=n,_e("tram-mutation-observer").observe(i,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{Ae({race:"",class:""});return at`
+  `},annotation:Xe,page:je});((e,t)=>{const n=Le(t);var o;window["tram-space"]={},Y("tram-effect-store"),Y("tram-effect-queue"),a("tram-hook-key"),fe("tram-observable-store"),Ne("tram-key-store"),H("tram-key-queue"),H("tram-global-key-queue"),_e("tram-mutation-observer"),o=n,Be("tram-mutation-observer").observe(o,{childList:!0,subtree:!0}),((e,t)=>{const a=ge({app:e})`<tram-one><app /></tram-one>`;t.replaceChild(a,t.firstElementChild)})(e,n)})((()=>{Ae({race:"",class:""});return at`
     <main class="app">
       <page-scroller>
         <page title="Character Guide" selection="character-guide">
@@ -1384,16 +1474,7 @@ const e=()=>{if(!window["tram-space"])throw new Error("\n\t\t\tTram-One: app has
             </li>
           </ul>
         </page>
-        <page title="Finishing Touches" selection="finishing-touches">
-          <ul>
-            <li>Write your name in header under "PLAYER NAME"</li>
-            <li>
-              Write your character's name in the top left header under
-              "CHARACTER NAME"
-            </li>
-          </ul>
-        </page>
       </page-scroller>
     </main>
   `}),"#root");
-//# sourceMappingURL=index.c1fbb113.js.map
+//# sourceMappingURL=index.69912049.js.map
