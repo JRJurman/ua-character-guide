@@ -11,6 +11,7 @@ const pageFilters: TramOneComponent = () => {
   const pageFilters = useGlobalStore("PAGE_FILTERS", {
     race: "human",
     selectedClass: "bard",
+    background: "acolyte",
   });
   return html`
     <style>
@@ -24,6 +25,12 @@ const pageFilters: TramOneComponent = () => {
         display: none;
       }
       .page[page-selection="${pageFilters.selectedClass}"] {
+        display: inherit;
+      }
+      .page[page-group="backgrounds"] {
+        display: none;
+      }
+      .page[page-selection="${pageFilters.background}"] {
         display: inherit;
       }
     </style>

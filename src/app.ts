@@ -109,6 +109,7 @@ const app: TramOneComponent = () => {
             <li>Add any additional GP to the "EQUIPMENT" section</li>
           </ol>
         </page>
+        <backgrounds-content />
         <page title="Languages" selection="language" source="UA-Origins, Pg 16">
           Your character should start with Common, a language provided by the
           character background, and an additional starting language listed below
@@ -201,14 +202,32 @@ const app: TramOneComponent = () => {
             </li>
             <li>
               Based on the armor you recieved from your class, and relevant
-              ability score from that armor, set your "ARMOR CLASS" (
+              ability score from that
               <a
                 href="https://www.dndbeyond.com/sources/basic-rules/equipment#ArmorandShields"
                 target="_blank"
-              >
-                D&D Beyond - Armor and Shields
-              </a>
-              )
+                >armor</a
+              >, set your "ARMOR CLASS"
+              <fieldset>
+                <table>
+                  <tr>
+                    <th>Armor Name</th>
+                    <th>Armor Class (AC)</th>
+                  </tr>
+                  <tr>
+                    <td>Leather</td>
+                    <td>11 + DEX Modifier</td>
+                  </tr>
+                  <tr>
+                    <td>Studded Leather</td>
+                    <td>12 + DEX Modifier</td>
+                  </tr>
+                  <tr>
+                    <td>Shield</td>
+                    <td>+2</td>
+                  </tr>
+                </table>
+              </fieldset>
             </li>
           </ol>
         </page>

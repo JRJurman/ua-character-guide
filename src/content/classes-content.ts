@@ -44,48 +44,42 @@ const classesContent: TramOneComponent = () => {
             other skills as substitutes
           </li>
           <li>
-            Add <b>Simple Weapons</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
+            Add the following in <b>PROFICIENCIES & LANGUAGE</b>
+            <ul>
+              <li>Simple Weapons</li>
+              <li>
+                Three
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MusicalInstrument"
+                  target="_blank"
+                >
+                  Musical Instruments
+                </a>
+              </li>
+              <li>Light Armor</li>
+            </ul>
           </li>
           <li>
-            Add three
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#MusicalInstrument"
-              target="_blank"
-            >
-              Musical Instruments
-            </a>
-            in the <b>PROFICIENCIES & LANGUAGES</b> section
-          </li>
-          <li>
-            Add <b>Light Armor</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
-          </li>
-          <li>
-            Add <b>Dagger</b> in the <b>EQUIPMENT</b> section.
-          </li>
-          <li>
-            Add <b>Entertainer's Pack</b> in the <b>EQUIPMENT</b> section. This
-            includes
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
-              target="_blank"
-            >
-              the following:
-            </a>
-            a backpack, a bedroll, 2 costumes, 5 candles, 5 days of rations, a
-            waterskin, and a disguise kit.
-          </li>
-          <li>Add <b>Leather Armor</b> in the <b>EQUIPMENT</b> section</li>
-          <li>
-            Add a single musical instrument for which you have proficiency in
-            the <b>EQUIPMENT</b> section
-          </li>
-          <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
-          </li>
-          <li>
-            Write in <b>18</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
+            Add the following in <b>EQUIPMENT</b>
+            <ul>
+              <li>Dagger</li>
+              <li>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
+                  target="_blank"
+                  >Entertainer's Pack</a
+                ><i
+                  >(a backpack, a bedroll, 2 costumes, 5 candles, 5 days of
+                  rations, a waterskin, and a disguise kit)</i
+                >
+              </li>
+              <li>Leather Armor</li>
+              <li>Shortsword</li>
+              <li>
+                a single musical instrument for which you have proficiency in
+              </li>
+              <li>18 Gold Pieces (GP)</li>
+            </ul>
           </li>
         </ol>
       </page>
@@ -163,46 +157,48 @@ const classesContent: TramOneComponent = () => {
           </li>
           <li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
-            <thead>
-              <th>NAME</th>
-              <th>ATK BONUS</th>
-              <th>DAMAGE/TYPE</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-                    target="_blank"
-                    >Dagger</a
-                  >
-                </td>
-                <td>DEX + 2</td>
-                <td>1d4 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-                    target="_blank"
-                    >Shortsword</a
-                  >
-                </td>
-                <td>DEX + 2</td>
-                <td>1d6 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="https://5e.tools/spells.html#vicious%20mockery_phb"
-                    target="_blank"
-                    >Vicious Mockery</a
-                  >
-                </td>
-                <td>DC 10 + WIS</td>
-                <td>1d4 Psychic</td>
-              </tr>
-            </tbody>
+            <table>
+              <thead>
+                <th>NAME</th>
+                <th>ATK BONUS</th>
+                <th>DAMAGE/TYPE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                      target="_blank"
+                      >Dagger</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d4 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                      target="_blank"
+                      >Shortsword</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d6 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://5e.tools/spells.html#vicious%20mockery_phb"
+                      target="_blank"
+                      >Vicious Mockery</a
+                    >
+                  </td>
+                  <td>DC 10 + WIS</td>
+                  <td>1d4 Psychic</td>
+                </tr>
+              </tbody>
+            </table>
           </li>
         </ol>
       </page>
@@ -235,42 +231,32 @@ const classesContent: TramOneComponent = () => {
             and Perception
           </li>
           <li>
-            Add <b>Simple Weapons</b> and <b>Martial Weapons</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
+            Add the following in <b>PROFICIENCIES & LANGUAGE</b>
+            <ul>
+              <li>Simple & Martial Weapons</li>
+              <li>Light Armor, Medium Armor, and Shields</li>
+            </ul>
           </li>
           <li>
-            Add <b>Light Armor</b>, <b>Medium Armor</b>, and <b>Shields</b> in
-            the <b>PROFICIENCIES & LANGUAGES</b> section
-          </li>
-          <li>
-            Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
-            <b>EQUIPMENT</b> section
-          </li>
-          <li>Add <b>Longbow</b> in the <b>EQUIPMENT</b> section.</li>
-          <li>
-            Add <b>Explorer's Pack</b> in the <b>EQUIPMENT</b> section. This
-            includes
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
-              target="_blank"
-            >
-              the following:
-            </a>
-            a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days
-            of rations, and a waterskin. The pack also has 50 feet of hempen
-            rope strapped to the side of it.
-          </li>
-          <li>
-            Add <b>Studded Leather Armor</b> in the <b>EQUIPMENT</b> section
-          </li>
-          <li>
-            Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.
-          </li>
-          <li>
-            Add <b>Scimitar</b> in the <b>EQUIPMENT</b> section.
-          </li>
-          <li>
-            Write in <b>8</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
+            Add the following in <b>EQUIPMENT</b>
+            <ul>
+              <li>Longbow</li>
+              <li>Quiver and Arrows (20)</li>
+              <li>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
+                  target="_blank"
+                  >Explorer's Pack</a
+                ><i>
+                  (a backpack, a bedroll, a mess kit, a tinderbox, 10 torches,
+                  10 days of rations, 50 feet of hempen rope, and a
+                  waterskin)</i
+                >
+              </li>
+              <li>Shortsword</li>
+              <li>Scimitar</li>
+              <li>8 Gold Pieces (GP)</li>
+            </ul>
           </li>
         </ol>
       </page>
@@ -349,53 +335,59 @@ const classesContent: TramOneComponent = () => {
           </li>
           <li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
-            <thead>
-              <th>NAME</th>
-              <th>ATK BONUS</th>
-              <th>DAMAGE/TYPE</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                <a
-                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
-                  target="_blank"
-                >Longbow</a>
-                </td>
-                <td>DEX + 2</td>
-                <td>1d8 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                <a
-                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-                  target="_blank"
-                >Shortsword</a>
-                </td>
-                <td>DEX + 2</td>
-                <td>1d6 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                <a
-                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-                  target="_blank"
-                >Scimitar</a>
-                </td>
-                <td>DEX + 2</td>
-                <td>1d6 Slashing</td>
-              </tr>
-              <tr>
-                <td>
-                <a
-                  href="https://5e.tools/spells.html#thorn%20whip_phb"
-                  target="_blank"
-                >Thorn whip</a>
-                </td>
-                <td>WIS + 2</td>
-                <td>1d6 Piercing</td>
-              </tr>
-            </tbody>
+            <table>
+              <thead>
+                <th>NAME</th>
+                <th>ATK BONUS</th>
+                <th>DAMAGE/TYPE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialRangedWeapons"
+                      target="_blank"
+                      >Longbow</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d8 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                      target="_blank"
+                      >Shortsword</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d6 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                      target="_blank"
+                      >Scimitar</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d6 Slashing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://5e.tools/spells.html#thorn%20whip_phb"
+                      target="_blank"
+                      >Thorn whip</a
+                    >
+                  </td>
+                  <td>WIS + 2</td>
+                  <td>1d6 Piercing</td>
+                </tr>
+              </tbody>
+            </table>
           </li>
         </ol>
       </page>
@@ -428,43 +420,37 @@ const classesContent: TramOneComponent = () => {
             Perception, Persuasion
           </li>
           <li>
-            Add <b>Simple Weapons</b> and
-            <b>Martial Weapons (finess only)</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
+            Add the following in <b>PROFICIENCIES & LANGUAGE</b>
+            <ul>
+              <li>Simple & Martial Weapons</li>
+              <li>Light Armor</li>
+              <li>Thieves' Tools</li>
+            </ul>
           </li>
           <li>
-            Add <b>Thieves' Tools</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
-          </li>
-          <li>
-            Add <b>Light Armor</b> in the
-            <b>PROFICIENCIES & LANGUAGES</b> section
-          </li>
-          <li>
-            Add <b>Arrows (20)</b> and a <b>Quiver</b> in the
-            <b>EQUIPMENT</b> section
-          </li>
-          <li>Add <b>Shortbow</b> in the <b>EQUIPMENT</b> section.</li>
-          <li>Add <b>Shortsword</b> in the <b>EQUIPMENT</b> section.</li>
-          <li>Add <b>Dagger (2)</b> in the <b>EQUIPMENT</b> section</li>
-          <li>
-            Add <b>Burglar's Pack</b> in the <b>EQUIPMENT</b> section. This
-            includes
-            <a
-              href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
-              target="_blank"
-            >
-              the following:
-            </a>
-            a backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell,
-            5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2
-            flasks of oil, 5 days rations, a tinderbox, and a waterskin. The
-            pack also has 50 feet of hempen rope strapped to the side of it.
-          </li>
-          <li>Add <b>Leather Armor</b> in the <b>EQUIPMENT</b> section</li>
-          <li>Add <b>Theives' Tools</b> in the <b>EQUIPMENT</b> section</li>
-          <li>
-            Write in <b>18</b> under <b>GP</b> in the <b>EQUIPMENT</b> section
+            Add the following in <b>EQUIPMENT</b>
+            <ul>
+              <li>Shortbow</li>
+              <li>Quiver and Arrows (20)</li>
+              <li>
+                <a
+                  href="https://www.dndbeyond.com/sources/basic-rules/equipment#EquipmentPacks"
+                  target="_blank"
+                  >Burglar's Pack</a
+                >
+                <i
+                  >(a backpack, a bag of 1,000 ball bearings, 10 feet of string,
+                  a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded
+                  lantern, 2 flasks of oil, 5 days rations, a tinderbox, 50 feet
+                  of hempen rope, and a waterskin)</i
+                >
+              </li>
+              <li>Shortsword</li>
+              <li>Dagger (2)</li>
+              <li>Leather Armor</li>
+              <li>Theives' Tools</li>
+              <li>18 Gold Pieces (GP)</li>
+            </ul>
           </li>
         </ol>
       </page>
@@ -508,46 +494,48 @@ const classesContent: TramOneComponent = () => {
           </li>
           <li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
-            <thead>
-              <th>NAME</th>
-              <th>ATK BONUS</th>
-              <th>DAMAGE/TYPE</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
-                    target="_blank"
-                    >Dagger</a
-                  >
-                </td>
-                <td>DEX + 2</td>
-                <td>1d4 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
-                    target="_blank"
-                    >Shortbow</a
-                  >
-                </td>
-                <td>DEX + 2</td>
-                <td>1d6 Piercing</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
-                    target="_blank"
-                    >Shortsword</a
-                  >
-                </td>
-                <td>DEX + 2</td>
-                <td>1d6 Piercing</td>
-              </tr>
-            </tbody>
+            <table>
+              <thead>
+                <th>NAME</th>
+                <th>ATK BONUS</th>
+                <th>DAMAGE/TYPE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleMeleeWeapons"
+                      target="_blank"
+                      >Dagger</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d4 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#SimpleRangedWeapons"
+                      target="_blank"
+                      >Shortbow</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d6 Piercing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a
+                      href="https://www.dndbeyond.com/sources/basic-rules/equipment#MartialMeleeWeapons"
+                      target="_blank"
+                      >Shortsword</a
+                    >
+                  </td>
+                  <td>DEX + 2</td>
+                  <td>1d6 Piercing</td>
+                </tr>
+              </tbody>
+            </table>
           </li>
         </ol>
       </page>
