@@ -38,29 +38,12 @@ const app: TramOneComponent = () => {
             <br /><br />
             To start, scroll right and follow the pages in order. If there are
             any issues, feel free to post them here:
-            <a href="https://github.com/jrjurman/ua-character-guide/issues"
+            <a
+              href="https://github.com/jrjurman/ua-character-guide/issues"
+              target="_blank"
               >https://github.com/jrjurman/ua-character-guide/issues</a
             >
           </p>
-          <br />
-          <fieldset>
-            <legend>Useful links</legend>
-            <ul>
-              <li>
-                <a
-                  target="_blank"
-                  href="https://www.dndbeyond.com/sources/basic-rules/equipment"
-                >
-                  D&D Beyond Equipment
-                </a>
-              </li>
-              <li>
-                <a target="_blank" href="https://5e.tools/spells.html">
-                  5e Tools Spells
-                </a>
-              </li>
-            </ul>
-          </fieldset>
         </page>
         <page title="Starting Off" selection="starting">
           <ol>
@@ -161,8 +144,9 @@ const app: TramOneComponent = () => {
               </annotation>
             </li>
             <li>
-              Fill in the large box above each score the modifier for that value
-              <annotation>
+              Fill in the large box next to each score the modifier for that
+              value
+              <fieldset>
                 <table>
                   <tr>
                     <th>Score</th>
@@ -189,43 +173,64 @@ const app: TramOneComponent = () => {
                     <td>+3</td>
                   </tr>
                 </table>
+              </fieldset>
+            </li>
+            <li>
+              Set your <b>INITIATIVE</b> to your DEX modifier
+              <annotation>
+                If you have the <b>Alert</b> feat, add +2 to this value
               </annotation>
             </li>
-            <li>Set your "INITIATIVE" to your DEX modifier</li>
             <li>
               Set your "PASSIVE WISDOM (PERCEPTION)" to 10 + WIS Modifier (and
               add +2 if you have proficiency in the Perception skill)
             </li>
             <li>
-              Set your "HIT POINT MAXIMUM" and "CURRENT HIT POINTS" to your max
-              hit dice value (e.g. 8 for 1d8) + your CON Modifier
+              Set your "HIT POINT MAXIMUM" and "CURRENT HIT POINTS" based on the
+              table below
+              <table>
+                <thead>
+                  <th>Class</th>
+                  <th>Hit Points</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bard, Rogue</td>
+                    <td>8 + CON Modifier</td>
+                  </tr>
+                  <tr>
+                    <td>Ranger</td>
+                    <td>10 + CON Modifier</td>
+                  </tr>
+                </tbody>
+              </table>
+              <annotation>
+                If you have the <b>Tough</b> feat, add +2 to this value
+              </annotation>
             </li>
             <li>
               Based on the armor you recieved from your class, and relevant
-              ability score from that
-              <a
-                href="https://www.dndbeyond.com/sources/basic-rules/equipment#ArmorandShields"
-                target="_blank"
-                >armor</a
-              >, set your "ARMOR CLASS"
+              ability score from that armor, set your <b>ARMOR CLASS</b>
               <fieldset>
                 <table>
-                  <tr>
+                  <thead>
                     <th>Armor Name</th>
                     <th>Armor Class (AC)</th>
-                  </tr>
-                  <tr>
-                    <td>Leather</td>
-                    <td>11 + DEX Modifier</td>
-                  </tr>
-                  <tr>
-                    <td>Studded Leather</td>
-                    <td>12 + DEX Modifier</td>
-                  </tr>
-                  <tr>
-                    <td>Shield</td>
-                    <td>+2</td>
-                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Leather</td>
+                      <td>11 + DEX Modifier</td>
+                    </tr>
+                    <tr>
+                      <td>Studded Leather</td>
+                      <td>12 + DEX Modifier</td>
+                    </tr>
+                    <tr>
+                      <td>Shield</td>
+                      <td>+2</td>
+                    </tr>
+                  </tbody>
                 </table>
               </fieldset>
             </li>

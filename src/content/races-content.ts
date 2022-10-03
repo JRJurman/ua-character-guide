@@ -56,10 +56,9 @@ const racesContent: TramOneComponent = () => {
 						<annotation>
 							<b>Angelic Flight.</b> As a Bonus Action, you sprout spectral
 							wings for a moment and fly up to a number of feet equal to your
-							Speed. If you are in the air at the end of this movement, you
-							fall if nothing is holding you aloft. You can use this Bonus
-							Action a number of times equal to your Proficiency Bonus, and
-							you regain all expended uses when you finish a Long Rest.
+							Speed. You can use this Bonus Action a number of times equal
+							to your Proficiency Bonus, and you regain all expended uses
+							when you finish a Long Rest.
 						</annotation>
 					</li>
 					<li>
@@ -408,6 +407,9 @@ const racesContent: TramOneComponent = () => {
 					</li>
 					<li>
 						Add the <b>Gnomish Cunning</b> trait to your <b>FEATS & TRAITS</b>
+						<annotation>
+							<b>Gnomish Cunning.</b> You have Advantage on Intelligence, Wisdom, and Charisma saving throws.
+						</annotation>
 					</li>
 					<li>
 						Add the <b>Gnomish Lineage</b> trait to your
@@ -586,10 +588,8 @@ const racesContent: TramOneComponent = () => {
 					<li>
 						Add the <b>Fiendish Legacy</b> trait to your
 						<b>FEATS & TRAITS</b>, and select a Legacy from the
-						<b>Fiendish Legacies</b> table. Add this in the <b>RACE</b> field
-						in the header. Add the cantrip you recieve to your
-						<b>ATTACKS & SPELLCASTING</b> section, ignoring <b>ATK BONUS</b>,
-						and add this spell to the <b>SPELLCASTING</b> page.
+						Fiendish Legacies table below. Add this in the <b>RACE</b> field
+						in the header
 						<annotation>
 							<table>
 								<thead>
@@ -660,46 +660,51 @@ const racesContent: TramOneComponent = () => {
 					</li>
 					<li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with the cantrip associated with the taken legacy.
-            <thead>
-              <th>NAME</th>
-              <th>ATK BONUS</th>
-              <th>DAMAGE/TYPE</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a
-                    href="https://5e.tools/spells.html#poison%20spray_phb"
-                    target="_blank"
-                    >Poison Spray</a
-                  >
-                </td>
-                <td>SPL + 2</td>
-                <td>1d12 Poison</td>
-              </tr>
-							<tr>
-                <td>
-                  <a
-                    href="https://5e.tools/spells.html#chill%20touch_phb"
-                    target="_blank"
-                    >Chill Touch</a
-                  >
-                </td>
-                <td>SPL + 2</td>
-                <td>1d8 necrotic</td>
-              </tr>
-							<tr>
-                <td>
-                  <a
-                    href="https://5e.tools/spells.html#fire%20bolt_phb"
-                    target="_blank"
-                    >Fire bolt</a
-                  >
-                </td>
-                <td>SPL + 2</td>
-                <td>1d10 fire</td>
-              </tr>
-            </tbody>
+						<table>
+							<thead>
+								<th>NAME</th>
+								<th>ATK BONUS</th>
+								<th>DAMAGE/TYPE</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<a
+											href="https://5e.tools/spells.html#poison%20spray_phb"
+											target="_blank"
+											>Poison Spray</a
+										>
+									</td>
+									<td>SPL + 2</td>
+									<td>1d12 Poison</td>
+								</tr>
+								<tr>
+									<td>
+										<a
+											href="https://5e.tools/spells.html#chill%20touch_phb"
+											target="_blank"
+											>Chill Touch</a
+										>
+									</td>
+									<td>SPL + 2</td>
+									<td>1d8 necrotic</td>
+								</tr>
+								<tr>
+									<td>
+										<a
+											href="https://5e.tools/spells.html#fire%20bolt_phb"
+											target="_blank"
+											>Fire bolt</a
+										>
+									</td>
+									<td>SPL + 2</td>
+									<td>1d10 fire</td>
+								</tr>
+							</tbody>
+						</table>
+						<annotation>
+							<b>SPL</b> is a placeholder for the Spellcasting ability you will fill in later.
+						</annotation>
           </li>
 				</ol>
 			</page>
