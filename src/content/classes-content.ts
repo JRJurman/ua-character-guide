@@ -153,7 +153,8 @@ const classesContent: TramOneComponent = () => {
           </li>
           <li>
             In the spellcasting sheet, write <b>Charisma</b> as your
-            <b>SPELLCASTING ABILITY</b>
+            <b>SPELLCASTING ABILITY</b>, <b>10 + CHA</b> as your <b>SPELL SAVE DC</b>,
+            and <b>2 + CHA</b> as your <b>SPELL ATTACK BONUS</b>
           </li>
           <li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.
@@ -194,7 +195,7 @@ const classesContent: TramOneComponent = () => {
                       >Vicious Mockery</a
                     >
                   </td>
-                  <td>DC 10 + WIS</td>
+                  <td>DC 10 + CHA</td>
                   <td>1d4 Psychic</td>
                 </tr>
               </tbody>
@@ -331,7 +332,8 @@ const classesContent: TramOneComponent = () => {
           </li>
           <li>
             In the spellcasting sheet, write <b>Wisdom</b> as your
-            <b>SPELLCASTING ABILITY</b>
+            <b>SPELLCASTING ABILITY</b>, <b>10 + WIS</b> as your <b>SPELL SAVE DC</b>,
+            and <b>2 + WIS</b> as your <b>SPELL ATTACK BONUS</b>
           </li>
           <li>
             Fill in the <b>ATTACKS & SPELLCASTING</b> table with these rows.

@@ -89,7 +89,7 @@ const app: TramOneComponent = () => {
         <page title="Ability Scores" selection="stat-block">
           <ol>
             <li>
-              Using the standard array (15, 14, 13, 12, 10, 8), assign each
+              Using the standard array <b>15, 14, 13, 12, 10, 8</b>, assign each
               value into the Ability Scores listed on the left of your character
               sheet, writing them in the tiny box adjacent to each option
               <fieldset>
@@ -142,6 +142,10 @@ const app: TramOneComponent = () => {
                 </table>
               </fieldset>
             </li>
+          </ol>
+        </page>
+        <page title="Ability Scores cont." selection="stat-block">
+          <ol>
             <li>
               Set your <b>INITIATIVE</b> to your DEX modifier
               <annotation>
@@ -149,12 +153,12 @@ const app: TramOneComponent = () => {
               </annotation>
             </li>
             <li>
-              Set your "PASSIVE WISDOM (PERCEPTION)" to 10 + WIS Modifier (and
-              add +2 if you have proficiency in the Perception skill)
+              Set your <b>PASSIVE WISDOM (PERCEPTION)</b> to 10 + Perception
+              bonus
             </li>
             <li>
-              Set your "HIT POINT MAXIMUM" and "CURRENT HIT POINTS" based on the
-              table below
+              Set your <b>HIT POINT MAXIMUM</b> and
+              <b>CURRENT HIT POINTS</b> based on the table below
               <table>
                 <thead>
                   <th>Class</th>
@@ -200,20 +204,6 @@ const app: TramOneComponent = () => {
                   </tbody>
                 </table>
               </fieldset>
-            </li>
-          </ol>
-        </page>
-        <page title="Set Spellcasting Details" selection="spellcasting">
-          If you have spells as part of your race, class or background, do the
-          following on the Spellcasting Sheet
-          <ol>
-            <li>
-              Set your <b>SPELL SAVE DC</b> to 10 + Spellcasting Ability
-              Modifier
-            </li>
-            <li>
-              Set your <b>SPELL ATTACK BONUS</b> to 2 + Spellcasting Ability
-              Modifier
             </li>
           </ol>
         </page>

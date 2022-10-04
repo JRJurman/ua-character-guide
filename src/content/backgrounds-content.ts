@@ -34,7 +34,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Magic Initiate (Divine)</b> to the "FEATURES & TRAITS"
+            Add <b>Magic Initiate (Divine)</b> to the <b>FEATURES & TRAITS</b>
             section, and add two cantrips and one 1st-level spell from the
             Divine Spell list.
             <annotation>
@@ -198,7 +198,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Magic Initiate (Arcane)</b> to the "FEATURES & TRAITS"
+            Add <b>Magic Initiate (Arcane)</b> to the <b>FEATURES & TRAITS</b>
             section, and add two cantrips and one 1st-level spell from the
             Arcane Spell list.
             <annotation>
@@ -415,7 +415,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Magic Initiate (Primal)</b> to the "FEATURES & TRAITS"
+            Add <b>Magic Initiate (Primal)</b> to the <b>FEATURES & TRAITS</b>
             section, and add two cantrips and one 1st-level spell from the
             Primal Spell list.
             <annotation>
@@ -456,7 +456,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Magic Initiate (Primal)</b> to the "FEATURES & TRAITS"
+            Add <b>Magic Initiate (Primal)</b> to the <b>FEATURES & TRAITS</b>
             section, and add two cantrips and one 1st-level spell from the
             Primal Spell list.
             <annotation>
@@ -628,7 +628,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Magic Initiate (Arcana)</b> to the "FEATURES & TRAITS"
+            Add <b>Magic Initiate (Arcana)</b> to the <b>FEATURES & TRAITS</b>
             section, and add two cantrips and one 1st-level spell from the
             Arcana Spell list.
             <annotation>
@@ -669,7 +669,7 @@ const backgroundsContent: TramOneComponent = () => {
             <b>PROFICIENCIES & LANGUAGES</b> section
           </li>
           <li>
-            Add <b>Tavern Brawler</b> to the "FEATURES & TRAITS" section
+            Add <b>Tavern Brawler</b> to the <b>FEATURES & TRAITS</b> section
             <annotation>
               You can read more details about this feat in UA-Origins, Pg 18.
               You gain benefits to your Unarmed Strike, and can use Furniture as
