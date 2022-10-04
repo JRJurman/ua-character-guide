@@ -20,6 +20,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 11"
       >
         <ol>
+          <li>Write in <b>Acolyte</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Insight</b> and <b>Religion</b> in the
             <b>SKILLS</b> section
@@ -60,6 +61,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 12"
       >
         <ol>
+          <li>Write in <b>Artisan</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Investigation</b> and
             <b>Persuasion</b> in the <b>SKILLS</b> section
@@ -106,6 +108,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 12"
       >
         <ol>
+          <li>Write in <b>Charlatan</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Deception</b> and
             <b>Sleight of Hand</b> in the <b>SKILLS</b> section
@@ -139,6 +142,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 12"
       >
         <ol>
+          <li>Write in <b>Criminal</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Sleight of Hand</b> and <b>Stealth</b> in
             the <b>SKILLS</b> section
@@ -180,6 +184,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 12"
       >
         <ol>
+          <li>Write in <b>Cultist</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Arcana</b> and <b>Religion</b> in the
             <b>SKILLS</b> section
@@ -219,6 +224,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 12"
       >
         <ol>
+          <li>Write in <b>Entertainer</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Acrobatics</b> and <b>Performance</b> in
             the <b>SKILLS</b> section
@@ -267,6 +273,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 13"
       >
         <ol>
+          <li>Write in <b>Farmer</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Animal</b> and <b>Nature</b> in the
             <b>SKILLS</b> section
@@ -305,6 +312,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 13"
       >
         <ol>
+          <li>Write in <b>Gladiator</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Athletics</b> and <b>Performance</b> in
             the <b>SKILLS</b> section
@@ -344,6 +352,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 13"
       >
         <ol>
+          <li>Write in <b>Guard</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Athletics</b> and <b>Perception</b> in
             the <b>SKILLS</b> section
@@ -376,8 +385,8 @@ const backgroundsContent: TramOneComponent = () => {
           </li>
           <li>
             Write the following items in the <b>EQUIPMENT</b> section:<br />
-            Crossbow Bolt (20), Hooded Lantern, Light Crossbow, Manacles,
-            Quiver, Spear Traveler's Clothes, and a Gaming Set (same as above).
+            Crossbow Bolts (20), Quiver, Light Crossbow, Hooded Lantern, Manacles,
+            Spear, Traveler's Clothes, and a Gaming Set (same as above).
           </li>
           <li>
             Add <b>12 GP</b> to your existing Gold Pieces in the
@@ -392,6 +401,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 13"
       >
         <ol>
+          <li>Write in <b>Guide</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Stealth</b> and <b>Survival</b> in the
             <b>SKILLS</b> section
@@ -432,6 +442,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 14"
       >
         <ol>
+          <li>Write in <b>Hermit</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Medicine</b> and <b>Religion</b> in the
             <b>SKILLS</b> section
@@ -472,6 +483,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 14"
       >
         <ol>
+          <li>Write in <b>Laborer</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Athletics</b> and <b>Survival</b> in the
             <b>SKILLS</b> section
@@ -510,6 +522,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 14"
       >
         <ol>
+          <li>Write in <b>Noble</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>History</b> and <b>Persuasion</b> in the
             <b>SKILLS</b> section
@@ -549,6 +562,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 14"
       >
         <ol>
+          <li>Write in <b>Pilgrim</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Religion</b> and <b>Survival</b> in the
             <b>SKILLS</b> section
@@ -600,6 +614,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 15"
       >
         <ol>
+          <li>Write in <b>Sage</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Arcana</b> and <b>History</b> in the
             <b>SKILLS</b> section
@@ -640,6 +655,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 15"
       >
         <ol>
+          <li>Write in <b>Sailor</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Acrobatics</b> and <b>Perception</b> in
             the <b>SKILLS</b> section
@@ -678,6 +694,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 15"
       >
         <ol>
+          <li>Write in <b>Soldier</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Athletics</b> and <b>Intimidation</b> in
             the <b>SKILLS</b> section
@@ -723,6 +740,7 @@ const backgroundsContent: TramOneComponent = () => {
         source="UA-Origins, Pg 15"
       >
         <ol>
+          <li>Write in <b>Urchin</b> for <b>BACKGROUND</b> in the header</li>
           <li>
             Fill in the circles for <b>Insight</b> and <b>Stealth</b> in the
             <b>SKILLS</b> section

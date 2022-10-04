@@ -16,12 +16,6 @@ const backgroundsSelector: TramOneComponent = () => {
       Details can be found in the Unearthed Arcana - Origins (page 11-15).
       Select one of the following backgrounds to see instructions for writing in
       the details in your character sheet.
-      <button
-        class=${pageFilters.background == "custom" ? "selected" : ""}
-        onclick=${() => setBackground("custom")}
-      >
-        Custom Background
-      </button>
       <div class="three-col-wrapper">
         <button
           class=${pageFilters.background == "acolyte" ? "selected" : ""}

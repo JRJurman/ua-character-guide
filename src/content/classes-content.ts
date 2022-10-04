@@ -62,6 +62,7 @@ const classesContent: TramOneComponent = () => {
           <li>
             Add the following in <b>EQUIPMENT</b>
             <ul>
+              <li>Leather Armor</li>
               <li>Dagger</li>
               <li>
                 <a
@@ -73,7 +74,6 @@ const classesContent: TramOneComponent = () => {
                   rations, a waterskin, and a disguise kit)</i
                 >
               </li>
-              <li>Leather Armor</li>
               <li>Shortsword</li>
               <li>
                 a single musical instrument for which you have proficiency in
@@ -240,6 +240,7 @@ const classesContent: TramOneComponent = () => {
           <li>
             Add the following in <b>EQUIPMENT</b>
             <ul>
+              <li>Studded Leather</li>
               <li>Longbow</li>
               <li>Quiver and Arrows (20)</li>
               <li>
@@ -270,8 +271,8 @@ const classesContent: TramOneComponent = () => {
           <li>
             Choose two skills for which you have proficiency, and mark these for
             you as having <b>Expertise</b> (you can mark this by adding another
-            circle on the character sheet, or annotating in some other way). For
-            these skills you'll add your proficiency bonus twice
+            circle on the character sheet, or writing "E" in the space to the left).
+            For these skills you'll add your proficiency bonus twice
             <annotation>
               Stealth and Survival are iconic choices for a Ranger if you have
               Proficiency in them.
@@ -318,8 +319,7 @@ const classesContent: TramOneComponent = () => {
               target="_blank"
               >Speak with Animals</a
             >
-            under level 1 spells.<br />
-            Add Thorn Whip to the <b>ATTACKS & SPELLCASTING</b> section.
+            under level 1 spells
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               commune with nature and replace any Spell you have prepared for
@@ -430,6 +430,7 @@ const classesContent: TramOneComponent = () => {
           <li>
             Add the following in <b>EQUIPMENT</b>
             <ul>
+              <li>Leather Armor</li>
               <li>Shortbow</li>
               <li>Quiver and Arrows (20)</li>
               <li>
@@ -447,7 +448,6 @@ const classesContent: TramOneComponent = () => {
               </li>
               <li>Shortsword</li>
               <li>Dagger (2)</li>
-              <li>Leather Armor</li>
               <li>Theives' Tools</li>
               <li>18 Gold Pieces (GP)</li>
             </ul>

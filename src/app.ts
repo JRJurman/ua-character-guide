@@ -59,39 +59,6 @@ const app: TramOneComponent = () => {
         <page-filters />
         <races-content />
         <classes-content />
-        <page
-          title="Background"
-          selection="background"
-          source="UA-Origins, Pg 11"
-        >
-          Read the UA Origins (page 11-15) to see the list of sample
-          backgrounds, ignoring Ability Scores for now
-          <ol>
-            <li>
-              Choose a background and write the name under <b>BACKGROUND</b> in
-              the top header
-            </li>
-            <li>
-              Fill in the circles for any two skill proficiencies in the
-              <b>SKILLS</b> section
-              <annotation>
-                You may treat the two skills listed in your selected background
-                as recommendations, but you can choose any two, as long as they
-                are thematic
-              </annotation>
-            </li>
-            <li>
-              Add the tool and language proficiencies in the
-              <b>PROFICIENCIES & LANGUAGES</b> section
-            </li>
-            <li>
-              Add the Feat in the "FEATURES & TRAITS" box
-              <i>(Feats are detailed starting on page 16 of UA Origins)</i>
-            </li>
-            <li>Write the equipment in the "EQUIPMENT" section</li>
-            <li>Add any additional GP to the "EQUIPMENT" section</li>
-          </ol>
-        </page>
         <backgrounds-content />
         <page title="Languages" selection="language" source="UA-Origins, Pg 16">
           Your character should start with Common, a language provided by the
@@ -237,64 +204,18 @@ const app: TramOneComponent = () => {
           </ol>
         </page>
         <page title="Set Spellcasting Details" selection="spellcasting">
-          If you have spells as part of your class or background, do the
+          If you have spells as part of your race, class or background, do the
           following on the Spellcasting Sheet
-
           <ol>
             <li>
-              Set your "SPELLCASTING ABILITY" based on your class or background
-              <i>(table below)</i>
-            </li>
-
-            <li>
-              Set your "SPELL SAVE DC" to 8 + Proficiency Bonus + Spellcasting
-              Ability Modifier
+              Set your <b>SPELL SAVE DC</b> to 10 + Spellcasting Ability
+              Modifier
             </li>
             <li>
-              Set your "SPELL ATTACK BONUS" to Proficiency Bonus + Spellcasting
-              Ability Modifier
+              Set your <b>SPELL ATTACK BONUS</b> to 2 + Spellcasting Ability
+              Modifier
             </li>
           </ol>
-
-          <fieldset>
-            <legend>Class Spellcasting Ability</legend>
-            <ul>
-              <li>Bard: CHA</li>
-              <li>Cleric: WIS</li>
-              <li>Druid: WIS</li>
-              <li>Sorcerer: CHA</li>
-              <li>Warlock: CHA</li>
-              <li>Wizard: INT</li>
-            </ul>
-            <annotation>
-              If you got spellcasting from "MAGIC INITIATE" feat, choose either
-              INT, WIS, or CHA
-            </annotation>
-          </fieldset>
-        </page>
-        <page title="Fill in Attack Bonus" selection="atk-bonus">
-          Fill in "ATK BONUS" in the "ATTACKS & SPELLCASTING" section
-          <ul>
-            <li>
-              For finess weapons, add either your STR or DEX modifier +
-              Proficiency bonus
-            </li>
-            <li>
-              For melee weapon attacks and unarmed strike, add your STR modifier
-              + Proficiency bonus
-            </li>
-            <li>
-              For ranged weapons, add your DEX modifier + Proficiency bonus
-            </li>
-            <li>
-              For spells (that ask for an attack roll, not a DC check) use your
-              "SPELL ATTACK BONUS"
-            </li>
-            <li>
-              For spells that have a Spell Save DC check use your "SPELL SAVE
-              DC"
-            </li>
-          </ul>
         </page>
       </page-scroller>
     </main>

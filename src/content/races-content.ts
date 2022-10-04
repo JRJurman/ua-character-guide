@@ -64,8 +64,9 @@ const racesContent: TramOneComponent = () => {
 					<li>
 						Add the <b>Celestial Legacy</b> trait to your
 						<b>FEATS & TRAITS</b>, and select a Celestial Legacy from the
-						<b>CELESTIAL LEGECIES</b> table. Add this in the <b>RACE</b> field
-						in the header
+						table below. Add this in the <b>RACE</b> field
+						in the header, as well as the animal you represent.
+						Add the cantrip listed in the Spellcasting page
 						<annotation>
 							<table>
 								<thead>
@@ -189,8 +190,7 @@ const racesContent: TramOneComponent = () => {
 					</li>
 					<li>
 						Add the <b>Breath Weapon</b> trait to the
-						<b>FEATS & TRAITS</b> and add a <b>Breath Weapon</b> attack to the
-						<b>ATTACKS & SPELLCASTING</b> table.
+						<b>FEATS & TRAITS</b>
 						<annotation>
 							<b>Breath Weapon.</b> As an Action, you exhale destructive
 							energy in a 15-foot cone. Each creature in that area must make a
