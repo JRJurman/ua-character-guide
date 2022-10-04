@@ -104,7 +104,7 @@ const classesContent: TramOneComponent = () => {
               potentially turning the failure into a success.<br />
               <b>Heal.</b> Immediately after another creature within 60 feet of
               you that you can see or hear takes damage, you can use your
-              Reaction to roll your Bardic Inspiration die and restorea number
+              Reaction to roll your Bardic Inspiration die and restore a number
               of Hit Points to the creature equal to the number rolled.<br />
               <b>Number of Uses.</b> A Bardic Inspiration die is expended when
               it's rolled. You can confer a Bardic Inspiration die a number of
@@ -139,8 +139,7 @@ const classesContent: TramOneComponent = () => {
               target="_blank"
               >Disguise Self</a
             >
-            under level 1 spells.<br />
-            Add Vicious Mockery to the <b>ATTACKS & SPELLCASTING</b> section.
+            under level 1 spells
             <annotation>
               <b>Prepared Spells.</b> Whenever you finish a Long Rest, you can
               practice your bardic arts and replace any Spell you have prepared
